@@ -38,7 +38,13 @@ npm run dev
 
 The backend is written in Django ReST Framework.
 
+These instructions assume you have `pyenv` installed.
+
 ```bash
+# set local version to python 3.11
+pyenv install 3.11
+pyenv local 3.11
+
 # instantiate virtual environment
 python -m venv .venv
 # or
