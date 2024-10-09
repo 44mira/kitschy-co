@@ -8,9 +8,21 @@ git clone https://github.com/44mira/kitschy-co.git
 cd kitschy-co
 ```
 
+> NOTE: Remember to cd back into the root folder before making `git`-related actions.
+
+```bash
+cd frontend
+# ...
+cd ..
+
+git add .
+git commit -m "feat: example"
+git push
+```
+
 ## Frontend
 
-The frontend is written on Sveltekit.
+The frontend is written in Sveltekit.
 
 ```bash
 cd frontend
@@ -24,7 +36,7 @@ npm run dev
 
 ## Backend
 
-The backend is on Django ReST Framework.
+The backend is written in Django ReST Framework.
 
 ```bash
 # instantiate virtual environment
