@@ -1,7 +1,7 @@
 # Important Links
-[Gantt](https://docs.google.com/spreadsheets/d/1-lv8CXxgeZPNvAxTtf1nMcPT3pGazXfCGU_z7rlab0M/edit?usp=drive_link)
-[ERD & Control Flow](https://app.eraser.io/workspace/m7WbFfCAi3rne9vxpSZm?origin=share)
-[Mockups](https://figma.com)
+- [Gantt](https://docs.google.com/spreadsheets/d/1-lv8CXxgeZPNvAxTtf1nMcPT3pGazXfCGU_z7rlab0M/edit?usp=drive_link)
+- [ERD & Control Flow](https://app.eraser.io/workspace/m7WbFfCAi3rne9vxpSZm?origin=share)
+- [Mockups](https://figma.com)
 # Kitschy Co.
 
 Clone the repo.
