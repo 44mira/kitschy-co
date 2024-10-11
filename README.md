@@ -1,7 +1,7 @@
 # Important Links
 - [Gantt](https://docs.google.com/spreadsheets/d/1-lv8CXxgeZPNvAxTtf1nMcPT3pGazXfCGU_z7rlab0M/edit?usp=drive_link)
 - [ERD & Control Flow](https://app.eraser.io/workspace/m7WbFfCAi3rne9vxpSZm?origin=share)
-- [Mockups](https://www.figma.com/board/JOvBjqEHAni4GXDMohNA3H/03-Exercise---Brand-Identity-Elements-Part-1?t=HVHtsFKOfaMClFCq-0)
+- [Mockups](https://www.figma.com/design/80Lbq0UWnjqPiZ0veNTV3z/Kitschy?node-id=0-1&t=LDXGwHHHuA6ldEWf-1)
 # Kitschy Co.
 
 Clone the repo.
