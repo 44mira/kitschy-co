@@ -1,6 +1,7 @@
 # Important Links
 - [Gantt](https://docs.google.com/spreadsheets/d/1-lv8CXxgeZPNvAxTtf1nMcPT3pGazXfCGU_z7rlab0M/edit?usp=drive_link)
-- [ERD & Control Flow](https://app.eraser.io/workspace/m7WbFfCAi3rne9vxpSZm?origin=share)
+- [Initial Features](https://docs.google.com/document/d/109JQ6lliifx3QkWt0vYSABfwqRs8qPxSq9vJw79hja8/edit)
+- [ERD/Control Flow/Feature Tree](https://app.eraser.io/workspace/m7WbFfCAi3rne9vxpSZm?origin=share)
 - [Mockups](https://www.figma.com/design/80Lbq0UWnjqPiZ0veNTV3z/Kitschy?node-id=0-1&t=LDXGwHHHuA6ldEWf-1)
 # Kitschy Co.
 
