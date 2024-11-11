@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django-rest-swagger = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 
