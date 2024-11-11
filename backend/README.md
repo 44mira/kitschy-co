@@ -19,8 +19,14 @@ CREATE DATABASE kitschy_co_db;
 ## Django
 
 > Make sure you have executed the initial instructions on the repository `README.md`
+1. Install all dependencies using `pipenv` and enter the virtual environment.
+```bash
+pipenv install  # install dependencies
+pipenv shell    # enter the venv
 
-1. Migrate the database.
+exit # for exiting the venv (not deactivate!)
+```
+2. Migrate the database.
 ```bash
 # for windows
 python manage.py makemigrations
