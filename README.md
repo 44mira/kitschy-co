@@ -44,6 +44,8 @@ The backend is written in Django ReST Framework.
 These instructions assume you have `pyenv` installed.
 
 ```bash
+cd backend
+
 # set local version to python 3.11
 pyenv install 3.11
 pyenv local 3.11
