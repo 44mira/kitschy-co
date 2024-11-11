@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 psycopg2-binary = "*"
+drf-spectacular = "*"
 
 [dev-packages]
 
