@@ -1,0 +1,7 @@
+openapi: 3.0.3
+info:
+  title: Kitschy Co. API
+  version: 1.0.0
+  description: Backend for Kitschy Co
+paths: {}
+components: {}
