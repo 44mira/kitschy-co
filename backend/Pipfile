@@ -4,14 +4,9 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-asgiref = "==3.8.1"
-django = "==5.1.2"
-django-filter = "==24.3"
-djangorestframework = "==3.15.2"
-markdown = "==3.7"
-sqlparse = "==0.5.1"
 
 [dev-packages]
 
 [requires]
-python_version = "3.12"
+python_version = "3.11"
+python_full_version = "3.11.10"
