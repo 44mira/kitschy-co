@@ -5,5 +5,6 @@ from kitschy_api.views.user import UserViewSet
 router = DefaultRouter()
 router.register(r"users", UserViewSet)
 urlpatterns = [
-  path('api/', include(router.urls)),
+    path("api/", include(router.urls)),
 ]
+
