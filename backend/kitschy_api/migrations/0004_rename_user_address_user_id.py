@@ -6,13 +6,13 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('kitschy_api', '0003_merge_0002_address_0002_product'),
+        ("kitschy_api", "0003_merge_0002_address_0002_product"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='address',
-            old_name='user',
-            new_name='user_id',
+            model_name="address",
+            old_name="user",
+            new_name="user_id",
         ),
     ]

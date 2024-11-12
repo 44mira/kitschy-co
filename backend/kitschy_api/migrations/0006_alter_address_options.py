@@ -6,12 +6,12 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('kitschy_api', '0005_alter_address_options'),
+        ("kitschy_api", "0005_alter_address_options"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='address',
-            options={'ordering': ['-address_id']},
+            name="address",
+            options={"ordering": ["-address_id"]},
         ),
     ]

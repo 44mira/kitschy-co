@@ -1,25 +1,24 @@
-from django.db import models
-from . import User
 import uuid
+
+from django.db import models
+
+from . import User
+
 
 class Address(models.Model):
     address_id = models.UUIDField(
-        primary_key=True,
-        default=uuid.uuid4,
-        editable=False
+        primary_key=True, default=uuid.uuid4, editable=False
     )
     # Foreign key to User
     user_id = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name='addresses'
+        User, on_delete=models.CASCADE, related_name="addresses"
     )
-    region =  models.CharField(max_length=50)
+    region = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
     postal_code = models.CharField(max_length=10)
     barangay = models.CharField(max_length=50)
     detailed_address = models.TextField()
-    
+
     class Meta:
-        db_table = 'addresses'
-        ordering = ['-address_id'] 
+        db_table = "addresses"
+        ordering = ["-address_id"]
