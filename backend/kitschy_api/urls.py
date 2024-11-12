@@ -9,7 +9,7 @@ router = DefaultRouter()
 router.register(r"users", UserViewSet)
 router.register(r"addresses", AddressViewSet)
 router.register(r"products", ProductViewSet)
-router.register(r"products", ProductImageViewSet)
+router.register(r"products/images", ProductImageViewSet)
 
 urlpatterns = [
     path("api/", include(router.urls)),
