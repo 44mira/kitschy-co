@@ -1,7 +1,10 @@
 .*
 !.gitignore
+!backend/.pre-commit-config.yaml
+!backend/.flake8
 backend/**/__pycache__/
 *.pyc
+
 node_modules
 
 # Output
