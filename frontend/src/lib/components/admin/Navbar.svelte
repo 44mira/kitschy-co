@@ -1,14 +1,29 @@
 <script>
-  import * as Avatar from '@/components/ui/avatar'
-  import logo from '@/assets/logo.png'
+	import { Button } from '@/components/ui/button';
+	import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+	import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover';
+	import logo from '@/assets/logo.png';
 </script>
 
 <nav class="h-fit flex items-center bg-slate-400 p-2 px-10 justify-between">
-<div class="h-full"><a href="/" target="_blank"><img src={logo} alt="kitschy co." width="200"></a></div>
-<div>
-  <Avatar.Root>
-    <Avatar.Image src="https://github.com/shadcn.png" alt="@shadcn" />
-    <Avatar.Fallback>CN</Avatar.Fallback>
-  </Avatar.Root>
-</div>
+	<div class="h-full">
+		<a href="/" target="_blank"><img src={logo} alt="kitschy co." width="200" /></a>
+	</div>
+	<div>
+		<Popover>
+			<PopoverTrigger>
+				<Avatar>
+					<AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+					<AvatarFallback>CN</AvatarFallback>
+				</Avatar>
+			</PopoverTrigger>
+
+			<PopoverContent class=' w-fit'>
+				<div class="flex flex-col gap-2">
+					<Button>Account Details</Button>
+					<Button>Sign-out</Button>
+				</div>
+			</PopoverContent>
+		</Popover>
+	</div>
 </nav>
