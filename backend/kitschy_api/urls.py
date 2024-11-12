@@ -6,6 +6,7 @@ from kitschy_api.views.product import ProductViewSet
 router = DefaultRouter()
 router.register(r"users", UserViewSet)
 router.register(r"products", ProductViewSet)
+
 urlpatterns = [
     path("api/", include(router.urls)),
 ]
