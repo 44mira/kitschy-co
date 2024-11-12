@@ -1,7 +1,7 @@
 .*
 !.gitignore
 backend/**/__pycache__/
-
+*.pyc
 node_modules
 
 # Output

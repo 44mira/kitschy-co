@@ -1,4 +1,3 @@
-# models/user.py
 from django.db import models
 from django.core.validators import EmailValidator, RegexValidator
 from django.contrib.auth.hashers import make_password
