@@ -36,3 +36,15 @@ python manage.py migrate
 ./manage.py makemigrations
 ./manage.py migrate
 ```
+## Pre-commit
+
+The backend uses `pre-commit` for coordinating formatting for all commits.
+
+This is already pre-configured in the `.pre-commit-config.yaml` and `.flake8`.
+
+You can run the `pre-commit` manually using:
+```bash
+pre-commit run --all-files
+```
+
+`flake8` will enforce the style, so you have to follow it to pass build checks.

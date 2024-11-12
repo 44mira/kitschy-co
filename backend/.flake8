@@ -1,0 +1,8 @@
+[flake8]
+exclude =
+  __init__.py,
+  */migrations/*
+per-file-ignores =
+  settings.py:E501
+
+# vim: set ft=yaml :

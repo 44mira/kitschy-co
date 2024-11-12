@@ -13,7 +13,7 @@ This are guidelines to follow in making this project. This can act as your refer
 - Block
     - Standalone entity with meaning on its own.
     - `header`, `container`, `menu`, `checkbox`, `input`
-- Element 
+- Element
     - A part of a block that has no standalone meaning and is semantically tied to its block.
     - `menu item`, `list item`, `checkbox caption`, `header title`
 - Modifier
@@ -85,7 +85,7 @@ Naming convention for branches is:
 
 ### 2. Commit names should follow [*conventional commits*](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13) format.
 
-Commit message: 
+Commit message:
 ```
 <type>(<optional scope>): <description>
 

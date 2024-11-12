@@ -6,6 +6,10 @@ name = "pypi"
 [packages]
 psycopg2-binary = "*"
 drf-spectacular = "*"
+pre-commit = "*"
+black = "*"
+flake8 = "*"
+isort = "*"
 
 [dev-packages]
 
