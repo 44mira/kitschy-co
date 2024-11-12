@@ -1,7 +1,7 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from kitschy_api.views.user import UserViewSet
+from django.urls import include, path
 from kitschy_api.views.product import ProductViewSet
+from kitschy_api.views.user import UserViewSet
+from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register(r"users", UserViewSet)
