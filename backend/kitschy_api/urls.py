@@ -2,6 +2,7 @@ from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
 from kitschy_api.views.address import AddressViewSet
+from kitschy_api.views.cart import CartViewSet
 from kitschy_api.views.order import OrderViewSet
 from kitschy_api.views.order_item import OrderItemList, OrderItemViewSet
 from kitschy_api.views.product import ProductViewSet
@@ -10,8 +11,6 @@ from kitschy_api.views.product_image import (
     ProductImageViewSet,
 )
 from kitschy_api.views.user import UserViewSet
-from kitschy_api.views.order_item import OrderItemViewSet
-from kitschy_api.views.cart import CartViewSet
 
 router = DefaultRouter()
 router.register(r"users", UserViewSet)
