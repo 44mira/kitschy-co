@@ -51,3 +51,26 @@ cd backend
 pyenv install 3.11
 pyenv local 3.11
 ```
+## Pre-commits and Formatting
+
+1. First install [`left-hook`](https://github.com/evilmartians/lefthook/blob/master/docs/install.md) on your system.
+2. While at the root directory:
+```bash
+lefthook install
+```
+3. You now have access to the repository's pre-commit hooks.
+
+> The pre-commit hcoks will run on all **staged** files. This means that if you want formatting on non-staged files, you have to run the hook manually.
+
+You can manually execute a hook using:
+
+```bash
+# run for all staged files
+lefthook run pre-commit
+
+# for a specific hook, these names are found in `lefthook.yaml`
+lefthook run pre-commit --commands="backend-lint"
+lefthook run pre-commit --commands="frontend-lint"
+```
+
+
