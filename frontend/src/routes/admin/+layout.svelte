@@ -1,5 +1,9 @@
 <script>
-	import Navbar from '@/components/admin/Navbar.svelte';
+	import Navbar from '$lib/components/admin/Navbar.svelte';
+
+	let { children } = $props();
 </script>
 
 <Navbar />
+
+{@render children()}
