@@ -22,7 +22,7 @@ router.register(r"products/image", ProductImageViewSet)
 router.register(r"carts", CartViewSet)
 
 urlpatterns = [
-    path("api/", include(router.urls)),
-    path("api/products/images/<uuid:product_id>/", ProductImageList.as_view()),
-    path("api/orders/items/<uuid:order_id>/", OrderItemList.as_view()),
+    path("", include(router.urls)),
+    path("products/images/<uuid:product_id>/", ProductImageList.as_view()),
+    path("orders/items/<uuid:order_id>/", OrderItemList.as_view()),
 ]
