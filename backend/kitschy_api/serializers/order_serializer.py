@@ -1,5 +1,6 @@
-from kitschy_api.models import Order
 from rest_framework import serializers
+
+from kitschy_api.models import Order
 
 
 class OrderSerializer(serializers.ModelSerializer):

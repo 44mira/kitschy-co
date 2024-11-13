@@ -1,5 +1,6 @@
-from kitschy_api.models import ProductImage
 from rest_framework import serializers
+
+from kitschy_api.models import ProductImage
 
 
 class ProductImageSerializer(serializers.ModelSerializer):
