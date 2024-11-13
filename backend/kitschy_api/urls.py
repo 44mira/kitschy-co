@@ -12,14 +12,19 @@ from kitschy_api.views.product_image import (
 )
 from kitschy_api.views.user import UserViewSet
 
+registered_viewsets = {
+    "users": UserViewSet,
+    "addresses": AddressViewSet,
+    "orders": OrderViewSet,
+    "order-item": OrderItemViewSet,
+    "products": ProductViewSet,
+    "products-image": ProductImageViewSet,
+    "carts": CartViewSet,
+}
+
 router = DefaultRouter()
-router.register(r"users", UserViewSet)
-router.register(r"addresses", AddressViewSet)
-router.register(r"orders", OrderViewSet)
-router.register(r"orders/items", OrderItemViewSet)
-router.register(r"products", ProductViewSet)
-router.register(r"products/image", ProductImageViewSet)
-router.register(r"carts", CartViewSet)
+for viewset in registered_viewsets.items():
+    router.register(*viewset)
 
 urlpatterns = [
     path("", include(router.urls)),
