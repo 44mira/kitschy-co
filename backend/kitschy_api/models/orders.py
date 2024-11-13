@@ -13,7 +13,7 @@ class Order(models.Model):
         User, on_delete=models.CASCADE, related_name="orders"
     )
     method = models.CharField(max_length=50)
-    status = models.CharField(max_length=50)
+    status = models.CharField(max_length=50, null=False)
     delivery_date = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
