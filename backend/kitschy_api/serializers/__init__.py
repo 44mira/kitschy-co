@@ -1,3 +1,4 @@
 from .address_serializer import AddressSerializer
+from .order_serializer import OrderSerializer
 from .product_image_serializer import ProductImageSerializer
 from .user_serializer import UserSerializer
