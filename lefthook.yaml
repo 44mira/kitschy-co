@@ -1,0 +1,18 @@
+pre-commit:
+  parallel: true
+  commands:
+    backend-lint:
+      tags: backend style
+      glob: backend/**/*.py
+      staged_files: ls -1 backend
+      run: |
+        cd backend
+        pipenv run black . --line-length=79
+        pipenv run isort . --profile=black --filter-files -l=79
+        pipenv run flake8 . --config=.flake8
+    frontend-lint:
+      tags: frontend style
+      glob: "*.{svelte,ts,js,md}"
+      run: |
+        cd frontend
+        npx prettier --write .
