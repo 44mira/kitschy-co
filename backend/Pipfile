@@ -9,6 +9,7 @@ drf-spectacular = "*"
 black = "*"
 flake8 = "*"
 isort = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 
