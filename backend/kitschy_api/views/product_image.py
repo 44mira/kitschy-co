@@ -1,8 +1,9 @@
+from rest_framework import generics, mixins, viewsets
+
 from kitschy_api.models import ProductImage
 from kitschy_api.serializers.product_image_serializer import (
     ProductImageSerializer,
 )
-from rest_framework import generics, mixins, viewsets
 
 
 class ProductImageList(generics.ListAPIView):
