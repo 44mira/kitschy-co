@@ -1,5 +1,9 @@
 <script>
-	import Navbar from '@/components/admin/Navbar.svelte';
+  import Navbar from "$lib/components/admin/Navbar.svelte";
+  import {toImageUrl} from '$lib/utils/index'
+  import polkaBg from "$lib/assets/admin/polkaBg.png"
 </script>
 
-<Navbar />
+<div class="h-screen w-screen" style='background-image: {toImageUrl(polkaBg)}; background-size: cover'>
+  <Navbar/>
+</div>
