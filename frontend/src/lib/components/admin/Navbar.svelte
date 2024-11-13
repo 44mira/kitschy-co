@@ -18,7 +18,7 @@
 				</Avatar>
 			</PopoverTrigger>
 
-			<PopoverContent class=' w-fit'>
+			<PopoverContent class=" w-fit">
 				<div class="flex flex-col gap-2">
 					<Button>Account Details</Button>
 					<Button>Sign-out</Button>

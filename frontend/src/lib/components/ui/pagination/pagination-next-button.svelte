@@ -1,29 +1,28 @@
 <script lang="ts">
-	import { Pagination as PaginationPrimitive } from "bits-ui";
-	import ChevronRight from "lucide-svelte/icons/chevron-right";
-	import { Button } from "$lib/components/ui/button/index.js";
-	import { cn } from "$lib/utils.js";
+	import { Pagination as PaginationPrimitive } from 'bits-ui';
+	import ChevronRight from 'lucide-svelte/icons/chevron-right';
+	import { Button } from '$lib/components/ui/button/index.js';
+	import { cn } from '$lib/utils.js';
 
 	type $$Props = PaginationPrimitive.NextButtonProps;
 	type $$Events = PaginationPrimitive.NextButtonEvents;
 
 	interface Props {
-		class?: $$Props["class"];
+		class?: $$Props['class'];
 		children?: import('svelte').Snippet;
-		[key: string]: any
+		[key: string]: any;
 	}
 
 	let { class: className = undefined, children, ...rest }: Props = $props();
-	
 
 	const children_render = $derived(children);
 </script>
 
-<PaginationPrimitive.NextButton asChild >
+<PaginationPrimitive.NextButton asChild>
 	{#snippet children({ builder })}
 		<Button
 			variant="ghost"
-			class={cn("gap-1 pr-2.5", className)}
+			class={cn('gap-1 pr-2.5', className)}
 			builders={[builder]}
 			on:click
 			{...rest}
