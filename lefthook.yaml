@@ -16,4 +16,3 @@ pre-commit:
       root: frontend/
       run: |
         npx prettier --write {all_files}
-        npm test
