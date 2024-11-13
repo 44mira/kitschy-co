@@ -2,6 +2,7 @@ from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
 from kitschy_api.views.address import AddressViewSet
+from kitschy_api.views.cart import CartViewSet
 from kitschy_api.views.order import OrderViewSet
 from kitschy_api.views.order_item import OrderItemList, OrderItemViewSet
 from kitschy_api.views.product import ProductViewSet
@@ -18,7 +19,7 @@ router.register(r"orders", OrderViewSet)
 router.register(r"orders/items", OrderItemViewSet)
 router.register(r"products", ProductViewSet)
 router.register(r"products/image", ProductImageViewSet)
-
+router.register(r"carts", CartViewSet)
 
 urlpatterns = [
     path("api/", include(router.urls)),
