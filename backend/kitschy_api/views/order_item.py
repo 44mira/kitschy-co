@@ -9,12 +9,9 @@ class OrderItemList(generics.ListAPIView):
     Get the list of items associated to an order.
     """
 
+    queryset = OrderItems.objects.all()
     serializer_class = OrderItemSerializer
-
-    def get_queryset(self):
-        # Gets order_id from URL parameter
-        order_id = self.kwargs.get("order_id")
-        return OrderItems.objects.filter(order_id=order_id)
+    lookup_field = "order_id"
 
 
 class OrderItemViewSet(
