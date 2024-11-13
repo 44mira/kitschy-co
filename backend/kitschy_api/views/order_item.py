@@ -1,17 +1,7 @@
-from rest_framework import generics, mixins, viewsets
+from rest_framework import mixins, viewsets
 
 from kitschy_api.models import OrderItems
 from kitschy_api.serializers.order_item_serializer import OrderItemSerializer
-
-
-class OrderItemList(generics.ListAPIView):
-    """
-    Get the list of items associated to an order.
-    """
-
-    queryset = OrderItems.objects.all()
-    serializer_class = OrderItemSerializer
-    lookup_field = "order_id"
 
 
 class OrderItemViewSet(
