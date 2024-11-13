@@ -2,10 +2,10 @@
 	import { Button } from '@/components/ui/button';
 	import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 	import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover';
-	import logo from '@/assets/logo.png';
+	import logo from '@/assets/admin/logo.png';
 </script>
 
-<nav class="h-fit flex items-center bg-slate-400 p-2 px-10 justify-between">
+<nav class="h-fit flex items-center bg-slate-400 p-2 px-10 justify-between sticky">
 	<div class="h-full">
 		<a href="/" target="_blank"><img src={logo} alt="kitschy co." width="200" /></a>
 	</div>
