@@ -47,6 +47,59 @@ const config = {
 				card: {
 					DEFAULT: "hsl(var(--card) / <alpha-value>)",
 					foreground: "hsl(var(--card-foreground) / <alpha-value>)"
+				},
+				admin: {
+					pink: '#EE1768',
+					blue: '#5EB5E3',
+					green: '#B0D253',
+				},
+
+				admin_background: {
+					overview: '#FFD9E7',
+                    product_list: '#D3F0FF',
+					order_tracker: '#F6FFDE',
+				},
+				
+				brand: {
+					purple: {
+						DEFAULT: '#804B7A',
+						d: '#663C62',
+						m: '#A883A7',
+						l: '#C8B5D5'
+					},
+				base: '#FFFADE',
+				},
+                
+                admin_item: {
+					creators: {
+						admin2: '#804B7A',
+						admin3: '#B0D253',
+					},
+					button: {
+						cancel_stroke: '#9F9F9F',
+                        delete_stroke: '#FF1D1D',
+						blue_fill: '#99D8FA',
+						blue_stroke: '#126A99',
+					},	
+				base: '#FFF5FE',
+				overlay_bg: '#FFFFFF',
+				},
+                
+                success_toast: {
+                    success_fill: '#F6FFDE', 
+					success_stroke: '#1A6C0E',
+				},
+
+                category_methods: {
+					mart_yellow: '#F9F871',
+					pastries_yellow: '#FB7A4F',
+                    printing_pink: 'F1ABFF', 
+				},
+
+				status: {
+					delivered: '#008000',
+					shipped: '#F9F871',
+					cancelled: '#FF1D1D'	
 				}
 			},
 			borderRadius: {
