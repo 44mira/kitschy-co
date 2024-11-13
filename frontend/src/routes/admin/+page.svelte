@@ -36,17 +36,18 @@
 >
 	<!-- TODO: edit css for button variant -->
 	<div class="flex flex-col-reverse sm:flex-row gap-2 justify-between w-full px-10">
-		<div id="tabs" class="flex gap-2">
+		<div id="tabs" class="flex gap-2 items-end">
 			<Button
 				variant="tab"
 				onclick={() => switchTab('insights_tab')}
-				class="bg-admin-pink text-brand-base">Business Insights</Button
+				class="bg-admin-pink text-brand-base"
+        style={`height: ${tab == 'insights_tab' ? 50 : ''}px`}>Business Insights</Button
 			>
 			<Button variant="tab" onclick={() => switchTab('products_tab')} class="bg-admin-blue"
-				>Products</Button
+				style={`height: ${tab == 'products_tab' ? 50 : ''}px`}>Products</Button
 			>
 			<Button variant="tab" onclick={() => switchTab('orders_tab')} class="bg-admin-green"
-				>Order Tracker</Button
+				style={`height: ${tab == 'orders_tab' ? 50 : ''}px`}>Order Tracker</Button
 			>
 		</div>
 
