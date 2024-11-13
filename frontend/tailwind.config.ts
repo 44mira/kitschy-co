@@ -45,15 +45,15 @@ const config = {
 					foreground: 'hsl(var(--popover-foreground) / <alpha-value>)'
 				},
 				card: {
-					DEFAULT: "hsl(var(--card) / <alpha-value>)",
-					foreground: "hsl(var(--card-foreground) / <alpha-value>)"
+					DEFAULT: 'hsl(var(--card) / <alpha-value>)',
+					foreground: 'hsl(var(--card-foreground) / <alpha-value>)'
 				},
 				admin: {
 					pink: '#EE1768',
 					blue: '#5EB5E3',
-					green: '#B0D253',
+					green: '#B0D253'
 				},
-				
+
 				brand: {
 					purple: {
 						DEFAULT: '#804B7A',
@@ -61,8 +61,8 @@ const config = {
 						m: '#A883A7',
 						l: '#C8B5D5'
 					},
-				base: '#FFFADE',
-				},
+					base: '#FFFADE'
+				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
