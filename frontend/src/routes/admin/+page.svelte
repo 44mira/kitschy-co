@@ -12,18 +12,19 @@
 	let tab = $state('insights_tab');
 	let durationFilter = $state('Day');
 	let presetDurations = ['Day', 'Month', 'Year', 'All Time'];
-	let offeringFilter = $state('All');
+	let categoryFilter = $state('All');
+  let categories = ['All', 'Merchandise', 'Cafe & Pastries', "Misbeek's Printing"];
 
-	let bg_colors = {
+	let bgColors = {
 		insights_tab: '#FFD9E7',
 		products_tab: '#D3F0FF',
 		orders_tab: '#F6FFDE'
 	};
-	let bg_color = $state(bg_colors['insights_tab']);
+	let bgColor = $state(bgColors['insights_tab']);
 
 	function switchTab(t: string) {
 		tab = t;
-		bg_color = bg_colors[tab as keyof typeof bg_colors];
+		bgColor = bgColors[tab as keyof typeof bgColors];
 	}
 </script>
 
@@ -31,10 +32,10 @@
 	class="h-[calc(100vh-62px)] w-screen px-10 pt-10 flex flex-col"
 	style="background-image: {toImageUrl(polkaBg)}; 
         background-size: cover;
-        background-color: {bg_color};"
+        background-color: {bgColor};"
 >
 	<!-- TODO: edit css for button variant -->
-	<div class="flex justify-around w-full">
+	<div class="flex flex-col-reverse sm:flex-row gap-2 justify-between w-full px-10">
 		<div id="tabs" class="flex gap-2">
 			<Button
 				variant="tab"
@@ -49,20 +50,36 @@
 			>
 		</div>
 
-		<div id="filters" class="h-full flex items-center">
-			<DropdownMenu.Root>
-				<DropdownMenu.Trigger class="px-5 py-1 rounded-lg bg-brand-purple-d text-brand-base"
-					>{durationFilter}</DropdownMenu.Trigger
-				>
-				<DropdownMenu.Content>
-					<DropdownMenu.RadioGroup bind:value={durationFilter}>
-						<DropdownMenu.RadioItem value="Day">Day</DropdownMenu.RadioItem>
-						<DropdownMenu.RadioItem value="Month">Month</DropdownMenu.RadioItem>
-						<DropdownMenu.RadioItem value="Year">Year</DropdownMenu.RadioItem>
-						<DropdownMenu.RadioItem value="All Time">All Time</DropdownMenu.RadioItem>
-					</DropdownMenu.RadioGroup>
-				</DropdownMenu.Content>
-			</DropdownMenu.Root>
+		<div id="filters" class="h-full flex gap-2 items-center">
+			<div id="duration-filter">
+				<DropdownMenu.Root>
+					<DropdownMenu.Trigger class="px-5 py-1 rounded-lg bg-brand-purple-d text-brand-base"
+						>{durationFilter}</DropdownMenu.Trigger
+					>
+					<DropdownMenu.Content>
+						<DropdownMenu.RadioGroup bind:value={durationFilter}>
+							{#each presetDurations as duration}
+								<DropdownMenu.RadioItem value={duration}>{duration}</DropdownMenu.RadioItem>
+							{/each}
+						</DropdownMenu.RadioGroup>
+					</DropdownMenu.Content>
+				</DropdownMenu.Root>
+			</div>
+
+			<div class="category-filter">
+				<DropdownMenu.Root>
+					<DropdownMenu.Trigger class="px-5 py-1 rounded-lg bg-brand-purple-d text-brand-base"
+						>{categoryFilter}</DropdownMenu.Trigger
+					>
+					<DropdownMenu.Content>
+						<DropdownMenu.RadioGroup bind:value={categoryFilter}>
+							{#each categories as category}
+								<DropdownMenu.RadioItem value={category}>{category}</DropdownMenu.RadioItem>
+							{/each}
+						</DropdownMenu.RadioGroup>
+					</DropdownMenu.Content>
+				</DropdownMenu.Root>
+			</div>
 		</div>
 	</div>
 
