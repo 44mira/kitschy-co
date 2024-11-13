@@ -57,12 +57,12 @@ const config = {
 				brand: {
 					purple: {
 						DEFAULT: '#804B7A',
+						d: '#663C62',
 						m: '#A883A7',
 						l: '#C8B5D5'
-					}
-				},
+					},
 				base: '#FFFADE',
-
+				},
 			},
 			borderRadius: {
 				lg: "var(--radius)",
