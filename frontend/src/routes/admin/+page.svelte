@@ -3,6 +3,9 @@
 	import { toImageUrl } from '$lib/utils/index';
 	import polkaBg from '$lib/assets/admin/polkaBg.png';
 	import Button from '$lib/components/ui/button/button.svelte';
+  import InsightsTab from './InsightsTab.svelte';
+  import ProductsTab from './ProductsTab.svelte';
+  import OrdersTab from './OrdersTab.svelte';
 
 	let tab = $state('insights_tab');
 	let bg_colors = {
@@ -19,7 +22,7 @@
 </script>
 
 <div
-	class="h-[calc(100vh-62px)] w-screen px-10 pt-10"
+	class="h-[calc(100vh-62px)] w-screen px-10 pt-10 flex flex-col"
 	style="background-image: {toImageUrl(polkaBg)}; 
         background-size: cover;
         background-color: {bg_color};"
@@ -32,7 +35,14 @@
 	</div>
 
 	<!-- folder part -->
-	<div class="bg-[#FFFADE] h-full w-full rounded-t-3xl border border-[#804B7A] px-5 pt-5">
+	<div class="flex-1 bg-[#FFFADE] w-full rounded-t-3xl border border-[#804B7A] px-5 pt-5">
 
-	</div>
+    {#if tab === 'insights_tab'}
+      <InsightsTab />
+    {:else if tab === 'products_tab'}
+      <ProductsTab />
+    {:else if tab === 'orders_tab'}
+      <OrdersTab />
+    {/if}
+  </div>
 </div>
