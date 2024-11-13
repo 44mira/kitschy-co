@@ -15,7 +15,8 @@ class Migration(migrations.Migration):
             model_name="orderitems",
             name="quantity",
             field=models.PositiveIntegerField(
-                default=1, validators=[django.core.validators.MinValueValidator(1)]
+                default=1,
+                validators=[django.core.validators.MinValueValidator(1)],
             ),
         ),
         migrations.AlterUniqueTogether(
