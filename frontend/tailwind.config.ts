@@ -61,16 +61,16 @@ const config = {
 						m: '#A883A7',
 						l: '#C8B5D5'
 					},
-				base: '#FFFADE',
-				purpleMerch: '#4D1078',
-				orangePastries: '#FB7A4F',
-				yellowMart: '#F9F871',
-				mintWorkshop: '#32BEAF',
-				pinkPrinting: '#F1ABFF'
+					base: '#FFFADE',
+					purpleMerch: '#4D1078',
+					orangePastries: '#FB7A4F',
+					yellowMart: '#F9F871',
+					mintWorkshop: '#32BEAF',
+					pinkPrinting: '#F1ABFF'
 				},
 
 				text: {
-                   crinkles: '#282204'
+					crinkles: '#282204'
 				}
 			},
 			borderRadius: {
@@ -82,10 +82,10 @@ const config = {
 				giphurs: ['Giphurs'],
 				giphursSC: ['GiphursSC'],
 				gladiola: ['Gladiola'],
-				lockergnome: ['Lockergnome'],
+				lockergnome: ['Lockergnome']
 			}
 		}
-	},
+	}
 } satisfies Config;
 
 export default config;
