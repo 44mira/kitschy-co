@@ -54,12 +54,6 @@ const config = {
 					green: '#B0D253'
 				},
 
-				adminBG: {
-					pink: '#FFD9E7',
-                    blue: '#D3F0FF',
-					green: '#F6FFDE'
-				},
-
 				brand: {
 					purple: {
 						DEFAULT: '#804B7A',
