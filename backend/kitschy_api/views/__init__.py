@@ -5,3 +5,4 @@ from .order_item import OrderItemViewSet
 from .product import ProductViewSet
 from .product_image import ProductImageList, ProductImageViewSet
 from .user import UserViewSet
+from .cart_item import CartItemViewSet

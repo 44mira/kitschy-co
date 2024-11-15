@@ -11,6 +11,7 @@ from kitschy_api.views.product_image import (
     ProductImageViewSet,
 )
 from kitschy_api.views.user import UserViewSet
+from kitschy_api.views.cart_item import CartItemViewSet
 
 registered_viewsets = {
     "users": UserViewSet,
@@ -20,6 +21,7 @@ registered_viewsets = {
     "products": ProductViewSet,
     "products-image": ProductImageViewSet,
     "carts": CartViewSet,
+    "cart-item": CartItemViewSet,
 }
 
 router = DefaultRouter()
