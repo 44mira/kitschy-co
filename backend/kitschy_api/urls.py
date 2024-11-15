@@ -3,6 +3,7 @@ from rest_framework.routers import DefaultRouter
 
 from kitschy_api.views.address import AddressViewSet
 from kitschy_api.views.cart import CartViewSet
+from kitschy_api.views.cart_item import CartItemViewSet
 from kitschy_api.views.order import OrderViewSet
 from kitschy_api.views.order_item import OrderItemViewSet
 from kitschy_api.views.product import ProductViewSet
@@ -11,7 +12,6 @@ from kitschy_api.views.product_image import (
     ProductImageViewSet,
 )
 from kitschy_api.views.user import UserViewSet
-from kitschy_api.views.cart_item import CartItemViewSet
 
 registered_viewsets = {
     "users": UserViewSet,
