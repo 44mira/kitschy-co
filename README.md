@@ -53,7 +53,7 @@ pyenv local 3.11
 ```
 ## Pre-commits and Formatting
 
-1. First install [`left-hook`](https://github.com/evilmartians/lefthook/blob/master/docs/install.md) on your system.
+1. First install [`lefthook`](https://github.com/evilmartians/lefthook/blob/master/docs/install.md) on your system.
 2. While at the root directory:
 ```bash
 lefthook install
