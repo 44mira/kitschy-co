@@ -1,6 +1,7 @@
 from .addresses import Address
 from .cart_items import CartItem
 from .carts import Cart
+from .custom_users import CustomUser
 from .order_items import OrderItems
 from .orders import Order
 from .product_images import ProductImage
