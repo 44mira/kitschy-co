@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     "drf_spectacular",
     "kitschy_api",
 ]
-AUTH_USER_MODEL = "kitschy_api.CustomUser"
+AUTH_USER_MODEL = "kitschy_api.User"
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
