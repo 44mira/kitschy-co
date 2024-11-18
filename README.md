@@ -60,7 +60,7 @@ lefthook install
 ```
 3. You now have access to the repository's pre-commit hooks.
 
-> The pre-commit hcoks will run on all **staged** files. This means that if you want formatting on non-staged files, you have to run the hook manually.
+> The pre-commit hooks will run on all **staged** files. This means that if you want formatting on non-staged files, you have to run the hook manually.
 
 You can manually execute a hook using:
 
