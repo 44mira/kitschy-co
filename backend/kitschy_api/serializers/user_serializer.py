@@ -2,8 +2,12 @@
 from dj_rest_auth.registration.serializers import RegisterSerializer
 from rest_framework import serializers
 
-from kitschy_api.models import User, Address
-from .address_serializer import AddressSerializer  # Import the existing serializer
+from kitschy_api.models import Address, User
+
+from .address_serializer import (  # Import the existing serializer
+    AddressSerializer,
+)
+
 
 class UserRegisterSerializer(RegisterSerializer):
     username = None  # Remove username field
@@ -23,11 +27,12 @@ class UserRegisterSerializer(RegisterSerializer):
     def save(self, request):
         user = super().save(request)
         if self.validated_data:
-            user.first_name = self.validated_data.get('first_name', '')
-            user.last_name = self.validated_data.get('last_name', '')
-            user.phone_number = self.validated_data.get('phone_number', '')
+            user.first_name = self.validated_data.get("first_name", "")
+            user.last_name = self.validated_data.get("last_name", "")
+            user.phone_number = self.validated_data.get("phone_number", "")
             user.save()
         return user
+
 
 class UserSerializer(serializers.ModelSerializer):
 
