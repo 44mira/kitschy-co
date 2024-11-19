@@ -4,12 +4,11 @@ from django.contrib.auth.models import AbstractUser
 from django.core.validators import RegexValidator
 from django.db import models
 
-
 class User(AbstractUser):
+    # Keep username but make it nullable since we're not using it
+    username = models.CharField(max_length=150, null=True, blank=True, unique=True)
+    
     email = models.EmailField(unique=True)
-    username = (
-        None  # Remove username field as we will use email for authentication
-    )
     membership_id = models.UUIDField(
         default=uuid.uuid4, editable=False, unique=True
     )
@@ -27,5 +26,5 @@ class User(AbstractUser):
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["first_name", "last_name"]
 
-    def __str_(self):
+    def __str__(self):  # Fixed typo in method name
         return self.email
