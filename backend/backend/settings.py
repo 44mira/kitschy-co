@@ -40,21 +40,17 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
-
     "corsheaders",
     "drf_spectacular",
-
-    #rest_framework
+    # rest_framework
     "rest_framework",
     "rest_framework.authtoken",
-
     # auth
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
     "dj_rest_auth",
     "dj_rest_auth.registration",
-
     # Local Apps
     "kitschy_api",
 ]
@@ -70,8 +66,8 @@ REST_AUTH = {
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_EMAIL_VERIFICATION = "none"
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
