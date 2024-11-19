@@ -1,19 +1,34 @@
-import uuid
-
-from django.contrib.auth.models import AbstractUser
+# kitschy_api/models.py
+from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.core.validators import RegexValidator
 from django.db import models
+import uuid
 
+class CustomUserManager(BaseUserManager):
+    def create_user(self, email, password=None, **extra_fields):
+        if not email:
+            raise ValueError('The Email field must be set')
+        email = self.normalize_email(email)
+        user = self.model(email=email, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, email, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+        extra_fields.setdefault('is_active', True)
+
+        return self.create_user(email, password, **extra_fields)
 
 class User(AbstractUser):
-    # Keep username but make it nullable since we're not using it
-    username = models.CharField(
-        max_length=150, null=True, blank=True, unique=True
-    )
-
+    
     email = models.EmailField(unique=True)
     membership_id = models.UUIDField(
-        default=uuid.uuid4, editable=False, unique=True
+        null=True,  # Allow null
+        blank=True,  # Allow blank in forms
+        unique=True,  # Keep unique constraint
+        editable=True 
     )
     phone_number = models.CharField(
         max_length=20,
@@ -25,9 +40,10 @@ class User(AbstractUser):
         ],
     )
 
-    # Email based authentication
-    USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["first_name", "last_name"]
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['first_name', 'last_name']
 
-    def __str__(self):  # Fixed typo in method name
+    objects = CustomUserManager() # type: ignore
+
+    def __str__(self):
         return self.email

@@ -39,14 +39,39 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "rest_framework",
-    "rest_framework.authtoken",
+    "django.contrib.sites",
+
     "corsheaders",
     "drf_spectacular",
-    "kitschy_api",
+
+    #rest_framework
+    "rest_framework",
+    "rest_framework.authtoken",
+
+    # auth
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
     "dj_rest_auth",
+    "dj_rest_auth.registration",
+
+    # Local Apps
+    "kitschy_api",
 ]
+
+SITE_ID = 1
 AUTH_USER_MODEL = "kitschy_api.User"
+
+REST_AUTH = {
+    "REGISTER_SERIALIZER": "kitschy_api.serializers.user_serializer.UserRegisterSerializer",
+    "USER_SERIALIZER": "kitschy_api.serializers.user_serializer.UserSerializer",
+}
+# django-allauth settings
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
@@ -58,6 +83,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = "backend.urls"

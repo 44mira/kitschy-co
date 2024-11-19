@@ -8,7 +8,7 @@ class CartSerializer(serializers.ModelSerializer):
     items = serializers.SerializerMethodField()
     class Meta:
         model = Cart
-        fields = ["cart_id", "user", "created_at", "updated_at"]
+        fields = ["cart_id", "user", "created_at", "updated_at","total", "items"]
         read_only_fields = ["cart_id", "created_at", "updated_at"]  
     
     def get_total(self, obj):
