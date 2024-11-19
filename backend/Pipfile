@@ -10,6 +10,8 @@ black = "*"
 flake8 = "*"
 isort = "*"
 django-cors-headers = "*"
+pytest-django = "*"
+model-bakery = "*"
 
 [dev-packages]
 
