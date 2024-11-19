@@ -7,7 +7,7 @@ from .products import Product
 
 
 class CartItem(models.Model):
-    items_id = models.UUIDField(
+    item_id = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False
     )
     cart = models.ForeignKey(
@@ -20,4 +20,4 @@ class CartItem(models.Model):
 
     class Meta:
         db_table = "cart_items"
-        ordering = ["-items_id"]
+        ordering = ["-item_id"]

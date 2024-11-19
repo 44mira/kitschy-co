@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
             name="OrderItems",
             fields=[
                 (
-                    "items_id",
+                    "item_id",
                     models.UUIDField(
                         default=uuid.uuid4,
                         editable=False,
