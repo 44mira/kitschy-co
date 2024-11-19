@@ -4,10 +4,13 @@ from django.contrib.auth.models import AbstractUser
 from django.core.validators import RegexValidator
 from django.db import models
 
+
 class User(AbstractUser):
     # Keep username but make it nullable since we're not using it
-    username = models.CharField(max_length=150, null=True, blank=True, unique=True)
-    
+    username = models.CharField(
+        max_length=150, null=True, blank=True, unique=True
+    )
+
     email = models.EmailField(unique=True)
     membership_id = models.UUIDField(
         default=uuid.uuid4, editable=False, unique=True
