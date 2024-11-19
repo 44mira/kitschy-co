@@ -8,7 +8,7 @@ from .products import Product
 
 
 class OrderItems(models.Model):
-    items_id = models.UUIDField(
+    item_id = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False
     )
     order_id = models.ForeignKey(
