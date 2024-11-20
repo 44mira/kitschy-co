@@ -191,7 +191,5 @@
 		@apply bg-background text-foreground;
 		@apply font-giphurs;
 	}
-	.admin__dialog__content {
-		@apply bg-[#fff5fe] rounded-3xl border-none;
-	}
+
 }
