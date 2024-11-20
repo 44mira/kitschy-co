@@ -7,10 +7,7 @@ from kitschy_api.views.cart_item import CartItemViewSet
 from kitschy_api.views.order import OrderViewSet
 from kitschy_api.views.order_item import OrderItemViewSet
 from kitschy_api.views.product import ProductViewSet
-from kitschy_api.views.product_image import (
-    ProductImageList,
-    ProductImageViewSet,
-)
+from kitschy_api.views.product_image import ProductImageViewSet
 from kitschy_api.views.user import UserViewSet
 
 registered_viewsets = {
@@ -30,5 +27,4 @@ for viewset in registered_viewsets.items():
 
 urlpatterns = [
     path("", include(router.urls)),
-    path("products/images/<uuid:product_id>/", ProductImageList.as_view()),
 ]
