@@ -6,6 +6,7 @@
 	import { addProductSchema, type AddProductSchema } from './schema';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
+	import AddIcon from 'virtual:icons/mdi/add';
 
 	// export let data: SuperValidated<Infer<AddProductSchema>>;
 	let { data } = $props();
@@ -15,8 +16,12 @@
 	});
 </script>
 
-<Dialog.Root>
-	<Dialog.Trigger>Open</Dialog.Trigger>
+<Dialog.Root open="True">
+	<Dialog.Trigger
+		class="w-[75px] h-[75px] bg-[#094F7B4D] hover:bg-[#094F7B] flex items-center justify-center rounded-3xl z-10"
+	>
+		<AddIcon class="text-brand-base w-[70px] h-[70px]" />
+	</Dialog.Trigger>
 	<Dialog.Content>
 		<form method="POST">
 			<div id="form" class="flex gap-4">
@@ -24,9 +29,13 @@
 					<Form.Field form={addProductForm} name="productImages">
 						<Form.Control>
 							<Form.Label for="images-input">
-								<div class="w-[250px] h-[250px] border"></div>
+								<div
+									class="w-[250px] h-[250px] bg-brand-purple-m rounded-xl flex items-center justify-center"
+								>
+									<AddIcon class="w-[250px] h-[250px] text-brand-purple-d" />
+								</div>
 							</Form.Label>
-							<Input id="images-input" type="file" multiple class="w-0 h-0 p-0" accept='image/*'/>
+							<Input id="images-input" type="file" multiple class="w-0 h-0 p-0" accept="image/*" />
 						</Form.Control>
 						<Form.FieldErrors />
 					</Form.Field>
