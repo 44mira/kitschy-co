@@ -11,10 +11,10 @@ class OrderItems(models.Model):
     item_id = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False
     )
-    order_id = models.ForeignKey(
+    order = models.ForeignKey(
         Order, on_delete=models.CASCADE, related_name="order_items"
     )
-    product_id = models.ForeignKey(
+    product = models.ForeignKey(
         Product, on_delete=models.CASCADE, related_name="order_items"
     )
     quantity = models.PositiveIntegerField(
@@ -26,6 +26,6 @@ class OrderItems(models.Model):
     class Meta:
         db_table = "order_items"
         unique_together = [
-            "order_id",
-            "product_id",
+            "order",
+            "product",
         ]  # Every product in an order should be unique

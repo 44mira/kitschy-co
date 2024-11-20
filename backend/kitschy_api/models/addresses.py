@@ -10,7 +10,7 @@ class Address(models.Model):
         primary_key=True, default=uuid.uuid4, editable=False
     )
     # Foreign key to User
-    user_id = models.ForeignKey(
+    user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="addresses"
     )
     region = models.CharField(max_length=50)

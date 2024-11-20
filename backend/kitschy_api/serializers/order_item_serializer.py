@@ -4,11 +4,9 @@ from kitschy_api.models import OrderItems
 
 
 class OrderItemSerializer(serializers.ModelSerializer):
-    product_name = serializers.CharField(
-        source="product_id.name", read_only=True
-    )
+    product_name = serializers.CharField(source="product.name", read_only=True)
     product_price = serializers.DecimalField(
-        source="product_id.price",
+        source="product.price",
         max_digits=10,
         decimal_places=2,
         read_only=True,
@@ -21,8 +19,8 @@ class OrderItemSerializer(serializers.ModelSerializer):
         model = OrderItems
         fields = [
             "item_id",
-            "order_id",
-            "product_id",
+            "order",
+            "product",
             "product_name",
             "product_price",
             "quantity",
@@ -33,4 +31,4 @@ class OrderItemSerializer(serializers.ModelSerializer):
         read_only_fields = ["item_id"]
 
     def get_subtotal(self, obj) -> float:  # obj is the OrderItems instance
-        return obj.product_id.price * obj.quantity
+        return obj.product.price * obj.quantity

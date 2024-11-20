@@ -23,7 +23,7 @@ class Order(models.Model):
         default=uuid.uuid4,
         editable=False,
     )
-    user_id = models.ForeignKey(
+    user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
         related_name="orders",
