@@ -1,12 +1,9 @@
-# serializers/user_serializer.py
 from dj_rest_auth.registration.serializers import RegisterSerializer
 from rest_framework import serializers
 
 from kitschy_api.models import Address, User
 
-from .address_serializer import (  # Import the existing serializer
-    AddressSerializer,
-)
+from .address_serializer import AddressSerializer
 
 
 class UserRegisterSerializer(RegisterSerializer):
@@ -14,15 +11,17 @@ class UserRegisterSerializer(RegisterSerializer):
     email = serializers.EmailField(required=True)
     first_name = serializers.CharField(required=True)
     last_name = serializers.CharField(required=True)
-    phone_number = serializers.CharField(required=True)
 
-    # TODO: Have address fields in register serializer
-    """ # Address fields
-    region = serializers.CharField(required=True)
-    city = serializers.CharField(required=True)
-    postal_code = serializers.CharField(required=True)
-    barangay = serializers.CharField(required=True)
-    detailed_address = serializers.CharField(required=True) """
+    # Inherit the phone number validator from the model
+    phone_number = serializers.CharField(
+        max_length=20,
+        required=True,
+        validators=[
+            User._meta.get_field("phone_number").validators[0]
+        ],  # This gets the RegexValidator
+    )
+
+    address = AddressSerializer()
 
     def save(self, request):
         user = super().save(request)
@@ -31,10 +30,28 @@ class UserRegisterSerializer(RegisterSerializer):
             user.last_name = self.validated_data.get("last_name", "")
             user.phone_number = self.validated_data.get("phone_number", "")
             user.save()
+
+            # Create address using the nested serializer data
+            address_data = self.validated_data.get("address", {})
+            Address.objects.create(user=user, **address_data)
+
         return user
+
+    class Meta:
+        model = User
+        fields = (
+            "email",
+            "first_name",
+            "last_name",
+            "phone_number",
+            "password1",
+            "password2",
+            "address",
+        )
 
 
 class UserSerializer(serializers.ModelSerializer):
+    addresses = AddressSerializer(many=True)
 
     class Meta:
         model = User
@@ -45,5 +62,5 @@ class UserSerializer(serializers.ModelSerializer):
             "last_name",
             "phone_number",
             "membership_id",
-            # "addresses", TODO: link the address serializer here
+            "addresses",
         )
