@@ -1,19 +1,9 @@
-from rest_framework import generics, mixins, viewsets
+from rest_framework import mixins, viewsets
 
 from kitschy_api.models import ProductImage
 from kitschy_api.serializers.product_image_serializer import (
     ProductImageSerializer,
 )
-
-
-class ProductImageList(generics.ListAPIView):
-    """
-    Get the list of images associated to a `product`.
-    """
-
-    queryset = ProductImage.objects.all()
-    serializer_class = ProductImageSerializer
-    lookup_field = "product_id"
 
 
 class ProductImageViewSet(
