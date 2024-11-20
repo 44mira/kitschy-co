@@ -2,6 +2,7 @@
 	import * as Form from '$lib/components/ui/form';
 	import * as Dialog from '$lib/components/ui/dialog';
 	import { Input } from '$lib/components/ui/input';
+	import { Textarea } from '$lib/components/ui/textarea';
 	import { Button } from '@/components/ui/button';
 	import { addProductSchema, type AddProductSchema } from './schema';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
@@ -25,7 +26,7 @@
 	>
 		<AddIcon class="text-brand-base w-[70px] h-[70px]" />
 	</Dialog.Trigger>
-	<Dialog.Content class="admin__dialog__content">
+	<Dialog.Content class="bg-[#fff5fe] border-none w-[750px]">
 		<form method="POST">
 			<Form.Field form={addProductForm} name="category">
 				<Form.Control>
@@ -69,10 +70,10 @@
 						<Form.FieldErrors />
 					</Form.Field>
 				</div>
-				<div id="right">
+				<div id="right" class="flex-grow">
 					<Form.Field form={addProductForm} name="category">
 						<Form.Control>
-							<Form.Label>Category:</Form.Label>
+							<Form.Label class="text-brand-purple-d text-lg font-normal">Category:</Form.Label>
 							<Input type="text" />
 						</Form.Control>
 						<Form.FieldErrors />
@@ -80,24 +81,24 @@
 
 					<Form.Field form={addProductForm} name="creators">
 						<Form.Control>
-							<Form.Label>Creator/s:</Form.Label>
+							<Form.Label class="text-brand-purple-d text-lg font-normal">Creator/s:</Form.Label>
 							<Input type="text" />
 						</Form.Control>
 						<Form.FieldErrors />
 					</Form.Field>
 					<Form.Field form={addProductForm} name="price">
 						<Form.Control>
-							<Form.Label>Price:</Form.Label>
+							<Form.Label class="text-brand-purple-d text-lg font-normal">Price:</Form.Label>
 							<Input type="text" />
 						</Form.Control>
 						<Form.FieldErrors />
 					</Form.Field>
-					<Form.Field form={addProductForm} name="desc">
+					<Form.Field form={addProductForm} name="desc" class="space-y-0">
 						<Form.Control>
-							<Form.Label>Description:</Form.Label>
-							<Input
-								type="text"
+							<Form.Label class="text-brand-purple-d text-lg font-normal">Description:</Form.Label>
+							<Textarea
 								placeholder="Add a description to give users more context on the product. Be detailed and thorough. Possible important information: units, dimensions, material."
+								class="bg-transparent border-none resize-none h-[150px]"
 							/>
 						</Form.Control>
 						<Form.FieldErrors />
@@ -111,6 +112,3 @@
 		</form>
 	</Dialog.Content>
 </Dialog.Root>
-
-<style>
-</style>
