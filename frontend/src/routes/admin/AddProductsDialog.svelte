@@ -7,6 +7,7 @@
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import AddIcon from 'virtual:icons/mdi/add';
+	import dndIcon from '$lib/assets/admin/icons/dndIcon.svg';
 
 	// export let data: SuperValidated<Infer<AddProductSchema>>;
 	let { data } = $props();
@@ -14,6 +15,8 @@
 	const addProductForm = superForm(data, {
 		validators: zodClient(addProductSchema)
 	});
+
+	let isHoveredMainImage = $state(false);
 </script>
 
 <Dialog.Root open="True">
@@ -30,9 +33,25 @@
 						<Form.Control>
 							<Form.Label for="images-input">
 								<div
-									class="w-[250px] h-[250px] bg-brand-purple-m rounded-xl flex items-center justify-center"
+									class={`${isHoveredMainImage ? 'hiddenl' : ''} w-[250px] h-[250px] transition ease-in bg-brand-purple-m hover:bg-[#F8EEFF] border-[5px] hover:border-brand-purple-d border-brand-purple-m rounded-xl flex items-center justify-center`}
+									role="button"
+									tabindex="0"
+									onmouseenter={() => (isHoveredMainImage = true)}
+									onmouseleave={() => (isHoveredMainImage = false)}
 								>
-									<AddIcon class="w-[250px] h-[250px] text-brand-purple-d" />
+									<AddIcon
+										class={`${isHoveredMainImage ? 'hidden' : ''} opacity-100 transition-opacity ease-in hover:opacity-0 w-[250px] h-[250px] text-brand-purple-d`}
+									/>
+									<div
+										class={`${isHoveredMainImage ? '' : 'hidden'} opacity-0 transition-opacity ease-in hover:opacity-100 flex flex-col items-center justify-center w-full h-full`}
+									>
+										<img src={dndIcon} alt="Drag and drop icon" class="w-[123px] h-[110px]" />
+										<p
+											class="text-brand-purple-d text-center pt-2 text-xl font-giphurs font-semibold"
+										>
+											Drag and drop or click here
+										</p>
+									</div>
 								</div>
 							</Form.Label>
 							<Input id="images-input" type="file" multiple class="w-0 h-0 p-0" accept="image/*" />
