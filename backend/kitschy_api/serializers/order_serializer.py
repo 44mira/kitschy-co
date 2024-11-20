@@ -22,7 +22,7 @@ class OrderSerializer(serializers.ModelSerializer):
         return sum(item["subtotal"] for item in items)
 
     def get_items(self, obj):
-        items = OrderItems.objects.filter(order_id=obj.order_id)
+        items = OrderItems.objects.filter(order=obj.order_id)
 
         # check for empty
         if not items:
