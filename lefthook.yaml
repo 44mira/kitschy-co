@@ -6,10 +6,10 @@ pre-commit:
       glob: "backend/**/*.py"
       root: backend/
       run: |
+        pipenv run pytest
         pipenv run black {staged_files} --line-length=79
         pipenv run isort {staged_files} --profile=black --filter-files -l=79
         pipenv run flake8 {staged_files} --config=.flake8
-        pipenv run pytest
     frontend-lint:
       tags: frontend style
       glob: "frontend/*.{svelte,ts,js,md}"
