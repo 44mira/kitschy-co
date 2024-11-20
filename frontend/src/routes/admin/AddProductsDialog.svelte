@@ -25,15 +25,25 @@
 	>
 		<AddIcon class="text-brand-base w-[70px] h-[70px]" />
 	</Dialog.Trigger>
-	<Dialog.Content>
+	<Dialog.Content class="admin__dialog__content">
 		<form method="POST">
-			<div id="form" class="flex gap-4">
+			<Form.Field form={addProductForm} name="category">
+				<Form.Control>
+					<Input
+						type="text"
+						placeholder="Product Name"
+						class="p-0 bg-transparent border-none text-2xl font-semibold"
+					/>
+				</Form.Control>
+				<Form.FieldErrors />
+			</Form.Field>
+			<div class="flex gap-4">
 				<div id="left">
 					<Form.Field form={addProductForm} name="productImages">
 						<Form.Control>
 							<Form.Label for="images-input">
 								<div
-									class={`${isHoveredMainImage ? 'hiddenl' : ''} w-[250px] h-[250px] transition ease-in bg-brand-purple-m hover:bg-[#F8EEFF] border-[5px] hover:border-brand-purple-d border-brand-purple-m rounded-xl flex items-center justify-center`}
+									class={`${isHoveredMainImage ? 'hiddenl' : ''} w-[250px] h-[250px] transition ease-in bg-brand-purple-l hover:bg-[#F8EEFF] rounded-xl flex items-center justify-center`}
 									role="button"
 									tabindex="0"
 									onmouseenter={() => (isHoveredMainImage = true)}
@@ -43,7 +53,7 @@
 										class={`${isHoveredMainImage ? 'hidden' : ''} opacity-100 transition-opacity ease-in hover:opacity-0 w-[250px] h-[250px] text-brand-purple-d`}
 									/>
 									<div
-										class={`${isHoveredMainImage ? '' : 'hidden'} opacity-0 transition-opacity ease-in hover:opacity-100 flex flex-col items-center justify-center w-full h-full`}
+										class={`${isHoveredMainImage ? '' : 'hidden'} opacity-0 transition-opacity ease-in hover:opacity-100 flex flex-col items-center justify-center w-full h-full border-[5px] hover:border-brand-purple-d border-brand-purple-l rounded-2xl`}
 									>
 										<img src={dndIcon} alt="Drag and drop icon" class="w-[123px] h-[110px]" />
 										<p
@@ -101,3 +111,6 @@
 		</form>
 	</Dialog.Content>
 </Dialog.Root>
+
+<style>
+</style>
