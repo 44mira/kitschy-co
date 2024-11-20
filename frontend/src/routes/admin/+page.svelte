@@ -9,11 +9,14 @@
 	import OrdersTab from './OrdersTab.svelte';
 	import { RadioGroup } from 'bits-ui';
 
+	import type { PageData } from './$types.js';
+	let { data } = $props();
+
 	let tab = $state('insights_tab');
 	let durationFilter = $state('Day');
 	let presetDurations = ['Day', 'Month', 'Year', 'All Time'];
 	let categoryFilter = $state('All');
-  let categories = ['All', 'Merchandise', 'Cafe & Pastries', "Misbeek's Printing"];
+	let categories = ['All', 'Merchandise', 'Cafe & Pastries', "Misbeek's Printing"];
 
 	let bgColors = {
 		insights_tab: '#FFD9E7',
@@ -41,12 +44,18 @@
 				variant="tab"
 				onclick={() => switchTab('insights_tab')}
 				class="bg-admin-pink text-brand-base"
-        style={`height: ${tab == 'insights_tab' ? 50 : ''}px`}>Business Insights</Button
+				style={`height: ${tab == 'insights_tab' ? 50 : ''}px`}>Business Insights</Button
 			>
-			<Button variant="tab" onclick={() => switchTab('products_tab')} class="bg-admin-blue"
+			<Button
+				variant="tab"
+				onclick={() => switchTab('products_tab')}
+				class="bg-admin-blue"
 				style={`height: ${tab == 'products_tab' ? 50 : ''}px`}>Products</Button
 			>
-			<Button variant="tab" onclick={() => switchTab('orders_tab')} class="bg-admin-green"
+			<Button
+				variant="tab"
+				onclick={() => switchTab('orders_tab')}
+				class="bg-admin-green"
 				style={`height: ${tab == 'orders_tab' ? 50 : ''}px`}>Order Tracker</Button
 			>
 		</div>
@@ -89,7 +98,7 @@
 		{#if tab === 'insights_tab'}
 			<InsightsTab />
 		{:else if tab === 'products_tab'}
-			<ProductsTab />
+			<ProductsTab {data} />
 		{:else if tab === 'orders_tab'}
 			<OrdersTab />
 		{/if}
