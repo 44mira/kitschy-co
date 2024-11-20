@@ -9,6 +9,11 @@ drf-spectacular = "*"
 black = "*"
 flake8 = "*"
 isort = "*"
+django-cors-headers = "*"
+pytest-django = "*"
+model-bakery = "*"
+django-allauth = "*"
+dj-rest-auth = "*"
 
 [dev-packages]
 

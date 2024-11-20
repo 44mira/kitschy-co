@@ -20,7 +20,7 @@ class OrderItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrderItems
         fields = [
-            "items_id",
+            "item_id",
             "order_id",
             "product_id",
             "product_name",
@@ -30,7 +30,7 @@ class OrderItemSerializer(serializers.ModelSerializer):
             "created_at",
             "updated_at",
         ]
-        read_only_fields = ["items_id"]
+        read_only_fields = ["item_id"]
 
     def get_subtotal(self, obj) -> float:  # obj is the OrderItems instance
         return obj.product_id.price * obj.quantity

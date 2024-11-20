@@ -39,12 +39,39 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "rest_framework",
+    "django.contrib.sites",
+    "corsheaders",
     "drf_spectacular",
+    # rest_framework
+    "rest_framework",
+    "rest_framework.authtoken",
+    # auth
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "dj_rest_auth",
+    "dj_rest_auth.registration",
+    # Local Apps
     "kitschy_api",
 ]
 
+SITE_ID = 1
+AUTH_USER_MODEL = "kitschy_api.User"
+
+REST_AUTH = {
+    "REGISTER_SERIALIZER": "kitschy_api.serializers.user_serializer.UserRegisterSerializer",
+    "USER_SERIALIZER": "kitschy_api.serializers.user_serializer.UserSerializer",
+}
+# django-allauth settings
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_EMAIL_VERIFICATION = "none"
+
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -52,6 +79,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = "backend.urls"
@@ -133,6 +161,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",
+    ],
 }
 
 SPECTACULAR_SETTINGS = {
@@ -142,3 +173,8 @@ SPECTACULAR_SETTINGS = {
     "SERVE_INCLUDE_SCHEMA": False,
     "SCHEMA_PATH_PREFIX": "/api/",
 }
+
+CORS_ALLOWED_ORIGINS = [
+    "https://localhost:8000",
+    "https://127.0.0.1:8000",
+]

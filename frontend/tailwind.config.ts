@@ -61,7 +61,16 @@ const config = {
 						m: '#A883A7',
 						l: '#C8B5D5'
 					},
-					base: '#FFFADE'
+					base: '#FFFADE',
+					purpleMerch: '#4D1078',
+					orangePastries: '#FB7A4F',
+					yellowMart: '#F9F871',
+					mintWorkshop: '#32BEAF',
+					pinkPrinting: '#F1ABFF'
+				},
+
+				text: {
+					crinkles: '#282204'
 				}
 			},
 			borderRadius: {
@@ -70,7 +79,10 @@ const config = {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			fontFamily: {
-				sans: [...fontFamily.sans]
+				giphurs: ['Giphurs'],
+				giphursSC: ['GiphursSC'],
+				gladiola: ['Gladiola'],
+				lockergnome: ['Lockergnome']
 			}
 		}
 	}
