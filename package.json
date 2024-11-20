@@ -1,5 +1,6 @@
 {
   "devDependencies": {
-    "@iconify-json/mdi": "^1.2.1"
+    "@iconify-json/mdi": "^1.2.1",
+    "unplugin-icons": "^0.20.1"
   }
 }
