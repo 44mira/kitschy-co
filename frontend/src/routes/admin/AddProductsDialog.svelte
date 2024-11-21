@@ -1,6 +1,7 @@
 <script lang="ts">
 	import * as Form from '$lib/components/ui/form';
 	import * as Dialog from '$lib/components/ui/dialog';
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import { Input } from '$lib/components/ui/input';
 	import { Textarea } from '$lib/components/ui/textarea';
 	import { Button } from '@/components/ui/button';
@@ -8,6 +9,8 @@
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import AddIcon from 'virtual:icons/mdi/add';
+	import DeleteIcon from 'virtual:icons/mdi/delete-forever-outline';
+	import SaveIcon from 'virtual:icons/mdi/content-save-outline';
 	import dndIcon from '$lib/assets/admin/icons/dndIcon.svg';
 
 	// export let data: SuperValidated<Infer<AddProductSchema>>;
@@ -18,6 +21,19 @@
 	});
 
 	let isHoveredMainImage = $state(false);
+
+	let categories = [
+		{ value: 'merch', label: 'Merchandise', color: '#4D1078' },
+		{ value: 'cafe', label: 'Cafe & Pastries', color: '#FB7A4F' },
+		{ value: 'print', label: "Misbeek's Printing", color: '#ffabff' },
+		{ value: 'minimart', label: 'Mini-mart', color: '#F9F871' },
+		{ value: 'workshop', label: 'Workshop', color: '#32beaf' }
+	];
+	let darkTextCategories = ['print', 'minimart'];
+	let category = $state('');
+	const triggerCategory = $derived(
+		categories.find((c) => c.value === category)?.label ?? 'Select Category'
+	);
 </script>
 
 <Dialog.Root open="True">
@@ -71,25 +87,61 @@
 					</Form.Field>
 				</div>
 				<div id="right" class="flex-grow">
-					<Form.Field form={addProductForm} name="category">
+					<Form.Field
+						form={addProductForm}
+						name="category"
+						class="grid grid-cols-9 items-center gap-2"
+					>
 						<Form.Control>
-							<Form.Label class="text-brand-purple-d text-lg font-normal">Category:</Form.Label>
-							<Input type="text" />
+							<Form.Label class="col-span-2 text-brand-purple-d text-lg font-normal"
+								>Category:</Form.Label
+							>
+							<DropdownMenu.Root>
+								<DropdownMenu.Trigger
+									class="bg-slate-600 col-span-7 w-fit px-3 py-[2px] rounded-full text-brand-base"
+									style={`background-color: ${categories.find((c) => c.value === category)?.color}; 
+                          color: ${darkTextCategories.includes(category) ? '#000' : '#fff'}`}
+									>{triggerCategory}</DropdownMenu.Trigger
+								>
+								<DropdownMenu.Content>
+									<DropdownMenu.RadioGroup bind:value={category}>
+										{#each categories as c}
+											<DropdownMenu.RadioItem value={c.value}>{c.label}</DropdownMenu.RadioItem>
+										{/each}
+									</DropdownMenu.RadioGroup>
+								</DropdownMenu.Content>
+							</DropdownMenu.Root>
 						</Form.Control>
 						<Form.FieldErrors />
 					</Form.Field>
 
-					<Form.Field form={addProductForm} name="creators">
+					<Form.Field
+						form={addProductForm}
+						name="creators"
+						class="grid grid-cols-9 items-center gap-2"
+					>
 						<Form.Control>
-							<Form.Label class="text-brand-purple-d text-lg font-normal">Creator/s:</Form.Label>
+							<Form.Label class="col-span-2 text-brand-purple-d text-lg font-normal"
+								>Creator/s:</Form.Label
+							>
 							<Input type="text" />
 						</Form.Control>
 						<Form.FieldErrors />
 					</Form.Field>
-					<Form.Field form={addProductForm} name="price">
+					<Form.Field
+						form={addProductForm}
+						name="price"
+						class="grid grid-cols-9 items-center gap-2"
+					>
 						<Form.Control>
-							<Form.Label class="text-brand-purple-d text-lg font-normal">Price:</Form.Label>
-							<Input type="text" />
+							<Form.Label class="text-brand-purple-d text-lg font-normal col-span-2"
+								>Price:</Form.Label
+							>
+							<Input
+								type="text"
+								placeholder="0.00"
+								class="bg-transparent border-none text-md col-span-7"
+							/>
 						</Form.Control>
 						<Form.FieldErrors />
 					</Form.Field>
@@ -106,8 +158,20 @@
 				</div>
 			</div>
 			<div id="actions" class="flex justify-end gap-4">
-				<Button>Cancel</Button>
-				<Form.Button>Add Item</Form.Button>
+				<Button
+					variant="outline"
+					class="bg-transparent border-[2px] border-gray-400 text-gray-400 text-lg gap-1 hover:border-text-crinkles"
+				>
+					<DeleteIcon class="w-6 h-6" />
+					<span>Cancel</span></Button
+				>
+				<Form.Button
+					variant="outline"
+					class="bg-[#99D8FA] hover:bg-[#6f9efc] border-[2px] border-[#126A99] text-crinkles text-lg gap-1"
+				>
+					<SaveIcon class="w-6 h-6" />
+					<span>Add Item</span></Form.Button
+				>
 			</div>
 		</form>
 	</Dialog.Content>
