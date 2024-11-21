@@ -11,6 +11,7 @@
 	import AddIcon from 'virtual:icons/mdi/add';
 	import DeleteIcon from 'virtual:icons/mdi/delete-forever-outline';
 	import SaveIcon from 'virtual:icons/mdi/content-save-outline';
+	import CloseIcon from 'virtual:icons/mdi/close';
 	import dndIcon from '$lib/assets/admin/icons/dndIcon.svg';
 	import { Control } from 'formsnap';
 
@@ -31,13 +32,34 @@
 		{ value: 'workshop', label: 'Workshop', color: '#32beaf' }
 	];
 	let darkTextCategories = ['print', 'minimart'];
-	let category = $state('');
+	let categoryValue = $state('');
 	const triggerCategory = $derived(
-		categories.find((c) => c.value === category)?.label ?? 'Select Category'
+		categories.find((c) => c.value === categoryValue)?.label ?? 'Select Category'
 	);
+
+	// NOTE: The creator's names should be fetched from the backend (username)
+	let creators = [
+		{ uuid: '1', name: 'admin1', color: '#ee1768' },
+		{ uuid: '2', name: 'admin2', color: '#5eb5e3' },
+		{ uuid: '3', name: 'admin3', color: '#b0d253' }
+	];
+	let creatorsValue = $state([]) as string[];
+
+	function isCreatorIncluded(uuid: string) {
+		return creatorsValue.includes(uuid);
+	}
+	function toggleCreator(uuid: string) {
+		if (creatorsValue.includes(uuid)) {
+			// remove from list
+			creatorsValue = creatorsValue.filter((c) => c !== uuid);
+		} else {
+			// add to list
+			creatorsValue = [...creatorsValue, uuid];
+		}
+	}
 </script>
 
-<Dialog.Root open="True">
+<Dialog.Root>
 	<Dialog.Trigger
 		class="w-[75px] h-[75px] bg-[#094F7B4D] hover:bg-[#094F7B] flex items-center justify-center rounded-3xl z-10"
 	>
@@ -45,7 +67,7 @@
 	</Dialog.Trigger>
 	<Dialog.Content class="bg-[#fff5fe] border-none w-[750px]">
 		<form method="POST">
-			<Form.Field form={addProductForm} name="category">
+			<Form.Field form={addProductForm} name="categoryValue">
 				<Form.Control>
 					<Input
 						type="text"
@@ -112,12 +134,12 @@
 							<DropdownMenu.Root>
 								<DropdownMenu.Trigger
 									class="bg-slate-600 col-span-7 w-fit px-3 py-[2px] rounded-full text-brand-base"
-									style={`background-color: ${categories.find((c) => c.value === category)?.color}; 
-                          color: ${darkTextCategories.includes(category) ? '#000' : '#fff'}`}
+									style={`background-color: ${categories.find((c) => c.value === categoryValue)?.color}; 
+                          color: ${darkTextCategories.includes(categoryValue) ? '#000' : '#fff'}`}
 									>{triggerCategory}</DropdownMenu.Trigger
 								>
 								<DropdownMenu.Content>
-									<DropdownMenu.RadioGroup bind:value={category}>
+									<DropdownMenu.RadioGroup bind:value={categoryValue}>
 										{#each categories as c}
 											<DropdownMenu.RadioItem value={c.value}>{c.label}</DropdownMenu.RadioItem>
 										{/each}
@@ -137,7 +159,37 @@
 							<Form.Label class="col-span-2 text-brand-purple-d text-lg font-normal"
 								>Creator/s:</Form.Label
 							>
-							<Input type="text" />
+							<DropdownMenu.Root>
+								<DropdownMenu.Trigger>
+									<AddIcon class="w-6 h-6 text-brand-purple-d bg-brand-purple-l rounded-full" />
+								</DropdownMenu.Trigger>
+								<DropdownMenu.Content class="">
+									<DropdownMenu.Group>
+										{#each creators as creator}
+											<DropdownMenu.CheckboxItem
+												checked={isCreatorIncluded(creator.uuid)}
+												onCheckedChange={() => toggleCreator(creator.uuid)}
+												>{creator.name}</DropdownMenu.CheckboxItem
+											>
+										{/each}
+									</DropdownMenu.Group>
+								</DropdownMenu.Content>
+							</DropdownMenu.Root>
+
+							<div class="flex gap-2">
+								{#each creatorsValue as creator}
+									<div
+										class="text-brand-base text-sm px-3 py-1 rounded-full flex items-center"
+										style={`background-color: ${creators.find((c) => c.uuid === creator)?.color}`}
+									>
+										<span>{creators.find((c) => c.uuid === creator)?.name}</span>
+										<CloseIcon
+											class="w-4 h-4 ml-1 hover:text-brand-purple"
+											onclick={() => toggleCreator(creator)}
+										/>
+									</div>
+								{/each}
+							</div>
 						</Form.Control>
 						<Form.FieldErrors />
 					</Form.Field>
@@ -147,14 +199,17 @@
 						class="grid grid-cols-9 items-center gap-2"
 					>
 						<Form.Control>
-							<Form.Label class="text-brand-purple-d text-lg font-normal col-span-2"
+							<Form.Label class="text-brand-purple-d text-lg font-normal col-span-2 mt-2"
 								>Price:</Form.Label
 							>
-							<Input
-								type="text"
-								placeholder="0.00"
-								class="bg-transparent border-none text-md col-span-7"
-							/>
+							<div class="col-span-7 flex items-center">
+								<span>₱</span>
+								<Input
+									type="text"
+									placeholder="0.00"
+									class="bg-transparent border-none text-md p-0"
+								/>
+							</div>
 						</Form.Control>
 						<Form.FieldErrors />
 					</Form.Field>
