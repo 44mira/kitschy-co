@@ -12,6 +12,7 @@
 	import DeleteIcon from 'virtual:icons/mdi/delete-forever-outline';
 	import SaveIcon from 'virtual:icons/mdi/content-save-outline';
 	import dndIcon from '$lib/assets/admin/icons/dndIcon.svg';
+	import { Control } from 'formsnap';
 
 	// export let data: SuperValidated<Infer<AddProductSchema>>;
 	let { data } = $props();
@@ -84,6 +85,18 @@
 							<Input id="images-input" type="file" multiple class="w-0 h-0 p-0" accept="image/*" />
 						</Form.Control>
 						<Form.FieldErrors />
+					</Form.Field>
+
+					<Form.Field form={addProductForm} name="quantity" class="flex items-center">
+						<Form.Control>
+							<Form.Label class="text-brand-purple-d text-lg font-normal mt-2">In Stock:</Form.Label
+							>
+							<Input
+								type="number"
+								placeholder="0"
+								class="bg-transparent border-none text-lg w-40"
+							/>
+						</Form.Control>
 					</Form.Field>
 				</div>
 				<div id="right" class="flex-grow">
