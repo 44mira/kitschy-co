@@ -57,9 +57,11 @@
 			creatorsValue = [...creatorsValue, uuid];
 		}
 	}
+
+	let isOpen = $state(false);
 </script>
 
-<Dialog.Root>
+<Dialog.Root bind:open={isOpen}>
 	<Dialog.Trigger
 		class="w-[75px] h-[75px] bg-[#094F7B4D] hover:bg-[#094F7B] flex items-center justify-center rounded-3xl z-10"
 	>
@@ -226,13 +228,40 @@
 				</div>
 			</div>
 			<div id="actions" class="flex justify-end gap-4">
-				<Button
-					variant="outline"
-					class="bg-transparent border-[2px] border-gray-400 text-gray-400 text-lg gap-1 hover:border-text-crinkles"
-				>
-					<DeleteIcon class="w-6 h-6" />
-					<span>Cancel</span></Button
-				>
+				<!-- CLOSE BUTTON -->
+				<Dialog.Root>
+					<Dialog.Trigger
+						class="bg-transparent border-[2px] border-gray-400 text-gray-400 text-lg gap-1 hover:border-text-crinkles hover:text-text-crinkles w-fit flex items-center justify-center rounded-md px-3 py-1"
+					>
+						<DeleteIcon class="w-6 h-6" />
+						<span>Cancel</span>
+					</Dialog.Trigger>
+					<Dialog.Content
+						class="bg-white flex flex-col items-center justify-center pt-14 px-10 rounded-2xl"
+					>
+						<span>Are you sure you wish to cancel?</span>
+						<div class="w-full flex justify-around pt-6">
+							<Dialog.Close>
+								<Button
+									variant="outline"
+									class="text-destructive hover:text-destructive hover:bg-destructive/20 border-destructive border-2"
+									onclick={() => {
+										isOpen = false;
+										console.log(isOpen);
+									}}>Yes</Button
+								>
+							</Dialog.Close>
+							<Dialog.Close>
+								<Button
+									variant="outline"
+									class="text-[#126A99] hover:text-[#126A99] hover:bg-[#126A99]/20 border-[#126A99] border-2"
+									>No</Button
+								>
+							</Dialog.Close>
+						</div>
+					</Dialog.Content>
+				</Dialog.Root>
+
 				<Form.Button
 					variant="outline"
 					class="bg-[#99D8FA] hover:bg-[#6f9efc] border-[2px] border-[#126A99] text-crinkles text-lg gap-1"
