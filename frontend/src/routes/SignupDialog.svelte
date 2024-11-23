@@ -1,5 +1,7 @@
 <script lang="ts">
 	import * as Dialog from '$lib/components/ui/dialog';
+	import { toImageUrl } from '$lib/utils/index';
+	import ticketBg from '$lib/assets/admin/ticketBg.png';
 	import * as Form from '$lib/components/ui/form';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import { Input } from '$lib/components/ui/input';
@@ -7,7 +9,6 @@
 	import { signupSchema, type SignupSchema } from './schema';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
-	import Label from '@/components/ui/label/label.svelte';
 
 	let { data } = $props();
 	const form = superForm(data, { validators: zodClient(signupSchema) });
@@ -16,9 +17,12 @@
 <Dialog.Root open="true">
 	<Dialog.Trigger>Sign Up!</Dialog.Trigger>
 
-	<Dialog.Content class="min-w-[600px]">
-		<form method="POST">
-			<div class="grid grid-cols-2 gap-4 gap-y-2">
+	<Dialog.Content
+		class="w-[1000px] h-[472px] bg-transparent border-none shadow-none"
+		style={`background-image: ${toImageUrl(ticketBg)}; background-size: cover;`}
+	>
+		<form method="POST" class="py-4 pr-16 pl-60 flex flex-col justify-center">
+			<div class="grid grid-cols-2 gap-4 gap-y-0">
 				<Form.Field {form} name="firstName">
 					<Form.Control>
 						<div class="field">
