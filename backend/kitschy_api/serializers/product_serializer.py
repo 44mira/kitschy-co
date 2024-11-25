@@ -20,3 +20,13 @@ class ProductSerializer(serializers.ModelSerializer):
         instance = ProductImageSerializer(images, many=True)
 
         return instance.data
+
+    def to_representation(self, instance):
+        # Get the default representation
+        representation = super().to_representation(instance)
+        # Remove keys with null values
+        return {
+            key: value
+            for key, value in representation.items()
+            if value is not None
+        }
