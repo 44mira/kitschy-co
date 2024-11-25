@@ -10,6 +10,14 @@ class Product(models.Model):
         "ARCHIVED": "Hidden/archived",
     }
 
+    CATEGORY_CHOICES = {
+        "MERCH": "Merchandise",
+        "PRINT": "Misbeeks' Printing",
+        "CAFE": "Cafe and Pastries",
+        "MINIMART": "Mini-mart",
+        "WORKSHOP": "Workshop",
+    }
+
     product_id = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False
     )
@@ -20,6 +28,11 @@ class Product(models.Model):
     status = models.CharField(
         choices=STATUS_CHOICES,
         default="READY",
+        null=False,
+    )
+    category = models.CharField(
+        choices=CATEGORY_CHOICES,
+        default="MERCH",
         null=False,
     )
     created_at = models.DateTimeField(auto_now_add=True)
