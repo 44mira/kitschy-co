@@ -3,6 +3,8 @@ import uuid
 from django.core.validators import MinValueValidator
 from django.db import models
 
+from kitschy_api.models.users import User
+
 
 class Product(models.Model):
     STATUS_CHOICES = {
@@ -37,6 +39,7 @@ class Product(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    creators = models.ManyToManyField(User, related_name="users")
 
     class Meta:
         db_table = "products"
