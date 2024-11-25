@@ -12,7 +12,7 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
     def get_images(self, obj):
-        images = ProductImage.objects.filter(product_id=obj.product_id)
+        images = ProductImage.objects.filter(product=obj.product_id)
 
         if not images:
             return []
