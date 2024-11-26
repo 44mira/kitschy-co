@@ -5,7 +5,6 @@ name = "pypi"
 
 [packages]
 psycopg2-binary = "*"
-drf-spectacular = "*"
 black = "*"
 flake8 = "*"
 isort = "*"
@@ -14,6 +13,7 @@ pytest-django = "*"
 model-bakery = "*"
 django-allauth = "*"
 dj-rest-auth = "*"
+drf-spectacular = "*"
 
 [dev-packages]
 
