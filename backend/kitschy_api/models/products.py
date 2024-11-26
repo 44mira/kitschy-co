@@ -11,7 +11,7 @@ class Product(models.Model):
     name = models.CharField(max_length=255, blank=False)
     desc = models.TextField()
     price = models.IntegerField(validators=[MinValueValidator(0)])
-    quantity = models.IntegerField()  # Negative values mean pre-orders
+    stock = models.IntegerField()  # Negative values mean pre-orders
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
