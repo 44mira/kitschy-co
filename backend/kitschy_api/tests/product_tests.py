@@ -1,14 +1,10 @@
 import pytest
 from model_bakery import baker
 
-""" Sample tests:
-  2. GET api/products/{product_id} - get a single product
-  3. POST api/products/ - create a new product
-  4. PUT api/products/{product_id} - update a product
-  5. DELETE api/products/{product_id} - delete a product
 
-  NOTE: Negative values in stock represent pre-orders
-"""
+# NOTE: Negative values in stock represent pre-orders
+
+
 
 # Tests basic CRUD
 @pytest.mark.django_db
@@ -68,10 +64,10 @@ class TestProductAPI:
         assert response.status_code == 204
         assert not response.data
 
+
 # Tests for pre-orders
 @pytest.mark.django_db
 class TestProductPreOrderAPI:
-
 
     endpoint = "/api/products/"
 
@@ -109,6 +105,7 @@ class TestProductPreOrderAPI:
 
         assert response.status_code == 204
         assert not response.data
+
 
 # Tests for invalid data
 @pytest.mark.django_db
