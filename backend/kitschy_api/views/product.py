@@ -35,7 +35,7 @@ class ProductViewSet(
 ):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    filterset_fields = ["status", "category"]
+    filterset_fields = ["status", "category", "creators"]
     
     @extend_schema(request=BatchedImageProductSerializer)
     def create(self, request):
