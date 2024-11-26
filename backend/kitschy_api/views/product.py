@@ -4,6 +4,7 @@ from rest_framework import mixins, viewsets
 from rest_framework.response import Response
 from rest_framework.schemas.coreapi import serializers
 
+
 from kitschy_api.models import Product
 from kitschy_api.serializers.product_serializer import (
     ProductImageSerializer,
@@ -34,7 +35,8 @@ class ProductViewSet(
 ):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-
+    filterset_fields = ["status"]
+    
     @extend_schema(request=BatchedImageProductSerializer)
     def create(self, request):
         """

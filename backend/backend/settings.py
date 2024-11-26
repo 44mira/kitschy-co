@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # rest_framework
     "rest_framework",
     "rest_framework.authtoken",
+    "django_filters",
     # auth
     "allauth",
     "allauth.account",
@@ -163,6 +164,9 @@ REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework.authentication.TokenAuthentication",
+    ],
+    "DEFAULT_FILTER_BACKENDS": [
+        "django_filters.rest_framework.DjangoFilterBackend"
     ],
 }
 
