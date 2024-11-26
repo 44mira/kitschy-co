@@ -1,9 +1,14 @@
 import pytest
 from model_bakery import baker
 
-
-# NOTE: Negative values in stock represent pre-orders
-
+"""
+NOTE: Negative values in stock represent pre-orders
+Tests:
+1. TestProductAPI - CRUD operations
+2. TestProductPreOrderAPI - Pre-order operations
+3. TestInvalidProductAPI - Invalid data
+4. Edge Cases - Empty data
+"""
 
 
 # Tests basic CRUD
@@ -142,6 +147,37 @@ class TestInvalidProductAPI:
         invalid_product = baker.make("Product", price=-10)
         response = authenticated_user.delete(
             f"/api/products/{invalid_product.product_id}/"
+        )
+
+        assert response.status_code == 204
+        assert not response.data
+
+
+# Tests for edge cases
+@pytest.mark.django_db
+class TestProductEdgeCases:
+
+    endpoint = "/api/products/"
+
+    def test_create_empty_product(self, authenticated_user):
+        product = {}
+        response = authenticated_user.post("/api/products/", product)
+
+        assert response.status_code == 400
+
+    def test_update_empty_product(self, authenticated_user):
+        product = baker.make("Product")
+        response = authenticated_user.put(
+            f"/api/products/{product.product_id}/",
+            {},
+        )
+
+        assert response.status_code == 400
+
+    def test_delete_empty_product(self, authenticated_user):
+        product = baker.make("Product")
+        response = authenticated_user.delete(
+            f"/api/products/{product.product_id}/"
         )
 
         assert response.status_code == 204
