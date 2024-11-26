@@ -43,8 +43,13 @@
 		{ uuid: '2', name: 'admin2', color: '#5eb5e3' },
 		{ uuid: '3', name: 'admin3', color: '#b0d253' }
 	];
+  // uuids of the creators
 	let creatorsValue = $state([]) as string[];
 
+  /**
+   * Adds a creator to the creatorsValue list if it's not there yet, otherwise remove
+   * @param uuid uuid of the creator
+   */
 	function toggleCreator(uuid: string) {
 		if (creatorsValue.includes(uuid)) {
 			// remove from list
