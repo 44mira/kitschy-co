@@ -7,6 +7,7 @@ Tests:
 2. Edge Cases - Empty data
 """
 
+
 @pytest.mark.django_db
 class TestProductImageAPI:
     endpoint = "/api/products-image/"
@@ -22,8 +23,7 @@ class TestProductImageAPI:
 
         assert response.status_code == 201
         assert response.data["product"] == product.product_id
-    
-    
+
     def test_update_product_image(self, authenticated_user):
         product_image = baker.make("ProductImage")
         response = authenticated_user.put(
@@ -31,7 +31,7 @@ class TestProductImageAPI:
             {
                 "product": product_image.product.product_id,
                 "img_url": "http://updated_image.com",
-                "alt_desc": product_image.alt_desc
+                "alt_desc": product_image.alt_desc,
             },
         )
 
@@ -39,10 +39,13 @@ class TestProductImageAPI:
 
     def test_delete_product_image(self, authenticated_user):
         product_image = baker.make("ProductImage")
-        response = authenticated_user.delete(f"{self.endpoint}{product_image.product_image_id}/")
+        response = authenticated_user.delete(
+            f"{self.endpoint}{product_image.product_image_id}/"
+        )
 
         assert response.status_code == 204
         assert not response.data
+
 
 @pytest.mark.django_db
 class TestProductImagesEdgeCases:
@@ -52,7 +55,10 @@ class TestProductImagesEdgeCases:
         response = authenticated_user.post(self.endpoint, {})
 
         assert response.status_code == 400
-        assert response.data["product"] == ["This field is required."]  # Changed from product_image_id
+        assert response.data["product"] == [
+            "This field is required."
+        ]  # Changed from product_image_id
         assert response.data["img_url"] == ["This field is required."]
-        assert response.data["alt_desc"] == ["This field is required."]  # Add this since it's required
-    
+        assert response.data["alt_desc"] == [
+            "This field is required."
+        ]  # Add this since it's required
