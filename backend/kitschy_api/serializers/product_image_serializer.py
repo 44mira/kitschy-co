@@ -7,4 +7,4 @@ class ProductImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductImage
         fields = "__all__"
-        extra_kwargs = {"product_id": {"write_only": True}}
+        extra_kwargs = {"product": {"write_only": True}}
