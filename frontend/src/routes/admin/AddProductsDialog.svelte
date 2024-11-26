@@ -45,9 +45,6 @@
 	];
 	let creatorsValue = $state([]) as string[];
 
-	function isCreatorIncluded(uuid: string) {
-		return creatorsValue.includes(uuid);
-	}
 	function toggleCreator(uuid: string) {
 		if (creatorsValue.includes(uuid)) {
 			// remove from list
@@ -169,7 +166,7 @@
 									<DropdownMenu.Group>
 										{#each creators as creator}
 											<DropdownMenu.CheckboxItem
-												checked={isCreatorIncluded(creator.uuid)}
+												checked={creatorsValue.includes(creator.uuid)}
 												onCheckedChange={() => toggleCreator(creator.uuid)}
 												>{creator.name}</DropdownMenu.CheckboxItem
 											>
