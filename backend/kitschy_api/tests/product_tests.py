@@ -42,23 +42,26 @@ class TestProductAPI:
 
         assert response.status_code == 201
         assert response.data["name"] == product["name"]
-        
-    def test_update_product(self, authenticated_user):
-       product = baker.make("Product")
-       response = authenticated_user.put(f"/api/products/{product.product_id}/", {
-            "name": "Updated Product",
-            "desc": "Updated Description",
-            "price": 20.00,
-            "quantity": 20,
-           })
 
-       assert response.status_code == 200
-    
+    def test_update_product(self, authenticated_user):
+        product = baker.make("Product")
+        response = authenticated_user.put(
+            f"/api/products/{product.product_id}/",
+            {
+                "name": "Updated Product",
+                "desc": "Updated Description",
+                "price": 20.00,
+                "quantity": 20,
+            },
+        )
+
+        assert response.status_code == 200
+
     def test_delete_product(self, authenticated_user):
         product = baker.make("Product")
-        response = authenticated_user.delete(f"/api/products/{product.product_id}/")
+        response = authenticated_user.delete(
+            f"/api/products/{product.product_id}/"
+        )
 
         assert response.status_code == 204
         assert not response.data
-        
-
