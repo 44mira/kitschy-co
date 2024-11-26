@@ -1,9 +1,7 @@
-from django.utils.timezone import now
 from drf_spectacular.utils import extend_schema, inline_serializer
 from rest_framework import mixins, viewsets
 from rest_framework.response import Response
 from rest_framework.schemas.coreapi import serializers
-
 
 from kitschy_api.models import Product
 from kitschy_api.serializers.product_serializer import (
@@ -36,7 +34,7 @@ class ProductViewSet(
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     filterset_fields = ["status", "category", "creators"]
-    
+
     @extend_schema(request=BatchedImageProductSerializer)
     def create(self, request):
         """
@@ -46,10 +44,6 @@ class ProductViewSet(
         """
 
         images = request.data.pop("images")
-        timestamp = now()
-
-        request.data["created_at"] = timestamp
-        request.data["updated_at"] = timestamp
 
         serializer = ProductSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -65,8 +59,10 @@ class ProductViewSet(
             img_serializer.save()
 
         # create a dummy product as return value, does not set timestamps
-        serializer = ProductSerializer(
-            Product(product_id=product_id, **serializer.validated_data)
+        dummy = Product(
+            product_id=product_id,
+            **serializer.validated_data,  # pyright: ignore
         )
+        serializer = ProductSerializer(dummy)
 
         return Response(serializer.data)
