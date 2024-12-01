@@ -13,10 +13,8 @@
 	import SaveIcon from 'virtual:icons/mdi/content-save-outline';
 	import CloseIcon from 'virtual:icons/mdi/close';
 	import dndIcon from '$lib/assets/admin/icons/dndIcon.svg';
-	import { Control } from 'formsnap';
 
-	// export let data: SuperValidated<Infer<AddProductSchema>>;
-	let { data } = $props();
+	let { data }: { data: SuperValidated<Infer<AddProductSchema>> } = $props();
 
 	const addProductForm = superForm(data, {
 		validators: zodClient(addProductSchema)
@@ -43,17 +41,18 @@
 		{ uuid: '2', name: 'admin2', color: '#5eb5e3' },
 		{ uuid: '3', name: 'admin3', color: '#b0d253' }
 	];
-  // uuids of the creators
+	// uuids of the creators
 	let creatorsValue = $state([]) as string[];
 
-  /**
-   * Adds a creator to the creatorsValue list if it's not there yet, otherwise remove
-   * @param uuid uuid of the creator
-   */
+	/**
+	 * Adds a creator to the creatorsValue list if it's not there yet, otherwise remove
+	 * @param uuid uuid of the creator
+	 */
 	function toggleCreator(uuid: string) {
 		if (creatorsValue.includes(uuid)) {
 			// remove from list
-			creatorsValue = creatorsValue.filter((c) => c !== uuid);
+      let popped_creator = creatorsValue.indexOf(uuid);
+      creatorsValue.splice(popped_creator, 1);
 		} else {
 			// add to list
 			creatorsValue = [...creatorsValue, uuid];
@@ -71,7 +70,7 @@
 	</Dialog.Trigger>
 	<Dialog.Content class="bg-[#fff5fe] border-none w-[750px]">
 		<form method="POST">
-			<Form.Field form={addProductForm} name="categoryValue">
+			<Form.Field form={addProductForm} name="category">
 				<Form.Control>
 					<Input
 						type="text"
@@ -217,7 +216,7 @@
 						</Form.Control>
 						<Form.FieldErrors />
 					</Form.Field>
-					<Form.Field form={addProductForm} name="desc" class="space-y-0">
+					<Form.Field form={addProductForm} name="description" class="space-y-0">
 						<Form.Control>
 							<Form.Label class="text-brand-purple-d text-lg font-normal">Description:</Form.Label>
 							<Textarea
