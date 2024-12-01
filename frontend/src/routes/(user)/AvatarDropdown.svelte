@@ -1,19 +1,33 @@
 <script lang="ts">
+	import AvatarItem from './AvatarItem.svelte';
 	import { Avatar, AvatarImage, AvatarFallback } from '$lib/components/ui/avatar';
 	import {
 		DropdownMenu,
 		DropdownMenuTrigger,
 		DropdownMenuItem,
-		DropdownMenuContent,
-		DropdownMenuGroup
+		DropdownMenuContent
 	} from '$lib/components/ui/dropdown-menu';
+
+	const items = [
+		{ label: 'Profile', icon: 'mdi:face-man-shimmer' },
+		{ label: 'Orders', icon: 'mdi:package-variant' },
+		{ label: 'Sign-out', icon: 'mdi:logout' },
+		{ label: 'Membership', icon: 'mdi:tag-heart' }
+	];
 </script>
 
 <DropdownMenu>
 	<DropdownMenuTrigger>
 		<Avatar>
-			<AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+			<AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" class="h-25 w-25" />
 			<AvatarFallback>CN</AvatarFallback>
 		</Avatar>
 	</DropdownMenuTrigger>
+	<DropdownMenuContent class="mt-5 bg-brand-base p-4 rounded-[0px] rounded-b-2xl">
+		{#each items as item}
+			<DropdownMenuItem>
+				<AvatarItem {...item} />
+			</DropdownMenuItem>
+		{/each}
+	</DropdownMenuContent>
 </DropdownMenu>
