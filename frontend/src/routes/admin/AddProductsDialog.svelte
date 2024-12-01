@@ -55,7 +55,7 @@
       creatorsValue.splice(popped_creator, 1);
 		} else {
 			// add to list
-			creatorsValue = [...creatorsValue, uuid];
+      creatorsValue.push(uuid);
 		}
 	}
 
