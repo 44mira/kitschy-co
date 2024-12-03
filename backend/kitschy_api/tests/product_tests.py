@@ -33,6 +33,7 @@ class TestProductAPI:
         response = api_client.get(f"/api/products/{product.product_id}/")
 
         assert response.status_code == 200
+        assert response.data["product_id"] == str(product.product_id)
 
     def test_create_product(self, authenticated_user):
         product = {
@@ -143,10 +144,27 @@ class TestInvalidProductAPI:
 
         assert response.status_code == 400
 
-    def test_delete_invalid_product(self, authenticated_user):
-        invalid_product = baker.make("Product", price=-10)
+    def test_delete_non_existent_product(self, authenticated_user):
+        non_existent_product_id = (
+            193019230  # Assuming this ID does not exist in the database
+        )
         response = authenticated_user.delete(
-            f"/api/products/{invalid_product.product_id}/"
+            f"/api/products/{non_existent_product_id}/"
+        )
+
+        # Check that the response status code is 404 (Not Found)
+        assert response.status_code == 404
+        print(response.data)
+        # Check response "detail" key with the specific message
+        assert "detail" in response.data
+        assert (
+            str(response.data["detail"]) == "Not found."
+        )  # Replace with your specific message
+
+    def test_delete_invalid_product(self, authenticated_user):
+        bad_product_data = baker.make("Product", price=-10.00)
+        response = authenticated_user.delete(
+            f"/api/products/{bad_product_data.product_id}/"
         )
 
         assert response.status_code == 204
@@ -167,18 +185,9 @@ class TestProductEdgeCases:
 
     def test_update_empty_product(self, authenticated_user):
         product = baker.make("Product")
-        response = authenticated_user.put(
+        response = authenticated_user.patch(
             f"/api/products/{product.product_id}/",
             {},
         )
 
         assert response.status_code == 400
-
-    def test_delete_empty_product(self, authenticated_user):
-        product = baker.make("Product")
-        response = authenticated_user.delete(
-            f"/api/products/{product.product_id}/"
-        )
-
-        assert response.status_code == 204
-        assert not response.data

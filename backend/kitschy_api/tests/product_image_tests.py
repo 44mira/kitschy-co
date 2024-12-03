@@ -1,6 +1,8 @@
 import pytest
 from model_bakery import baker
 
+from kitschy_api.models import ProductImage
+
 """
 Tests:
 1. TestProductImageAPI - CRUD operations
@@ -24,9 +26,17 @@ class TestProductImageAPI:
         assert response.status_code == 201
         assert response.data["product"] == product.product_id
 
+        product_image_id = response.data["product_image_id"]
+        product_image = ProductImage.objects.get(
+            product_image_id=product_image_id
+        )
+        assert product_image.product == product
+        assert product_image.img_url == product_image_data["img_url"]
+        assert product_image.alt_desc == product_image_data["alt_desc"]
+
     def test_update_product_image(self, authenticated_user):
         product_image = baker.make("ProductImage")
-        response = authenticated_user.put(
+        response = authenticated_user.patch(
             f"{self.endpoint}{product_image.product_image_id}/",
             {
                 "product": product_image.product.product_id,
@@ -36,6 +46,8 @@ class TestProductImageAPI:
         )
 
         assert response.status_code == 200
+        assert response.data["img_url"] == "http://updated_image.com"
+        assert response.data["alt_desc"] == product_image.alt_desc
 
     def test_delete_product_image(self, authenticated_user):
         product_image = baker.make("ProductImage")
@@ -45,6 +57,12 @@ class TestProductImageAPI:
 
         assert response.status_code == 204
         assert not response.data
+        assert not (
+            ProductImage.objects.filter(
+                product_image_id=product_image.product_image_id
+            ).exists()
+            
+        )
 
 
 @pytest.mark.django_db
