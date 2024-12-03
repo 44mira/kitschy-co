@@ -61,7 +61,6 @@ class TestProductImageAPI:
             ProductImage.objects.filter(
                 product_image_id=product_image.product_image_id
             ).exists()
-            
         )
 
 
