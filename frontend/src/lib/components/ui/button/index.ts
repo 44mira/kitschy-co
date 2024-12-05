@@ -12,7 +12,8 @@ const buttonVariants = tv({
 			secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
 			ghost: 'hover:bg-accent hover:text-accent-foreground',
 			link: 'text-primary underline-offset-4 hover:underline',
-			tab: 'bg-background rounded-b-none'
+			tab: 'bg-background rounded-b-none',
+			cafe: 'rounded-none bg-brand-base text-[#BF3A0E] font-giphursSC font-bold text-2xl drop-shadow-xl'
 		},
 		size: {
 			default: 'h-10 px-4 py-2',
