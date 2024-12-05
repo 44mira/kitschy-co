@@ -82,7 +82,8 @@ const config = {
 				giphurs: ['Giphurs'],
 				giphursSC: ['GiphursSC'],
 				gladiola: ['Gladiola'],
-				lockergnome: ['Lockergnome']
+				lockergnome: ['Lockergnome'],
+				gasoekOne: ['GasoekOne']
 			}
 		}
 	}
