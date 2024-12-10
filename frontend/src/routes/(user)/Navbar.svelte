@@ -10,7 +10,7 @@
 	class="min-h-[9.82vh] flex items-center bg-brand-base border border-b-[3px] border-b-brand-purple-d p-2 px-10 justify-between sticky"
 >
 	<div class="min-h-fit flex items-center">
-		<a href="/home" target="_blank"><img src={logo} alt="kitschy co." width="200" /></a>
+		<a href="/home"><img src={logo} alt="kitschy co." width="200" /></a>
 	</div>
 
 	<!-- side items -->
