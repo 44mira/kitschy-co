@@ -1,5 +1,5 @@
 from rest_framework import serializers
-
+from kitschy_api.serializers import CartItemSerializer
 from kitschy_api.models import Cart
 
 
@@ -29,12 +29,9 @@ class CartSerializer(serializers.ModelSerializer):
         return sum(item["subtotal"] for item in items)
 
     def get_items(self, obj):
-        items = Cart.objects.filter(cart_id=obj.cart_id)
-
-        # check for empty
+        items = obj.cart_items.all()  # related_name='cart_items'
         if not items:
             return []
 
-        instance = CartSerializer(items, many=True)
+        return CartItemSerializer(items, many=True).data
 
-        return instance.data
