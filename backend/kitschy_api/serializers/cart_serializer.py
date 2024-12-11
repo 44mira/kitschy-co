@@ -1,6 +1,7 @@
 from rest_framework import serializers
-from kitschy_api.serializers import CartItemSerializer
+
 from kitschy_api.models import Cart
+from kitschy_api.serializers import CartItemSerializer
 
 
 class CartSerializer(serializers.ModelSerializer):
@@ -34,4 +35,3 @@ class CartSerializer(serializers.ModelSerializer):
             return []
 
         return CartItemSerializer(items, many=True).data
-
