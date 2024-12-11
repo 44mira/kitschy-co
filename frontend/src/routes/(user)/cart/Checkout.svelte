@@ -28,7 +28,7 @@
 	<div class="grow"></div>
 
 	<div class="flex gap-2 items-center text-2xl justify-center font-bold font-giphurs">
-		Total: <span class="text-brand-purple">{totalFee}</span>
+		Total: <span class="text-brand-purple">₱{totalFee}</span>
 	</div>
 	<Button variant="big" class="self-center text-white p-16 max-w-64 mb-8">Checkout</Button>
 </div>
