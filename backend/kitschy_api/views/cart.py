@@ -7,3 +7,4 @@ from kitschy_api.serializers import CartSerializer
 class CartViewSet(viewsets.ModelViewSet):
     queryset = Cart.objects.all()
     serializer_class = CartSerializer
+    lookup_field = 'user_id'
