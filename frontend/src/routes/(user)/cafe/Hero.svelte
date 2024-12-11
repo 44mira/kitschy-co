@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button } from '@/components/ui/button';
+	import { Button } from '$lib/components/ui/button';
 </script>
 
 <div class="cafe__hero bg-inherit h-screen">
@@ -25,3 +25,9 @@
 		></div>
 	</div>
 </div>
+
+<style>
+	.cafe__door {
+		background-color: #949494;
+	}
+</style>
