@@ -1,9 +1,8 @@
-<script lang="ts">
-	import type { PageData } from './$types.js';
-	import AddProductsForm from './AddProductsDialog.svelte';
+<script>
+	import AddProductsDialog from './AddProductsDialog.svelte';
 	let { data } = $props();
 </script>
 
 <div>
-	<AddProductsForm data={data.form} />
+	<AddProductsDialog data={data.form} />
 </div>
