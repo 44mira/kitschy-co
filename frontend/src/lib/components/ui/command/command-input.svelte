@@ -11,6 +11,6 @@
 </script>
 
 <div class="flex items-center border-b px-2">
-	<Search class="mr-2 h-4 w-4 shrink-0 opacity-50" />
+	<Search class="ml-4 mr-2 h-4 w-4 shrink-0 opacity-50" />
 	<input class={classname} bind:value={input} {...restProps} />
 </div>

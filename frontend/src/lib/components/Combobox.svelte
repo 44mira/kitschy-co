@@ -29,7 +29,7 @@
 	$effect(() => {
 		console.log(input);
 	});
- 
+
 	// We want to refocus the trigger button when the user selects
 	// an item from the list so users can continue navigating the
 	// rest of the form with the keyboard.
@@ -58,7 +58,7 @@
 		<Command.Root>
 			<Command.Input placeholder="Search choice..." bind:input />
 			<Command.Empty>No choice found.</Command.Empty>
-			<Command.Group class='max-h-48 overflow-y-scroll'>
+			<Command.Group class="max-h-48 overflow-y-scroll">
 				{#each filteredData || data as choice}
 					<Command.Item
 						value={choice.value}

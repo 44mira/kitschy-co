@@ -113,7 +113,7 @@
 									<Combobox data={regions} bind:chosenValue={cityCode} />
 								{/await}
 							{:else}
-								<p class="col-span-2 text-gray-400">Select a region first</p>
+								<p class="col-span-2 text-gray-400 align-middle">Select a region first</p>
 							{/if}
 						</div>
 					</Form.Control>
@@ -130,7 +130,7 @@
 									<Combobox data={regions} chosenValue={barangayCode} />
 								{/await}
 							{:else}
-								<p class="col-span-2 text-gray-400">Select a city first</p>
+								<p class="col-span-2 text-gray-400 align-middle">Select a city first</p>
 							{/if}
 						</div>
 					</Form.Control>
@@ -171,6 +171,6 @@
 
 <style>
 	.field {
-		@apply grid grid-cols-3 items-center gap-2 text-brand-purple-d;
+		@apply grid grid-cols-3 items-center gap-2 text-brand-purple-d h-10;
 	}
 </style>
