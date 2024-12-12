@@ -124,7 +124,11 @@
 			</div>
 
 			<div class="flex flex-col items-center pt-6">
-				<Form.Button class="w-32">Claim my ticket!</Form.Button>
+				<Form.Button
+					class="w-fit rounded-full bg-transparent border-4 p-4 border-brand-yellow font-lockergnome text-brand-yellow text-2xl hover:bg-gradient-to-t from-brand-yellow to-brand-base"
+					style="-webkit-text-stroke: 6px #804B7A;  paint-order: stroke fill;"
+					variant="ghost">Claim my ticket!</Form.Button
+				>
 				<a href="/" class="text-center">Already have a ticket? Sign in!</a>
 			</div>
 		</form>

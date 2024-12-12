@@ -66,7 +66,8 @@ const config = {
 					orangeCafe: '#FB7A4F',
 					yellowMart: '#F9F871',
 					mintWorkshop: '#32BEAF',
-					pinkPrinting: '#F1ABFF'
+					pinkPrinting: '#F1ABFF',
+					yellow: '#FFB413'
 				},
 
 				text: {
