@@ -3,14 +3,27 @@
 	import { toImageUrl } from '$lib/utils/index';
 	import ticketBg from '$lib/assets/users/ticketBg.png';
 	import * as Form from '$lib/components/ui/form';
-	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
-	import { Button } from '$lib/components/ui/button';
-	import { signupSchema, type SignupSchema } from '$lib/api/schema';
-	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
+	import { signupSchema } from '$lib/api/schema';
+	import { superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
+	import Combobox from '@/lib/components/Combobox.svelte';
 
 	let { data } = $props();
 	const form = superForm(data, { validators: zodClient(signupSchema) });
+
+	const getData = async (endpoint: string) => {
+		const res = await fetch(`https://psgc.gitlab.io/api/${endpoint}/`);
+		const data = await res.json();
+		const filteredData = data.map((region: (typeof data)[0]) => ({
+			value: region.code,
+			label: region.name
+		}));
+		return filteredData;
+	};
+
+	let regionCode = $state('');
+	let cityCode = $state('');
+	let barangayCode = $state('');
 </script>
 
 <Dialog.Root open="true">
@@ -80,7 +93,11 @@
 					<Form.Control>
 						<div class="field">
 							<Form.Label>Region:</Form.Label>
-							<input class="col-span-2" />
+							{#await getData('regions/')}
+								<p>Loading...</p>
+							{:then regions}
+								<Combobox data={regions} bind:chosenValue={regionCode} />
+							{/await}
 						</div>
 					</Form.Control>
 				</Form.Field>
@@ -89,7 +106,15 @@
 					<Form.Control>
 						<div class="field">
 							<Form.Label>City:</Form.Label>
-							<input class="col-span-2" />
+							{#if regionCode}
+								{#await getData(`regions/${regionCode}/cities/`)}
+									<p>Loading...</p>
+								{:then regions}
+									<Combobox data={regions} bind:chosenValue={cityCode} />
+								{/await}
+							{:else}
+								<p class="col-span-2 text-gray-400">Select a region first</p>
+							{/if}
 						</div>
 					</Form.Control>
 				</Form.Field>
@@ -98,7 +123,15 @@
 					<Form.Control>
 						<div class="field">
 							<Form.Label>Barangay:</Form.Label>
-							<input class="col-span-2" />
+							{#if cityCode}
+								{#await getData(`cities/${cityCode}/barangays/`)}
+									<p>Loading...</p>
+								{:then regions}
+									<Combobox data={regions} chosenValue={barangayCode} />
+								{/await}
+							{:else}
+								<p class="col-span-2 text-gray-400">Select a city first</p>
+							{/if}
 						</div>
 					</Form.Control>
 				</Form.Field>
@@ -136,6 +169,6 @@
 
 <style>
 	.field {
-		@apply grid grid-cols-3 items-center gap-2;
+		@apply grid grid-cols-3 items-center gap-2 text-brand-purple-d;
 	}
 </style>

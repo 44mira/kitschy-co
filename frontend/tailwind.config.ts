@@ -70,9 +70,7 @@ const config = {
 					yellow: '#FFB413'
 				},
 
-				text: {
-					crinkles: '#282204'
-				}
+				crinkles: '#282204'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

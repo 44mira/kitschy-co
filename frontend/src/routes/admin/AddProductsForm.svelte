@@ -210,7 +210,7 @@
 		<!-- CLOSE BUTTON -->
 		<Dialog.Root>
 			<Dialog.Trigger
-				class="bg-transparent border-[2px] border-gray-400 text-gray-400 text-lg gap-1 hover:border-text-crinkles hover:text-text-crinkles w-fit flex items-center justify-center rounded-md px-3 py-1"
+				class="bg-transparent border-[2px] border-gray-400 text-gray-400 text-lg gap-1 hover:border-text-crinkles hover:text-crinkles w-fit flex items-center justify-center rounded-md px-3 py-1"
 			>
 				<Icon icon={icons.delete} class="w-6 h-6" />
 				<span>Cancel</span>

@@ -29,6 +29,7 @@
 	$effect(() => {
 		console.log(input);
 	});
+ 
 	// We want to refocus the trigger button when the user selects
 	// an item from the list so users can continue navigating the
 	// rest of the form with the keyboard.
@@ -44,13 +45,13 @@
 	<Popover.Trigger asChild let:builder>
 		<Button
 			builders={[builder]}
-			variant="outline"
+			variant="ghost"
 			role="combobox"
 			aria-expanded={open}
-			class="w-[200px] justify-between"
+			class="w-[200px] p-0 justify-between pr-3 text-crinkles"
 		>
 			{chosen}
-			<ChevronsUpDown class="ml-2 h-4 w-4 shrink-0 opacity-50" />
+			<ChevronsUpDown class="ml-2 h-5 w-5 shrink-0 text-brand-purple" />
 		</Button>
 	</Popover.Trigger>
 	<Popover.Content class="w-[200px] p-0">
