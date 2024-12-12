@@ -2,9 +2,8 @@
 	import * as Form from '$lib/components/ui/form';
 	import * as Dialog from '$lib/components/ui/dialog';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
-	import { Input } from '$lib/components/ui/input';
 	import { Textarea } from '$lib/components/ui/textarea';
-	import { Button } from '@/components/ui/button';
+	import { Button } from '$lib/components/ui/button';
 	import { addProductSchema, type AddProductSchema } from '$lib/api/adminSchema';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
@@ -69,7 +68,7 @@
 <form method="POST">
 	<Form.Field form={addProductForm} name="category">
 		<Form.Control>
-			<Input
+			<input
 				type="text"
 				placeholder="Product Name"
 				class="p-0 bg-transparent border-none text-2xl font-semibold"
@@ -103,7 +102,7 @@
 							</div>
 						</div>
 					</Form.Label>
-					<Input id="images-input" type="file" multiple class="w-0 h-0 p-0" accept="image/*" />
+					<input id="images-input" type="file" multiple class="w-0 h-0 p-0" accept="image/*" />
 				</Form.Control>
 				<Form.FieldErrors />
 			</Form.Field>
@@ -111,7 +110,7 @@
 			<Form.Field form={addProductForm} name="quantity" class="flex items-center">
 				<Form.Control>
 					<Form.Label class="text-brand-purple-d text-lg font-normal mt-2">In Stock:</Form.Label>
-					<Input type="number" placeholder="0" class="bg-transparent border-none text-lg w-40" />
+					<input type="number" placeholder="0" class="bg-transparent border-none text-lg w-40" />
 				</Form.Control>
 			</Form.Field>
 		</div>
@@ -190,7 +189,7 @@
 					>
 					<div class="col-span-7 flex items-center">
 						<span>₱</span>
-						<Input type="text" placeholder="0.00" class="bg-transparent border-none text-md p-0" />
+						<input type="text" placeholder="0.00" class="bg-transparent border-none text-md p-0" />
 					</div>
 				</Form.Control>
 				<Form.FieldErrors />
@@ -211,7 +210,7 @@
 		<!-- CLOSE BUTTON -->
 		<Dialog.Root>
 			<Dialog.Trigger
-				class="bg-transparent border-[2px] border-gray-400 text-gray-400 text-lg gap-1 hover:border-text-crinkles hover:text-text-crinkles w-fit flex items-center justify-center rounded-md px-3 py-1"
+				class="bg-transparent border-[2px] border-gray-400 text-gray-400 text-lg gap-1 hover:border-text-crinkles hover:text-crinkles w-fit flex items-center justify-center rounded-md px-3 py-1"
 			>
 				<Icon icon={icons.delete} class="w-6 h-6" />
 				<span>Cancel</span>
@@ -227,7 +226,6 @@
 							class="text-destructive hover:text-destructive hover:bg-destructive/20 border-destructive border-2"
 							onclick={() => {
 								isOpen = false;
-								console.log(isOpen);
 							}}>Yes</Button
 						>
 					</Dialog.Close>
