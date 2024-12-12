@@ -4,7 +4,6 @@
 	import ticketBg from '$lib/assets/users/ticketBg.png';
 	import * as Form from '$lib/components/ui/form';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
-	import { Input } from '$lib/components/ui/input';
 	import { Button } from '$lib/components/ui/button';
 	import { signupSchema, type SignupSchema } from '$lib/api/schema';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
@@ -27,7 +26,7 @@
 					<Form.Control>
 						<div class="field">
 							<Form.Label>First Name:</Form.Label>
-							<Input class="col-span-2" placeholder="Samantha" />
+							<input class="col-span-2" placeholder="Samantha" />
 						</div>
 					</Form.Control>
 				</Form.Field>
@@ -36,7 +35,7 @@
 					<Form.Control>
 						<div class="field">
 							<Form.Label>Last Name:</Form.Label>
-							<Input class="col-span-2" placeholder="Cruz" />
+							<input class="col-span-2" placeholder="Cruz" />
 						</div>
 					</Form.Control>
 				</Form.Field>
@@ -45,7 +44,7 @@
 					<Form.Control>
 						<div class="field">
 							<Form.Label>E-mail:</Form.Label>
-							<Input class="col-span-2" placeholder="stay@kitschy.com" />
+							<input class="col-span-2" placeholder="stay@kitschy.com" />
 						</div>
 					</Form.Control>
 				</Form.Field>
@@ -54,7 +53,7 @@
 					<Form.Control>
 						<div class="field">
 							<Form.Label>Phone No.:</Form.Label>
-							<Input class="col-span-2" placeholder="09XXXXXXXXX" />
+							<input class="col-span-2" placeholder="09XXXXXXXXX" />
 						</div>
 					</Form.Control>
 				</Form.Field>
@@ -63,7 +62,7 @@
 					<Form.Control>
 						<div class="field">
 							<Form.Label>Password:</Form.Label>
-							<Input class="col-span-2" type="password" placeholder="**********" />
+							<input class="col-span-2" type="password" placeholder="**********" />
 						</div>
 					</Form.Control>
 				</Form.Field>
@@ -72,7 +71,7 @@
 					<Form.Control>
 						<div class="field">
 							<Form.Label>Confirm Password:</Form.Label>
-							<Input class="col-span-2" type="password" placeholder="**********" />
+							<input class="col-span-2" type="password" placeholder="**********" />
 						</div>
 					</Form.Control>
 				</Form.Field>
@@ -81,7 +80,7 @@
 					<Form.Control>
 						<div class="field">
 							<Form.Label>Region:</Form.Label>
-							<Input class="col-span-2" />
+							<input class="col-span-2" />
 						</div>
 					</Form.Control>
 				</Form.Field>
@@ -90,7 +89,7 @@
 					<Form.Control>
 						<div class="field">
 							<Form.Label>City:</Form.Label>
-							<Input class="col-span-2" />
+							<input class="col-span-2" />
 						</div>
 					</Form.Control>
 				</Form.Field>
@@ -99,7 +98,7 @@
 					<Form.Control>
 						<div class="field">
 							<Form.Label>Barangay:</Form.Label>
-							<Input class="col-span-2" />
+							<input class="col-span-2" />
 						</div>
 					</Form.Control>
 				</Form.Field>
@@ -108,7 +107,7 @@
 					<Form.Control>
 						<div class="field">
 							<Form.Label>Postal Code:</Form.Label>
-							<Input class="col-span-2" />
+							<input class="col-span-2" />
 						</div>
 					</Form.Control>
 				</Form.Field>
@@ -117,7 +116,7 @@
 					<Form.Control>
 						<div class="field">
 							<Form.Label>Detailed Address:</Form.Label>
-							<Input class="col-span-2" placeholder="Street Name, Building, Unit/House No." />
+							<input class="col-span-2" placeholder="Street Name, Building, Unit/House No." />
 						</div>
 					</Form.Control>
 				</Form.Field>
