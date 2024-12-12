@@ -14,17 +14,12 @@
 	let { data, chosenValue = $bindable() }: Props = $props();
 
 	let open = $state(false);
-	let value = $state('');
 
 	let input = $state('');
 	let filteredData = $derived(
 		data.filter((f) => f.label.toLowerCase().includes(input.toLowerCase()))
 	);
-	let chosen = $derived(data.find((f) => f.value === value)?.label ?? 'Select a choice...');
-
-	$effect(() => {
-		chosenValue = value;
-	});
+	let chosen = $derived(data.find((f) => f.value === chosenValue)?.label ?? 'Select a choice...');
 
 	// We want to refocus the trigger button when the user selects
 	// an item from the list so users can continue navigating the
@@ -59,11 +54,11 @@
 					<Command.Item
 						value={choice.value}
 						onSelect={(currentValue: string) => {
-							value = currentValue;
+							chosenValue = currentValue;
 							closeAndFocusTrigger(ids.trigger);
 						}}
 					>
-						<Check class={cn('mr-2 h-4 w-4', value !== choice.value && 'text-transparent')} />
+						<Check class={cn('mr-2 h-4 w-4', chosenValue !== choice.value && 'text-transparent')} />
 						{choice.label}
 					</Command.Item>
 				{/each}
