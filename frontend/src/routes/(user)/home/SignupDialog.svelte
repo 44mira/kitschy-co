@@ -161,7 +161,9 @@
 					style="-webkit-text-stroke: 6px #804B7A;  paint-order: stroke fill;"
 					variant="ghost">Claim my ticket!</Form.Button
 				>
-				<a href="/" class="text-center">Already have a ticket? Sign in!</a>
+				<a href="/" class="text-center text-brand-purple-d underline hover:text-brand-purple"
+					>Already have a ticket? Sign in!</a
+				>
 			</div>
 		</form>
 	</Dialog.Content>
