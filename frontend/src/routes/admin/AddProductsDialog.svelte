@@ -5,7 +5,7 @@
 	import { Input } from '$lib/components/ui/input';
 	import { Textarea } from '$lib/components/ui/textarea';
 	import { Button } from '@/components/ui/button';
-	import { addProductSchema, type AddProductSchema } from './schema';
+	import { addProductSchema, type AddProductSchema } from '../../lib/api/adminSchema';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import Icon from '@iconify/svelte';
