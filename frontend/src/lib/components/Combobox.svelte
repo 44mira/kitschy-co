@@ -16,17 +16,19 @@
 	let open = $state(false);
 	let value = $state('');
 
-  let input = $state('');
-  let filteredData = $derived(data.filter((f) => f.label.toLowerCase().includes(input.toLowerCase())));
+	let input = $state('');
+	let filteredData = $derived(
+		data.filter((f) => f.label.toLowerCase().includes(input.toLowerCase()))
+	);
 	let chosen = $derived(data.find((f) => f.value === value)?.label ?? 'Select a choice...');
 
 	$effect(() => {
 		chosenValue = value;
 	});
 
-  $effect(() => {
-    console.log(input);
-  });
+	$effect(() => {
+		console.log(input);
+	});
 	// We want to refocus the trigger button when the user selects
 	// an item from the list so users can continue navigating the
 	// rest of the form with the keyboard.
@@ -53,7 +55,7 @@
 	</Popover.Trigger>
 	<Popover.Content class="w-[200px] p-0">
 		<Command.Root>
-			<Command.Input placeholder="Search choice..." bind:input/>
+			<Command.Input placeholder="Search choice..." bind:input />
 			<Command.Empty>No choice found.</Command.Empty>
 			<Command.Group>
 				{#each filteredData || data as choice}
