@@ -2,13 +2,18 @@
 	import Separator from '@/lib/components/ui/separator/separator.svelte';
 	import Button from '@/lib/components/ui/button/button.svelte';
 
+	import { cart } from './state.svelte.ts';
+
 	const fees = $derived([
-		{ label: 'Merchandise Subtotal', value: 2100 },
-		{ label: 'Shipping Fee', value: 2100 },
-		{ label: 'Voucher Discount', value: -2100 }
+		{
+			label: 'Merchandise Subtotal',
+			value: cart.reduce((s, a) => s + a.product.price * a.quantity, 0)
+		},
+		{ label: 'Shipping Fee', value: 100 },
+		{ label: 'Voucher Discount', value: 0 }
 	]);
 
-	const totalFee = $derived(fees.reduce((a, { value }) => a + value, 0));
+	const totalFee = $derived(fees.reduce((a, { value }) => a + value, 0).toFixed(2));
 </script>
 
 <div class="flex flex-col p-8 gap-3 min-h-full max-h-full">
@@ -18,7 +23,7 @@
 		{#each fees as fee}
 			<li class="flex justify-between">
 				<span>{fee.label}</span>
-				<span>{fee.value < 0 ? '-' : ''}₱{Math.abs(fee.value)}</span>
+				<span>{fee.value < 0 ? '-' : ''}₱{Math.abs(fee.value).toFixed(2)}</span>
 			</li>
 		{/each}
 	</ul>

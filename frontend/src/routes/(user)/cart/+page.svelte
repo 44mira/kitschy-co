@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Checkout from './Checkout.svelte';
+	import CartItems from './CartItems.svelte';
 	import pinkFlower from '$lib/assets/users/pink flower.png';
 </script>
 
@@ -8,7 +9,9 @@
 		<div
 			class="segment col-span-2 bg-no-repeat bg-center"
 			style="background-image: url({pinkFlower})"
-		></div>
+		>
+			<CartItems />
+		</div>
 		<div class="segment min-w-96">
 			<Checkout />
 		</div>
