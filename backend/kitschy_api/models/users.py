@@ -1,4 +1,3 @@
-# kitschy_api/models.py
 import uuid
 
 from django.contrib.auth.models import AbstractUser, BaseUserManager
@@ -25,7 +24,7 @@ class CustomUserManager(BaseUserManager):
 
 
 class User(AbstractUser):
-
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     email = models.EmailField(unique=True)
     membership_id = models.UUIDField(
         null=True,  # Allow null
@@ -38,7 +37,8 @@ class User(AbstractUser):
         validators=[
             RegexValidator(
                 regex=r"^\+?(63|0)9\d{9}$",
-                message="Enter a valid phone number format: 09328910223/639328910223",
+                message="Enter a valid phone number format:"
+                + "09328910223/639328910223",
             )
         ],
     )

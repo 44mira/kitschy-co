@@ -14,6 +14,7 @@ pytest-django = "*"
 model-bakery = "*"
 django-allauth = "*"
 dj-rest-auth = "*"
+django-filter = "*"
 
 [dev-packages]
 
