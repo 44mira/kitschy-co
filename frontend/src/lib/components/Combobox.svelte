@@ -26,10 +26,6 @@
 		chosenValue = value;
 	});
 
-	$effect(() => {
-		console.log(input);
-	});
-
 	// We want to refocus the trigger button when the user selects
 	// an item from the list so users can continue navigating the
 	// rest of the form with the keyboard.

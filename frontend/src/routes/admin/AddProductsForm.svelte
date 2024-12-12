@@ -226,7 +226,6 @@
 							class="text-destructive hover:text-destructive hover:bg-destructive/20 border-destructive border-2"
 							onclick={() => {
 								isOpen = false;
-								console.log(isOpen);
 							}}>Yes</Button
 						>
 					</Dialog.Close>
