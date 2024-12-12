@@ -58,7 +58,7 @@
 		<Command.Root>
 			<Command.Input placeholder="Search choice..." bind:input />
 			<Command.Empty>No choice found.</Command.Empty>
-			<Command.Group>
+			<Command.Group class='max-h-48 overflow-y-scroll'>
 				{#each filteredData || data as choice}
 					<Command.Item
 						value={choice.value}
