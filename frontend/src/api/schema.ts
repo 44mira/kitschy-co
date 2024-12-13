@@ -34,8 +34,3 @@ export type CartItemSchema = {
 	quantity: number;
 	product: ProductSchema;
 };
-
-export type MembershipInfo = {
-	label: string;
-	value: string;
-};

@@ -2,11 +2,15 @@
 	import blue_girl from '$lib/assets/users/blue_girl.png';
 	import logo_purple from '$lib/assets/users/logo_purple.png';
 	import Separator from '@/lib/components/ui/separator/separator.svelte';
-	import { type MembershipInfo } from '@/api/schema';
 	import blue_star from '$lib/assets/users/blue_star.png';
 	import membership_card from '$lib/assets/users/membership_card.png';
 	import Button from '@/lib/components/ui/button/button.svelte';
 	//MOCK DATA
+	type MembershipInfo = {
+	label: string;
+	value: string;
+	};
+
 	const membership_number = '20231217';
 	const userDetails: MembershipInfo[] = [
 		{ label: 'Name', value: 'Aaron Dave A. Siapuatco' },
@@ -21,7 +25,7 @@
 
 <div class="flex max-w-screen min-h-screen align-center justify-center bg-brand-purple-l">
 	<div id="flip-card" class="pt-28">
-		<div id="flip-card-inner" class="bg-membership">
+		<div id="flip-card-inner" class="bg-membershipWhite">
 			<!-- Front of card -->
 			<div>
 				<div id="flip-card-front" class="flex flex-col">
@@ -64,7 +68,7 @@
 			</div>
 
 			<!-- Back of card -->
-			<div id="flip-card-back" class="bg-membership flex h-full">
+			<div id="flip-card-back" class="bg-membershipWhite flex h-full">
 				<!-- Left side content -->
 				<div class="flex flex-col p-12 flex-1">
 					<div class="flex items-start gap-2">
