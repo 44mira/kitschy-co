@@ -3,7 +3,8 @@
 	import logo_purple from '$lib/assets/users/logo_purple.png';
 	import Separator from '@/lib/components/ui/separator/separator.svelte';
 	import { type MembershipInfo } from '@/api/schema';
-
+	import blue_star from '$lib/assets/users/blue_star.png';
+	import membership_card from '$lib/assets/users/membership_card.png';
 	//MOCK DATA
 	const userDetails: MembershipInfo[] = [
 		{ label: 'Name', value: 'Aaron Dave A. Siapuatco' },
@@ -22,10 +23,10 @@
 	<div id="flip-card" class="pt-28">
 		<div id="flip-card-inner" class="bg-membership">
 			<!-- Front of card -->
-			<div class="h-full">
-				<div id="flip-card-front" class="flex flex-col h-full">
+			<div>
+				<div id="flip-card-front" class="flex flex-col ">
 					<!-- Header section -->
-					<div class="flex justify-between p-6">
+					<div class="flex justify-between p-10 ml-8 mr-10">
 						<img src={logo_purple} alt="Kitschy Logo" style="width:200px; height:50px;" />
 						<div class="text-right">
 							<p class="uppercase font-extrabold text-purple-900">Identification Card</p>
@@ -35,12 +36,11 @@
 
 					<!-- Main content section -->
 					<div class="flex flex-1 pl-20">
-						<div class="absolute border-4 border-dotted border-purple-900 w-52 h-52 -m-2"></div>
-						<!-- Profile image -->
-						<img src={blue_girl} alt="Profile Picture" class="w-48 h-48" />
-
+						<div class="absolute bg-admin-pink rounded-3xl border-purple-900 w-60 h-60 -ml-6 mt-1 "></div>
+						<div class="absolute border-4 border-dotted rounded-3xl border-purple-900 w-52 h-52 -m-2 mt-5"></div>
+							<img src={blue_girl} alt="Logo" class="absolute w-32 h-32 mt-14 ml-8" />
 						<!-- User details section -->
-						<div class="flex-1 pl-20 pr-20 flex flex-col">
+						<div class="flex-1 pl-60 pr-20 flex flex-col">
 							<!-- User information -->
 							{#each userDetails as detail}
 								<div class="flex justify-between items-center mb-2">
@@ -62,20 +62,48 @@
 			</div>
 
 			<!-- Back of card -->
-			<div
-				id="flip-card-back"
-				class="bg-membership flex flex-col items-center justify-center space-y-2"
-			>
-				<h1 class="font-bold text-lg">Some membership perks...</h1>
-				<p>Your very own physical</p>
-				<p>Kitschy Club</p>
-				<p>Membership Card</p>
-			</div>
+			<div id="flip-card-back" class="bg-membership flex h-full">
+				<!-- Left side content -->
+				<div class="flex flex-col p-12 flex-1">
+						<div class="flex items-start gap-2">
+								<h1 class="font-giphurs text-3xl text-black">Some membership perks...</h1>
+						</div>
+						
+						<div class="flex items-start gap-2 mt-8" id="back-content">
+								<img src={blue_star} alt="Star" class="w-10 h-10 mt-1" />
+								<div class="flex flex-col text-left pl-10 font-giphurs text-xl leading-relaxed">
+										<p>Your very own physical</p>
+										<p>Kitschy Club</p>
+										<p>Membership Card</p>
+								</div>
+						</div>
+						
+						<div class="flex items-start gap-2 mt-20" id="back-content">
+								<img src={blue_star} alt="Star" class="w-10 h-10 mt-1" />
+								<div class="flex flex-col text-left pl-10 font-giphurs text-xl leading-relaxed">
+										<p>Lifetime kitschyclub membership</p>
+										<p>Birthday and registration freebies</p>
+										<p>Early access & discounted product prices!</p>
+								</div>
+						</div>
+				</div>
+		
+				<!-- Right side with membership card -->
+				<div class="flex items-center pr-12">
+						<img src={membership_card} alt="Membership Card" />
+				</div>
+		</div>
+			
 		</div>
 	</div>
 </div>
 
 <style>
+	#back-content {
+		color:black;
+		font: giphurs;
+		font-weight:500;
+	}
 	#flip-card {
 		background-color: transparent;
 		width: 900px;
