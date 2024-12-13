@@ -34,4 +34,3 @@ export type CartItemSchema = {
 	quantity: number;
 	product: ProductSchema;
 };
-
