@@ -4,13 +4,13 @@
 
 <div class="fixed inset-0">
 	<div
-		class="z-0 relative flex flex-col items-center justify-center min-w-screen  min-h-screen overflow-clip"
+		class="z-0 relative flex flex-col items-center justify-center min-w-screen min-h-screen overflow-clip"
 	>
 		<div
 			class="absolute inset-0 h-svh w-svh outer bg-cover"
 			style="background-image: url({heartbg})"
 		></div>
-	
+
 		<div class="z-10 flex flex-col gap-6 items-center text-brand-base">
 			<span class="text-brand-yellow text-7xl font-lockergnome outlined">Oops!</span>
 			<div>
