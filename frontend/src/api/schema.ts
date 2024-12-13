@@ -30,6 +30,12 @@ export type ProductSchema = {
 	creators: string[]; // uuid[]
 };
 
+export type CartItemSchema = {
+	quantity: number;
+	product: ProductSchema;
+};
+
+
 export type MembershipInfo = {
 	label: string;
 	value: string;
