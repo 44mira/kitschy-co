@@ -53,6 +53,7 @@ const config = {
 					blue: '#5EB5E3',
 					green: '#B0D253'
 				},
+				membership: '#F8F4EE',
 
 				brand: {
 					purple: {
