@@ -5,7 +5,7 @@
 <div class="cafe__hero bg-inherit h-screen">
 	<div class="px-32 flex justify-between">
 		<div class="flex flex-col gap-10 py-24">
-			<h1 class="text-9xl text-brand-orangePastries font-gladiola font-bold drop-shadow-lg">
+			<h1 class="text-9xl text-brand-orangeCafe font-gladiola font-bold drop-shadow-lg">
 				Cafe & Pastries
 			</h1>
 			<div class="text-[#5C1700] font-giphurs text-2xl leading-relaxed max-w-[500px] text-justify">
@@ -15,7 +15,7 @@
 			</div>
 
 			<Button
-				class="py-6 w-52 border-t-2 border-l-2 border-b-8 border-r-8 border-brand-orangePastries"
+				class="py-6 w-52 border-t-2 border-l-2 border-b-8 border-r-8 border-brand-orangeCafe"
 				variant="cafe">Menu</Button
 			>
 		</div>
