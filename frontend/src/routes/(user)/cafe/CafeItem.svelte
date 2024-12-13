@@ -33,7 +33,7 @@
 			>
 				<Icon icon="mdi:add" />
 			</Button>
-			<div class="text-brand-orangePastries font-giphurs text-3xl font-bold">₱{roundedPrice}</div>
+			<div class="text-brand-orangeCafe font-giphurs text-3xl font-bold">₱{roundedPrice}</div>
 		</div>
 	</div>
 </div>
