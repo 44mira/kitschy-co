@@ -29,3 +29,9 @@ export type ProductSchema = {
 	updated_at: Date;
 	creators: string[]; // uuid[]
 };
+
+export type CartItemSchema = {
+	quantity: number;
+	product: ProductSchema;
+};
+

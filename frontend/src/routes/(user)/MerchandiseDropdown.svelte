@@ -10,7 +10,7 @@
 
 	const items = [
 		{ label: 'Merchandise', color: 'bg-brand-purple' },
-		{ label: 'Cafe & Pastries', color: 'bg-brand-orangePastries' },
+		{ label: 'Cafe & Pastries', color: 'bg-brand-orangeCafe' },
 		{ label: 'Printing Services', color: 'bg-brand-pinkPrinting' },
 		{ label: 'MiniMart', color: 'bg-brand-yellowMart' },
 		{ label: 'Workshop', color: 'bg-brand-mintWorkshop' },

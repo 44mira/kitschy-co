@@ -63,15 +63,14 @@ const config = {
 					},
 					base: '#FFFADE',
 					purpleMerch: '#4D1078',
-					orangePastries: '#FB7A4F',
+					orangeCafe: '#FB7A4F',
 					yellowMart: '#F9F871',
 					mintWorkshop: '#32BEAF',
-					pinkPrinting: '#F1ABFF'
+					pinkPrinting: '#F1ABFF',
+					yellow: '#FFB413'
 				},
 
-				text: {
-					crinkles: '#282204'
-				}
+				crinkles: '#282204'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
