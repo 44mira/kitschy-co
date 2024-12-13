@@ -33,4 +33,4 @@ export type ProductSchema = {
 export type MembershipInfo = {
 	label: string;
 	value: string;
-}
+};
