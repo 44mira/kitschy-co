@@ -3,7 +3,7 @@
 </script>
 
 <div
-	class="z-[-1] relative flex flex-col items-center justify-center -mt-20 max-w-screen min-w-screen max-h-screen min-h-screen overflow-clip"
+	class="z-0 relative flex flex-col items-center justify-center -mt-20 max-w-screen min-w-screen max-h-screen min-h-screen overflow-clip"
 >
 	<div
 		class="absolute inset-0 h-svh w-svh outer bg-cover"
