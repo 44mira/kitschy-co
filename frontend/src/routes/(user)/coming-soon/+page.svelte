@@ -13,11 +13,9 @@
 
 		<div class="z-10 flex flex-col gap-6 items-center text-brand-base">
 			<span class="text-brand-yellow text-7xl font-lockergnome outlined">Oops!</span>
-			<div>
-				<div class="font-giphurs text-4xl outlined flex flex-col items-center gap-3">
-					<span>Looks like you found a service</span>
-					<span>that is <span class="font-giphursSC font-bold">coming soon!</span></span>
-				</div>
+			<div class="font-giphurs text-4xl outlined flex flex-col items-center gap-3">
+				<span>Looks like you found a service</span>
+				<span>that is <span class="font-giphursSC font-bold">coming soon!</span></span>
 			</div>
 		</div>
 	</div>
