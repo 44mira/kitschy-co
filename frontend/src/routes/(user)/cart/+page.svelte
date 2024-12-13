@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Checkout from './Checkout.svelte';
 	import CartItems from './CartItems.svelte';
-	import pinkFlower from '$lib/assets/users/pink flower.png';
+	import pinkFlower from '$lib/assets/users/small_pink_flower.png';
 </script>
 
 <div class="bg-brand-base max-h-fill min-h-[91vh] flex flex-col p-36 py-24">
