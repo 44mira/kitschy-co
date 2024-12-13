@@ -5,7 +5,9 @@
 	import { type MembershipInfo } from '@/api/schema';
 	import blue_star from '$lib/assets/users/blue_star.png';
 	import membership_card from '$lib/assets/users/membership_card.png';
+	import Button from '@/lib/components/ui/button/button.svelte';
 	//MOCK DATA
+	const membership_number = '20231217';
 	const userDetails: MembershipInfo[] = [
 		{ label: 'Name', value: 'Aaron Dave A. Siapuatco' },
 		{ label: 'Date of Issue', value: '2022-03-2092' },
@@ -16,7 +18,7 @@
 		{ label: 'Bentables', value: 'Stickers & Photocards' }
 	];
 
-	const membership_number = '20231008';
+
 </script>
 
 <div class="flex max-w-screen min-h-screen align-center justify-center bg-brand-purple-l">
@@ -36,23 +38,23 @@
 
 					<!-- Main content section -->
 					<div class="flex flex-1 pl-20">
-						<div class="absolute bg-admin-pink rounded-3xl border-purple-900 w-60 h-60 -ml-6 mt-1 "></div>
-						<div class="absolute border-4 border-dotted rounded-3xl border-purple-900 w-52 h-52 -m-2 mt-5"></div>
-							<img src={blue_girl} alt="Logo" class="absolute w-32 h-32 mt-14 ml-8" />
+						<div class="absolute bg-admin-pink rounded-3xl border-black w-60 h-60 -ml-4 mt-1 "></div>
+						<div class="absolute border-[2px] border-dashed rounded-3xl border-black w-56 h-56 -m-2 mt-3"></div>
+							<img src={blue_girl} alt="Logo" class="absolute w-36 h-36 mt-12 ml-8" />
 						<!-- User details section -->
-						<div class="flex-1 pl-60 pr-20 flex flex-col">
+						<div class="flex-1 pl-80 pr-20 flex flex-col">
 							<!-- User information -->
 							{#each userDetails as detail}
 								<div class="flex justify-between items-center mb-2">
 									<p class="uppercase text-purple-900 font-extrabold">{detail.label}:</p>
 									<p class="font-giphursSC text-right font-semibold">{detail.value}</p>
 								</div>
-								<Separator className="border-dotted border-t-2 w-full border-purple-900" />
+								<Separator orientation="horizontal" class="border-t-2 border-dotted border-black" />
 							{/each}
 
 							<!-- Footer section -->
-							<div class="bg-admin-pink w-full">
-								<p class="uppercase font-bold text-white text-center text-[0.65rem] p-2">
+							<div class="bg-admin-pink w-full mt-4">
+								<p class="uppercase font-bold text-white text-center text-[0.60rem] p-2">
 									This identification card certified the bearer as a kitshchy club member.
 								</p>
 							</div>
@@ -89,16 +91,25 @@
 				</div>
 		
 				<!-- Right side with membership card -->
-				<div class="flex items-center pr-12">
-						<img src={membership_card} alt="Membership Card" />
+				<div class="flex flex-col items-center pr-12 mt-20">
+						<img src={membership_card} alt="Membership Card" class="drop-shadow-lg"/>
 				</div>
 		</div>
 			
+		</div>
+		<div class= "flex flex-col items-center justify-center mt-20">	
+			<Button variant = "membership"> Join the club
+			</Button>
 		</div>
 	</div>
 </div>
 
 <style>
+	img {
+  image-rendering: -webkit-optimize-contrast; /* For webkit browsers */
+  image-rendering: crisp-edges;
+
+	}
 	#back-content {
 		color:black;
 		font: giphurs;
