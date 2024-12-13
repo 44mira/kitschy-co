@@ -3,7 +3,7 @@
 	import { toImageUrl } from '$lib/utils/index';
 	import ticketBg from '$lib/assets/users/ticketBg.png';
 	import * as Form from '$lib/components/ui/form';
-	import { signupSchema } from '$lib/api/schema';
+	import { signupSchema } from '@/api/schema';
 	import { superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import Combobox from '@/lib/components/Combobox.svelte';

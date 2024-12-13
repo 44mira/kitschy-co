@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as Dialog from '$lib/components/ui/dialog';
-	import { type AddProductSchema } from '../../lib/api/adminSchema';
+	import { type AddProductSchema } from '../../api/adminSchema';
 	import { type SuperValidated, type Infer } from 'sveltekit-superforms';
 	import Icon from '@iconify/svelte';
 	import AddProductsForm from './AddProductsForm.svelte';
@@ -12,7 +12,7 @@
 		close: 'mdi:close'
 	};
 
-	let { data }: { data: SuperValidated<Infer<AddProductSchema>> } = $props();
+	let { data = $bindable() }: { data: SuperValidated<Infer<AddProductSchema>> } = $props();
 
 	let isOpen = $state(false);
 </script>
