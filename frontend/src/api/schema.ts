@@ -35,7 +35,6 @@ export type CartItemSchema = {
 	product: ProductSchema;
 };
 
-
 export type MembershipInfo = {
 	label: string;
 	value: string;
