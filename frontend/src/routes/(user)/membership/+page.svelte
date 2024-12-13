@@ -17,8 +17,6 @@
 		{ label: 'Color', value: 'Blue' },
 		{ label: 'Bentables', value: 'Stickers & Photocards' }
 	];
-
-
 </script>
 
 <div class="flex max-w-screen min-h-screen align-center justify-center bg-brand-purple-l">
@@ -26,7 +24,7 @@
 		<div id="flip-card-inner" class="bg-membership">
 			<!-- Front of card -->
 			<div>
-				<div id="flip-card-front" class="flex flex-col ">
+				<div id="flip-card-front" class="flex flex-col">
 					<!-- Header section -->
 					<div class="flex justify-between p-10 ml-8 mr-10">
 						<img src={logo_purple} alt="Kitschy Logo" style="width:200px; height:50px;" />
@@ -38,9 +36,11 @@
 
 					<!-- Main content section -->
 					<div class="flex flex-1 pl-20">
-						<div class="absolute bg-admin-pink rounded-3xl border-black w-60 h-60 -ml-4 mt-1 "></div>
-						<div class="absolute border-[2px] border-dashed rounded-3xl border-black w-56 h-56 -m-2 mt-3"></div>
-							<img src={blue_girl} alt="Logo" class="absolute w-36 h-36 mt-12 ml-8" />
+						<div class="absolute bg-admin-pink rounded-3xl border-black w-60 h-60 -ml-4 mt-1"></div>
+						<div
+							class="absolute border-[2px] border-dashed rounded-3xl border-black w-56 h-56 -m-2 mt-3"
+						></div>
+						<img src={blue_girl} alt="Logo" class="absolute w-36 h-36 mt-12 ml-8" />
 						<!-- User details section -->
 						<div class="flex-1 pl-80 pr-20 flex flex-col">
 							<!-- User information -->
@@ -67,53 +67,50 @@
 			<div id="flip-card-back" class="bg-membership flex h-full">
 				<!-- Left side content -->
 				<div class="flex flex-col p-12 flex-1">
-						<div class="flex items-start gap-2">
-								<h1 class="font-giphurs text-3xl text-black">Some membership perks...</h1>
+					<div class="flex items-start gap-2">
+						<h1 class="font-giphurs text-3xl text-black">Some membership perks...</h1>
+					</div>
+
+					<div class="flex items-start gap-2 mt-8" id="back-content">
+						<img src={blue_star} alt="Star" class="w-10 h-10 mt-1" />
+						<div class="flex flex-col text-left pl-10 font-giphurs text-xl leading-relaxed">
+							<p>Your very own physical</p>
+							<p>Kitschy Club</p>
+							<p>Membership Card</p>
 						</div>
-						
-						<div class="flex items-start gap-2 mt-8" id="back-content">
-								<img src={blue_star} alt="Star" class="w-10 h-10 mt-1" />
-								<div class="flex flex-col text-left pl-10 font-giphurs text-xl leading-relaxed">
-										<p>Your very own physical</p>
-										<p>Kitschy Club</p>
-										<p>Membership Card</p>
-								</div>
+					</div>
+
+					<div class="flex items-start gap-2 mt-20" id="back-content">
+						<img src={blue_star} alt="Star" class="w-10 h-10 mt-1" />
+						<div class="flex flex-col text-left pl-10 font-giphurs text-xl leading-relaxed">
+							<p>Lifetime kitschyclub membership</p>
+							<p>Birthday and registration freebies</p>
+							<p>Early access & discounted product prices!</p>
 						</div>
-						
-						<div class="flex items-start gap-2 mt-20" id="back-content">
-								<img src={blue_star} alt="Star" class="w-10 h-10 mt-1" />
-								<div class="flex flex-col text-left pl-10 font-giphurs text-xl leading-relaxed">
-										<p>Lifetime kitschyclub membership</p>
-										<p>Birthday and registration freebies</p>
-										<p>Early access & discounted product prices!</p>
-								</div>
-						</div>
+					</div>
 				</div>
-		
+
 				<!-- Right side with membership card -->
 				<div class="flex flex-col items-center pr-12 mt-20">
-						<img src={membership_card} alt="Membership Card" class="drop-shadow-lg"/>
+					<img src={membership_card} alt="Membership Card" class="drop-shadow-lg" />
 				</div>
+			</div>
 		</div>
-			
-		</div>
-		<div class= "flex flex-col items-center justify-center mt-20">	
-			<Button variant = "membership"> Join the club
-			</Button>
+		<div class="flex flex-col items-center justify-center mt-20">
+			<Button variant="membership">Join the club</Button>
 		</div>
 	</div>
 </div>
 
 <style>
 	img {
-  image-rendering: -webkit-optimize-contrast; /* For webkit browsers */
-  image-rendering: crisp-edges;
-
+		image-rendering: -webkit-optimize-contrast; /* For webkit browsers */
+		image-rendering: crisp-edges;
 	}
 	#back-content {
-		color:black;
+		color: black;
 		font: giphurs;
-		font-weight:500;
+		font-weight: 500;
 	}
 	#flip-card {
 		background-color: transparent;
