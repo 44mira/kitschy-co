@@ -14,7 +14,9 @@ const buttonVariants = tv({
 			link: 'text-primary underline-offset-4 hover:underline',
 			tab: 'bg-background rounded-b-none',
 			cafe: 'rounded-none bg-brand-base text-[#BF3A0E] font-giphursSC font-bold text-2xl drop-shadow-xl',
-			big: 'font-gladiola bg-brand-purple hover:bg-brand-purple-m active:bg-brand-purple-d text-6xl'
+			big: 'font-gladiola bg-brand-purple hover:bg-brand-purple-m active:bg-brand-purple-d text-6xl',
+			membership:
+				'capitalize bg-[#696969] text-white font-giphursSC font-light text-2xl drop-shadow-xl'
 		},
 		size: {
 			default: 'h-10 px-4 py-2',
