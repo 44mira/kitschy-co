@@ -22,37 +22,58 @@
 	const cartItems = $state(_cartItems);
 </script>
 
-<div class="border-2 border-black rounded-3xl">
-	<div class="flex gap-4 items-center p-3 border-b-2 border-black">
+<div class="border-2 border-black rounded-3xl overflow-hidden">
+	<div class="flex items-center gap-4 p-3 border-b-2 border-black">
 		<Checkbox />
-		<h1 class="font-giphurs text-2xl">{categoryLabels[productsCategory]}</h1>
+		<h1 class="font-giphurs text-xl md:text-2xl">{categoryLabels[productsCategory]}</h1>
 	</div>
-	<ul>
+	<ul class="flex flex-col gap-4 p-4">
 		{#each cartItems as { quantity, product }, i}
-			<li class="flex gap-4 items-center py-4 pl-4 font-giphurs">
+			<li class="grid grid-cols-[auto,1fr,auto,auto,auto,auto] items-center gap-4 py-4 px-4 font-giphurs text-sm sm:text-base md:text-lg">
 				<Checkbox />
-				<span>{product.name}</span>
-				<div class="grow"></div>
-				<div class="grid grid-cols-4 items-center justify-items-center">
-					<span>₱{product.price}</span>
-					<div class="flex items-center gap-3">
+				<div class="flex flex-col items-start">
+					<span class="break-words">{product.name}</span>
+				</div>
+
+				<!-- Unit Price with Label -->
+				<div class="flex flex-col items-start">
+					<p class="text-xs sm:text-sm">Unit Price</p>
+					<span class="break-words">₱{product.price}</span>
+				</div>
+
+				<!-- Quantity with Label -->
+				<div class="flex flex-col items-start">
+					<p class="text-xs sm:text-sm ml-[52px] mb-2">Quantity</p>
+					<div class="flex items-center gap-4">
 						<Button
 							variant="outline"
 							size="icon"
-							class="bg-brand-base border-dotted border-black hover:bg-brand-purple-l"
-							onclick={() => (cartItems[i].quantity = Math.max(0, Number(quantity) - 1))}>-</Button
-						>
-						<input type="number" bind:value={cartItems[i].quantity} />
+							class="bg-brand-base border-dotted border-black hover:bg-brand-purple-l text-sm sm:text-base"
+							onclick={() => (cartItems[i].quantity = Math.max(0, Number(quantity) - 1))}>-</Button>
+						<input
+							type="number"
+							bind:value={cartItems[i].quantity}
+							class="w-12 text-center text-sm sm:text-base md:text-lg border border-black rounded"
+						/>
 						<Button
 							variant="outline"
 							size="icon"
-							class="bg-brand-base border-dotted border-black hover:bg-brand-purple-l"
-							onclick={() => (cartItems[i].quantity = Number(quantity) + 1)}>+</Button
-						>
+							class="bg-brand-base border-dotted border-black hover:bg-brand-purple-l text-sm sm:text-base"
+							onclick={() => (cartItems[i].quantity = Number(quantity) + 1)}>+</Button>
 					</div>
-					<div class="w-24 text-center truncate">₱{(product.price * quantity).toFixed(2)}</div>
+				</div>
+
+				<!-- Total Price with Label -->
+				<div class="flex flex-col items-start">
+					<p class="text-xs sm:text-sm">Total Price</p>
+					<span class="text-sm sm:text-base md:text-lg">₱{(product.price * quantity).toFixed(2)}</span>
+				</div>
+
+				<!-- Actions with Label -->
+				<div class="flex flex-col items-start">
+					<p class="text-xs sm:text-sm mr-4">Actions</p>
 					<Button size="icon" class="bg-transparent hover:bg-brand-purple-l">
-						<Icon icon="mdi:trash-can" class="text-brand-purple text-2xl"></Icon>
+						<Icon icon="mdi:trash-can" class="text-brand-purple text-lg sm:text-xl ml-2" />
 					</Button>
 				</div>
 			</li>
@@ -72,7 +93,36 @@
 		appearance: textfield;
 
 		background-color: transparent;
-		max-width: 2.3em;
 		text-align: center;
+		max-width: 3em;
+	}
+
+	/* Allow product name and price to wrap and not overflow */
+	.break-words {
+		word-wrap: break-word;
+	}
+
+	/* Ensures items are displayed properly on small screens */
+	ul {
+		overflow-x: auto;  /* Enable horizontal scrolling */
+		padding: 0;
+	}
+
+	/* Make input fields and buttons responsive on smaller screens */
+	@media (max-width: 600px) {
+		/* Adjust button and input sizes */
+		.text-sm {
+			font-size: 0.875rem; /* Smaller text for mobile */
+		}
+		.w-12 {
+			width: 2.5rem; /* Adjust input width */
+		}
+	}
+
+	/* Ensure layout scales well on larger screens */
+	@media (min-width: 768px) {
+		.text-sm {
+			font-size: 1rem;
+		}
 	}
 </style>

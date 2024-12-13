@@ -7,11 +7,13 @@
 </script>
 
 <div class="flex flex-col gap-4 p-12">
-	<div class="grid grid-cols-4 gap-[66px] self-end px-6">
+	<!-- 
+	<div class="grid grid-cols-4 gap-[30px] self-end px-8">
 		{#each columnLabels as columnLabel}
 			<span>{columnLabel}</span>
 		{/each}
 	</div>
+	-->
 	<div class="flex flex-col gap-8">
 		{#each Object.entries(productsCategories) as [productsCategory, cartItems]}
 			<CartItemCategory productsCategory={Number(productsCategory)} {cartItems} />
