@@ -10,7 +10,7 @@
 	<div class="overflow-clip top-0 sticky z-10">
 		<img
 	src={roof}
-	class="object-cover -translate-y-10 w-full scale-75 scale-x-105 min-h-[175px] sm:min-h-[175px] md:min-h-[200px] lg:min-h-[200px]"
+	class="object-cover -translate-y-10 w-full scale-75 scale-x-105 min-h-[175px] sm:min-h-[175px] md:min-h-[200px]"
 	alt="cafe and pastries roof"
 />
 	</div>

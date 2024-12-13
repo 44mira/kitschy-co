@@ -4,7 +4,7 @@
 
 <!-- Hero Section -->
 <div class="cafe__hero bg-inherit h-auto flex flex-col justify-between">
-	<div class="px-12 sm:px-12 md:px-24 lg:px-24 xl:px-32 flex flex-col md:flex-row justify-between items-center gap-10 pt-4 pb-12 sm:pb-16 md:pb-16 lg:pb-20 -mt-10 sm:-mt-16 md:-mt-24 lg:-mt-32 relative">
+	<div class="px-12 sm:px-12 md:px-24 xl:px-32 flex flex-col md:flex-row justify-between items-center gap-10 pt-4 pb-12 sm:pb-16 md:pb-16 lg:pb-20 -mt-10 sm:-mt-16 md:-mt-24 lg:-mt-32 relative">
 		<!-- Text Section -->
 		<div class="flex flex-col gap-6 md:gap-10 mt-16 sm:mt-24 md:mt-32 lg:mt-40">
 			<h1 class="text-7xl sm:text-7xl md:text-5xl lg:text-6xl xl:text-7xl text-brand-orangePastries font-gladiola font-bold drop-shadow-lg text-center md:text-left">
