@@ -23,7 +23,7 @@
 
 		<!-- Cafe Door -->
 		<div
-			class="cafe__door rounded rounded-t-[999px] h-[300px] sm:h-[400px] md:h-[325px] lg:h-[325px] xl:h-[350px] w-[300px] sm:w-[400px] md:w-[600px] lg:w-[700px] self-center md:self-end -mb-[50px] sm:-mb-[75px] md:-mb-[100px]"
+			class="cafe__door rounded rounded-t-[999px] h-[400px] sm:h-[500px] md:h-[450px] w-[250px] sm:w-[300px] md:w-[600px] lg:w-[450px] self-center md:self-end -mb-[50px] sm:-mb-[75px] md:-mb-[100px]"
 		></div>
 	</div>
 </div>
