@@ -9,12 +9,16 @@
 	} from '$lib/components/ui/dropdown-menu';
 
 	const items = [
-		{ label: 'Merchandise', color: 'bg-brand-purple' },
-		{ label: 'Cafe & Pastries', color: 'bg-brand-orangePastries' },
-		{ label: 'Printing Services', color: 'bg-brand-pinkPrinting' },
-		{ label: 'MiniMart', color: 'bg-brand-yellowMart' },
-		{ label: 'Workshop', color: 'bg-brand-mintWorkshop' },
-		{ label: 'Membership', color: 'bg-secondary border border-secondary-foreground' }
+		{ label: 'Merchandise', color: 'bg-brand-purple', link: 'merch' },
+		{ label: 'Cafe & Pastries', color: 'bg-brand-orangeCafe', link: 'cafe' },
+		{ label: 'Printing Services', color: 'bg-brand-pinkPrinting', link: 'coming-soon' },
+		{ label: 'MiniMart', color: 'bg-brand-yellowMart', link: 'coming-soon' },
+		{ label: 'Workshop', color: 'bg-brand-mintWorkshop', link: 'coming-soon' },
+		{
+			label: 'Membership',
+			color: 'bg-secondary border border-secondary-foreground',
+			link: 'membership'
+		}
 	];
 </script>
 

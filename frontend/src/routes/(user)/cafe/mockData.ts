@@ -1,4 +1,4 @@
-import { type ProductSchema, STATUS, CATEGORY } from '../../../api/schema';
+import { type ProductSchema, STATUS, CATEGORY } from '@/api/schema';
 
 const mockCreators = [
 	'69a723cd-fc42-4522-b30b-eb7a2b20f23f',
