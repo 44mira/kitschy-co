@@ -26,7 +26,7 @@
 	let barangayCode = $state('');
 </script>
 
-<Dialog.Root open="true">
+<Dialog.Root open={false}>
 	<Dialog.Trigger>Sign Up!</Dialog.Trigger>
 
 	<Dialog.Content
