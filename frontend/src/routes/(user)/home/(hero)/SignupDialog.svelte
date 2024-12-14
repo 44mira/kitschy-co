@@ -8,7 +8,7 @@
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import Combobox from '@/lib/components/Combobox.svelte';
 
-	let { data } = $props();
+	let { data, primary } = $props();
 	const form = superForm(data, { validators: zodClient(signupSchema) });
 
 	const getData = async (endpoint: string) => {
@@ -27,7 +27,14 @@
 </script>
 
 <Dialog.Root open={false}>
-	<Dialog.Trigger>Sign Up!</Dialog.Trigger>
+	<Dialog.Trigger>
+		<div
+			class="font-gasoekOne text-white p-5 rounded-[3em] text-2xl"
+			style:background-color={primary}
+		>
+			Register here!
+		</div>
+	</Dialog.Trigger>
 
 	<Dialog.Content
 		class="w-[1000px] h-[472px] bg-transparent border-none shadow-none"

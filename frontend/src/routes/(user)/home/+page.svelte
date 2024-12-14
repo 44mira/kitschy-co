@@ -1,11 +1,12 @@
 <script lang="ts">
-	import SignupDialog from './SignupDialog.svelte';
 	import HeaderCards from './(headerCards)/HeaderCards.svelte';
+	import Hero from './(hero)/Hero.svelte';
+
 	import type { PageData } from './$types';
 	export let data: PageData;
 </script>
 
-<div class="bg-pink-500 flex flex-col items-center justify-center min-h-screen">
-	<SignupDialog data={data.signupForm} />
+<div class="bg-brand-base flex flex-col items-center justify-center min-h-screen px-8">
+	<Hero {data} />
 	<HeaderCards />
 </div>
