@@ -7,10 +7,8 @@
 	import blueGirl from '$lib/assets/users/blue_girl.png';
 	import { fade } from 'svelte/transition';
 
-	import type { PageData } from '../$types';
-	import SignupDialog from './SignupDialog.svelte';
-
-	let { data }: { data: PageData } = $props();
+	import HeroMessage from './HeroMessage.svelte';
+	import CallToAction from './CallToAction.svelte';
 
 	const girlSequence = [greenGirl, redGirl, blueGirl];
 
@@ -45,42 +43,8 @@
 			style:clip-path="url(#heroMask)"
 		>
 			<div class="flex p-28 justify-between">
-				<div class="flex flex-col grow-0 basis-[30%]">
-					<div class="font-allura text-7xl">
-						where <span class="outlined text-5xl font-gasoekOne" style:color={ct.primary}
-							>charm</span
-						>
-						meets
-						<span class="outlined text-5xl font-gasoekOne" style:color={ct.primary}
-							>convenience</span
-						>
-					</div>
-					<div class="flex items-center">
-						<img
-							class="head--tilt"
-							style:scale="0.40"
-							src={girlSequence[currentTheme]}
-							alt="girl tilting her head"
-						/>
-						<p class="-mx-10 font-galdeano">Since 2019, kitschy co. has been slaying!</p>
-					</div>
-				</div>
-
-				<div class="grow-0 basis-[30%]">
-					<p class="mb-5 font-galdeano">
-						At kitschy co. ✨, our goal is to create a unique experience 🌟 and a welcoming
-						environment 🏡 that will entice our customers' to return time and time again 💫.
-					</p>
-					<div class="flex h-52">
-						<img
-							style:scale="0.40"
-							class="head--tilt2"
-							src={girlSequence[(currentTheme + 1) % 3]}
-							alt="girl tilting her head"
-						/>
-						<SignupDialog data={data.signupForm} primary={ct.primary} />
-					</div>
-				</div>
+				<HeroMessage src={girlSequence[currentTheme]} primary={ct.primary} />
+				<CallToAction src={girlSequence[(currentTheme + 1) % 3]} primary={ct.primary} />
 			</div>
 		</div>
 	{/key}
@@ -90,16 +54,11 @@
 </div>
 
 <style>
-	.outlined {
-		-webkit-text-stroke: 2px white;
-		paint-order: stroke fill;
-	}
-
-	.head--tilt {
+	:global(.head--tilt) {
 		animation: 0.75s tilt linear infinite alternate;
 	}
 
-	.head--tilt2 {
+	:global(.head--tilt2) {
 		animation: 0.75s tilt linear infinite alternate-reverse;
 	}
 
