@@ -22,57 +22,104 @@
 	const cartItems = $state(_cartItems);
 </script>
 
-<div class="border-2 border-black rounded-3xl">
-	<div class="flex gap-4 items-center p-3 border-b-2 border-black">
+<div class="border-2 border-black rounded-3xl overflow-hidden">
+	<div class="flex items-center gap-4 p-3 border-b-2 border-black">
 		<Checkbox />
-		<h1 class="font-giphurs text-2xl">{categoryLabels[productsCategory]}</h1>
+		<h1 class="font-giphurs text-xl md:text-2xl">{categoryLabels[productsCategory]}</h1>
 	</div>
-	<ul>
-		{#each cartItems as { quantity, product }, i}
-			<li class="flex gap-4 items-center py-4 pl-4 font-giphurs">
-				<Checkbox />
-				<span>{product.name}</span>
-				<div class="grow"></div>
-				<div class="grid grid-cols-4 items-center justify-items-center">
-					<span>₱{product.price}</span>
-					<div class="flex items-center gap-3">
-						<Button
-							variant="outline"
-							size="icon"
-							class="bg-brand-base border-dotted border-black hover:bg-brand-purple-l"
-							onclick={() => (cartItems[i].quantity = Math.max(0, Number(quantity) - 1))}>-</Button
-						>
-						<input type="number" bind:value={cartItems[i].quantity} />
-						<Button
-							variant="outline"
-							size="icon"
-							class="bg-brand-base border-dotted border-black hover:bg-brand-purple-l"
-							onclick={() => (cartItems[i].quantity = Number(quantity) + 1)}>+</Button
-						>
-					</div>
-					<div class="w-24 text-center truncate">₱{(product.price * quantity).toFixed(2)}</div>
-					<Button size="icon" class="bg-transparent hover:bg-brand-purple-l">
-						<Icon icon="mdi:trash-can" class="text-brand-purple text-2xl"></Icon>
-					</Button>
+	<ul class="flex flex-col p-3">
+		<div class="overflow-x-auto">
+			<!-- Parent grid for products -->
+			<div class="min-w-[600px]">
+				<div class="grid grid-cols-5 place-items-center gap-4 auto-cols-max">
+					{#each cartItems as { product, quantity }, i}
+						<!-- Grid for each product's row -->
+						<!-- Product Column -->
+						<div class="flex items-center gap-4 min-w-full">
+							<Checkbox />
+							<div class="flex flex-col">
+								<span class="text-xs lg:text-sm">{product.name}</span>
+							</div>
+						</div>
+
+						<!-- Unit Price Column -->
+						<div class="text-center">
+							<span class="break-words">₱{product.price.toFixed(2)}</span>
+						</div>
+
+						<!-- Quantity Column -->
+						<div class="flex items-center gap-2">
+							<Button
+								variant="outline"
+								size="icon"
+								class="bg-brand-base border-dotted border-black hover:bg-brand-purple-l text-sm sm:text-base"
+								onclick={() => (cartItems[i].quantity = Math.max(0, Number(quantity) - 1))}
+								>-</Button
+							>
+							<input
+								type="number"
+								bind:value={cartItems[i].quantity}
+								class="w-12 text-center text-sm sm:text-base md:text-lg border border-black rounded"
+							/>
+							<Button
+								variant="outline"
+								size="icon"
+								class="bg-brand-base border-dotted border-black hover:bg-brand-purple-l text-sm sm:text-base"
+								onclick={() => (cartItems[i].quantity = Number(quantity) + 1)}>+</Button
+							>
+						</div>
+
+						<!-- Total Price Column -->
+						<div class="text-center">
+							<span class="break-words">₱{(product.price * quantity).toFixed(2)}</span>
+						</div>
+
+						<!-- Actions Column -->
+						<Button size="icon" class="bg-transparent hover:bg-brand-purple-l">
+							<Icon icon="mdi:trash-can" class="text-brand-purple text-lg sm:text-xl" />
+						</Button>
+					{/each}
 				</div>
-			</li>
-		{/each}
+			</div>
+		</div>
 	</ul>
 </div>
 
 <style>
+	.break-words {
+		word-wrap: break-word;
+	}
+
+	.overflow-x-auto {
+		overflow-x: auto;
+	}
+
+	input[type='number'] {
+		-moz-appearance: textfield;
+		appearance: textfield;
+		background-color: transparent;
+		text-align: center;
+		max-width: 3em;
+	}
+
 	input::-webkit-outer-spin-button,
 	input::-webkit-inner-spin-button {
 		-webkit-appearance: none;
 		margin: 0;
 	}
 
-	input[type='number'] {
-		-moz-appearance: textfield;
-		appearance: textfield;
+	@media (max-width: 600px) {
+		.text-sm {
+			font-size: 0.875rem;
+		}
+		.w-12 {
+			width: 2.5rem;
+		}
+	}
 
-		background-color: transparent;
-		max-width: 2.3em;
-		text-align: center;
+	@media (min-width: 768px) {
+		.text-sm {
+			font-size: 1rem;
+		}
 	}
 </style>

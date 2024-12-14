@@ -2,15 +2,15 @@
 	import { cart } from './state.svelte';
 	import CartItemCategory from './CartItemCategory.svelte';
 
-	const columnLabels = ['Unit Price', 'Quantity', 'Total Price', 'Actions'];
 	const productsCategories = Object.groupBy(cart, (a) => a.product.category);
 </script>
 
-<div class="flex flex-col gap-4 p-12">
-	<div class="grid grid-cols-4 gap-[66px] self-end px-6">
-		{#each columnLabels as columnLabel}
-			<span>{columnLabel}</span>
-		{/each}
+<div class="flex flex-col gap-2 p-12">
+	<div class="grid grid-cols-5 gap-4 place-items-center auto-cols-max p-3">
+		<div class="col-start-2 text-center">Unit Price</div>
+		<div class="text-center">Quantity</div>
+		<div class="text-center">Total Price</div>
+		<div class="text-center">Actions</div>
 	</div>
 	<div class="flex flex-col gap-8">
 		{#each Object.entries(productsCategories) as [productsCategory, cartItems]}
