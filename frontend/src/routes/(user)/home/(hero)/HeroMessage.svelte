@@ -1,12 +1,12 @@
 <script lang="ts">
-	const { src, primary } = $props();
+	const { src, secondary } = $props();
 </script>
 
-<div class="flex flex-col grow-0 basis-[30%]">
+<div class="flex flex-col grow-0 basis-[30%]" style="--outline: black">
 	<div class="font-allura text-7xl">
-		where <span class="outlined text-5xl font-gasoekOne" style:color={primary}>charm</span>
+		where <span class="outlined text-5xl font-gasoekOne" style:color={secondary}>charm</span>
 		meets
-		<span class="outlined text-5xl font-gasoekOne" style:color={primary}>convenience</span>
+		<span class="outlined text-5xl font-gasoekOne" style:color={secondary}>convenience</span>
 	</div>
 	<div class="flex items-center">
 		<img class="head--tilt" style:scale="0.40" {src} alt="girl tilting her head" />
@@ -16,7 +16,7 @@
 
 <style>
 	.outlined {
-		-webkit-text-stroke: 2px white;
+		-webkit-text-stroke: 1px var(--outline);
 		paint-order: stroke fill;
 	}
 </style>
