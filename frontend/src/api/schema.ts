@@ -1,3 +1,5 @@
+import { z } from 'zod';
+
 export enum STATUS {
 	READY,
 	ARCHIVED
@@ -30,7 +32,20 @@ export type ProductSchema = {
 	creators: string[]; // uuid[]
 };
 
-export type CartItemSchema = {
-	quantity: number;
-	product: ProductSchema;
-};
+export const signupSchema = z.object({
+	email: z.string().email(),
+	first_name: z.string().min(1).max(255),
+	last_name: z.string().min(1).max(255),
+	password1: z.string().min(6).max(255),
+	password2: z.string().min(6).max(255),
+	phone_number: z.string(), // should have a regex for phone number
+	region: z.string().min(1).max(255),
+	city: z.string().min(1).max(255),
+	barangay: z.string().min(1).max(255),
+	postal_code: z.string().min(1).max(255),
+	detailed_address: z.string().min(1)
+});
+export type SignupSchema = typeof signupSchema;
+
+export const loginSchema = z.object({}).merge(signupSchema.pick({ email: true, password1: true }));
+export type LoginSchema = typeof loginSchema;

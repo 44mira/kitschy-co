@@ -3,7 +3,7 @@
 	import { toImageUrl } from '$lib/utils/index';
 	import ticketBg from '$lib/assets/users/ticketBg.png';
 	import * as Form from '$lib/components/ui/form';
-	import { signupSchema } from '$lib/api/schema';
+	import { signupSchema } from '@/api/schema';
 	import { superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import Combobox from '@/lib/components/Combobox.svelte';
@@ -35,7 +35,7 @@
 	>
 		<form method="POST" class="py-4 pr-16 pl-60 flex flex-col justify-center">
 			<div class="grid grid-cols-2 gap-4 gap-y-0">
-				<Form.Field {form} name="firstName">
+				<Form.Field {form} name="first_name">
 					<Form.Control>
 						<div class="field">
 							<Form.Label>First Name:</Form.Label>
@@ -44,7 +44,7 @@
 					</Form.Control>
 				</Form.Field>
 
-				<Form.Field {form} name="lastName">
+				<Form.Field {form} name="last_name">
 					<Form.Control>
 						<div class="field">
 							<Form.Label>Last Name:</Form.Label>
@@ -62,7 +62,7 @@
 					</Form.Control>
 				</Form.Field>
 
-				<Form.Field {form} name="phoneNo">
+				<Form.Field {form} name="phone_number">
 					<Form.Control>
 						<div class="field">
 							<Form.Label>Phone No.:</Form.Label>
@@ -71,7 +71,7 @@
 					</Form.Control>
 				</Form.Field>
 
-				<Form.Field {form} name="password">
+				<Form.Field {form} name="password1">
 					<Form.Control>
 						<div class="field">
 							<Form.Label>Password:</Form.Label>
@@ -80,7 +80,7 @@
 					</Form.Control>
 				</Form.Field>
 
-				<Form.Field {form} name="confirmPassword">
+				<Form.Field {form} name="password2">
 					<Form.Control>
 						<div class="field">
 							<Form.Label>Confirm Password:</Form.Label>
