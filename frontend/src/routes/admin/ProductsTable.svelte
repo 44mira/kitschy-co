@@ -23,9 +23,9 @@
 	<table class="w-full">
 		<thead class="border-b-2 border-brand-purple-d">
 			<tr>
-				<th class="min-w-20">Image</th>
+				<th class="w-20">Image</th>
 				<th class="min-w-20 w-[15%]">Product Name</th>
-				<th class="min-w-20 w-[10%]">Category</th>
+				<th class="min-w-20 w-fit">Category</th>
 				<th class="hidden lg:block min-w-20 w-[15%]">Description</th>
 				<th class="min-w-20 w-[10%]">Price</th>
 				<th class="min-w-28 max-w-40">Last Updated</th>
