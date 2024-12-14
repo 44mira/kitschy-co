@@ -3,6 +3,7 @@
 !backend/.pre-commit-config.yaml
 !backend/.flake8
 backend/**/__pycache__/
+backend/backend/static/
 *.pyc
 
 node_modules
