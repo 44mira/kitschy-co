@@ -6,18 +6,18 @@ import { zod } from 'sveltekit-superforms/adapters';
 
 export const load: PageServerLoad = async () => {
 	return {
-		form: await superValidate(zod(addProductSchema))
+		addProductForm: await superValidate(zod(addProductSchema))
 	};
 };
 
 export const actions: Actions = {
 	default: async (event) => {
-		const form = await superValidate(event, zod(addProductSchema));
-		if (form.valid) {
-			return fail(400, { form });
+		const addProductForm = await superValidate(event, zod(addProductSchema));
+		if (addProductForm.valid) {
+			return fail(400, { addProductForm });
 		}
 		return {
-			form
+			addProductForm
 		};
 	}
 };

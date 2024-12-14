@@ -7,9 +7,12 @@
 	import InsightsTab from './InsightsTab.svelte';
 	import ProductsTab from './ProductsTab.svelte';
 	import OrdersTab from './OrdersTab.svelte';
+	import { setContext } from 'svelte';
+	import type { PageData } from './$types';
 
-	import type { PageData } from './$types.js';
-	let { data } = $props();
+	let {data}: {data: PageData } = $props();
+	setContext('addProductForm', data.addProductForm);
+	console.log(data.addProductForm);
 
 	let tab = $state('insights_tab');
 	let durationFilter = $state('Day');
@@ -97,7 +100,7 @@
 		{#if tab === 'insights_tab'}
 			<InsightsTab />
 		{:else if tab === 'products_tab'}
-			<ProductsTab {data} />
+			<ProductsTab />
 		{:else if tab === 'orders_tab'}
 			<OrdersTab />
 		{/if}
