@@ -10,7 +10,7 @@
 	import { setContext } from 'svelte';
 	import type { PageData } from './$types';
 
-	let {data}: {data: PageData } = $props();
+	let { data }: { data: PageData } = $props();
 	setContext('addProductForm', data.addProductForm);
 	console.log(data.addProductForm);
 
