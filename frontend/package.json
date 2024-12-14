@@ -13,6 +13,8 @@
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
+		"@fontsource/allura": "^5.1.0",
+		"@fontsource/galdeano": "^5.1.0",
 		"@iconify/svelte": "^4.0.2",
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/kit": "^2.5.27",
@@ -37,6 +39,7 @@
 	"type": "module",
 	"dependencies": {
 		"autoprefixer": "^10.4.20",
-		"cmdk-sv": "^0.0.18"
+		"cmdk-sv": "^0.0.18",
+		"postcss-import": "^16.1.0"
 	}
 }
