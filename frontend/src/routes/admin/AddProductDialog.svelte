@@ -20,6 +20,6 @@
 		<Icon icon={icons.add} class="text-brand-base w-[70px] h-[70px]" />
 	</Dialog.Trigger>
 	<Dialog.Content class="bg-[#fff5fe] border-none w-[750px]">
-		<AddProductForm />
+		<AddProductForm bind:isOpen />
 	</Dialog.Content>
 </Dialog.Root>

@@ -19,6 +19,7 @@
 	};
 
 	let data: SuperValidated<Infer<AddProductSchema>> = getContext('addProductForm');
+	let { isOpen = $bindable() } = $props();
 
 	const addProductForm = superForm(data, {
 		validators: zodClient(addProductSchema)
@@ -62,8 +63,6 @@
 			creatorsValue.push(uuid);
 		}
 	}
-
-	let isOpen = $state(false);
 </script>
 
 <form method="POST">
