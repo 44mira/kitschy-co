@@ -22,7 +22,7 @@
 	let descending = $state(false);
 </script>
 
-<div class="h-full">
+<div class="h-full flex flex-col">
 	<!-- SEARCH BAR & FILTER -->
 	<div class="flex gap-4 items-center">
 		<div class="relative">
@@ -58,5 +58,7 @@
 	</div>
 
 	<!-- -------- -->
-	<OrdersTable bind:orders={filteredOrders} />
+	<div class="grow">
+		<OrdersTable bind:orders={filteredOrders} />
+	</div>
 </div>
