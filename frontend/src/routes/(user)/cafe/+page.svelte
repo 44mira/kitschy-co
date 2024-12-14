@@ -2,7 +2,7 @@
 	import roof from '$lib/assets/users/roof.png';
 	import Hero from './Hero.svelte';
 	import CafeItem from './CafeItem.svelte';
-	import mockProducts from './mockData';
+	import { mockProducts } from './mockData';
 </script>
 
 <div class="cafe__body max-h-screen min-h-screen flex flex-col">

@@ -1,11 +1,11 @@
 import { type ProductSchema, PRODUCT_STATUS, CATEGORY } from '@/api/schema';
 
-const mockCreators = [
+export const mockCreators = [
 	'69a723cd-fc42-4522-b30b-eb7a2b20f23f',
 	'c9327099-1876-4710-b068-f6b706a814a0'
 ];
 
-const mockProducts: ProductSchema[] = [
+export const mockProducts: ProductSchema[] = [
 	{
 		product_id: 'bd58c563-0af3-4eee-bdd8-8716e842f7ac',
 		images: [
@@ -97,5 +97,3 @@ const mockProducts: ProductSchema[] = [
 		creators: [mockCreators[1]]
 	}
 ];
-
-export default mockProducts;

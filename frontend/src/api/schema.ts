@@ -23,7 +23,7 @@ export enum ORDER_STATUS {
 export enum PAYMENT_METHOD {
 	COD,
 	ONLINE
-}
+};
 
 export type ProductImagesSchema = {
 	img_url: string;
@@ -49,17 +49,19 @@ export type CartItemSchema = {
 	product: ProductSchema;
 };
 
+export type OrderItemSchema = CartItemSchema 
+
 export type OrderSchema = {
 	order_id: string; // uuid
 	total: number;
-	items: string;
+	items: OrderItemSchema[];
 	method: PAYMENT_METHOD;
 	status: ORDER_STATUS;
 	delivery_date: Date;
 	created_at: Date;
 	updated_at: Date;
 	user: string; // uuid
-}
+};
 
 export const signupSchema = z.object({
 	email: z.string().email(),
