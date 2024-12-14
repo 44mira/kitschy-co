@@ -33,19 +33,19 @@ export type ProductSchema = {
 };
 
 export const signupSchema = z.object({
-	firstname: z.string().min(1).max(255),
-	lastname: z.string().min(1).max(255),
 	email: z.string().email(),
-	phoneNo: z.string(), // should have a regex for phone number
-	password: z.string().min(6).max(255),
-	confirmPassword: z.string().min(6).max(255),
+	first_name: z.string().min(1).max(255),
+	last_name: z.string().min(1).max(255),
+	password1: z.string().min(6).max(255),
+	password2: z.string().min(6).max(255),
+	phone_number: z.string(), // should have a regex for phone number
 	region: z.string().min(1).max(255),
 	city: z.string().min(1).max(255),
 	barangay: z.string().min(1).max(255),
-	postalCode: z.string().min(1).max(255),
-	detailedAddress: z.string().min(1)
+	postal_code: z.string().min(1).max(255),
+	detailed_address: z.string().min(1)
 });
 export type SignupSchema = typeof signupSchema;
 
-export const loginSchema = z.object({}).merge(signupSchema.pick({ email: true, password: true }));
+export const loginSchema = z.object({}).merge(signupSchema.pick({ email: true, password1: true }));
 export type LoginSchema = typeof loginSchema;
