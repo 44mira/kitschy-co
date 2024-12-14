@@ -10,7 +10,7 @@ export const mockProducts: ProductSchema[] = [
 		product_id: 'bd58c563-0af3-4eee-bdd8-8716e842f7ac',
 		images: [
 			{
-				img_url: 'https://example.com/images/product1.jpg',
+				img_url: 'https://m.media-amazon.com/images/I/71HZe2JJDrL._AC_UF894,1000_QL80_.jpg',
 				alt_desc: 'A sleek ceramic mug with a modern design'
 			}
 		],
@@ -28,7 +28,8 @@ export const mockProducts: ProductSchema[] = [
 		product_id: '8327e528-c4e2-41ed-9e01-10ab2b03b868',
 		images: [
 			{
-				img_url: 'https://example.com/images/product2.jpg',
+				img_url:
+					'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgSrOCBZETXlZh44Rt9w4OL3WPo5Nk5fDQPA&s',
 				alt_desc: 'A vibrant abstract art print'
 			}
 		],
@@ -46,7 +47,7 @@ export const mockProducts: ProductSchema[] = [
 		product_id: '36fdd7aa-fb09-4fe2-b8c2-b3b841526e18',
 		images: [
 			{
-				img_url: 'https://example.com/images/product3.jpg',
+				img_url: 'https://toyshine.in/cdn/shop/files/keychain3_480x480@2x.jpg?v=1706524664',
 				alt_desc: 'A handy multipurpose keychain'
 			}
 		],
@@ -64,7 +65,8 @@ export const mockProducts: ProductSchema[] = [
 		product_id: 'ad3da2ba-168a-4d3e-9744-6f9723609783',
 		images: [
 			{
-				img_url: '',
+				img_url:
+					'https://flourdeliz.com/wp-content/uploads/2023/11/maple-cupcakes-featured-image-1.jpg',
 				alt_desc: 'A pack of organic whole bean coffee'
 			}
 		],
@@ -82,7 +84,7 @@ export const mockProducts: ProductSchema[] = [
 		product_id: 'ac032632-f5f8-41e4-be9f-1154f88a0948',
 		images: [
 			{
-				img_url: 'https://example.com/images/product5.jpg',
+				img_url: 'https://i.ebayimg.com/images/g/9KAAAOSwG5pgZPiM/s-l400.jpg',
 				alt_desc: 'A creative DIY candle-making kit'
 			}
 		],

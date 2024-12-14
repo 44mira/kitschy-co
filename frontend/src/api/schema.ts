@@ -23,7 +23,7 @@ export enum ORDER_STATUS {
 export enum PAYMENT_METHOD {
 	COD,
 	ONLINE
-};
+}
 
 export type ProductImagesSchema = {
 	img_url: string;
@@ -49,7 +49,7 @@ export type CartItemSchema = {
 	product: ProductSchema;
 };
 
-export type OrderItemSchema = CartItemSchema 
+export type OrderItemSchema = CartItemSchema;
 
 export type OrderSchema = {
 	order_id: string; // uuid
