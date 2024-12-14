@@ -5,14 +5,14 @@
 </script>
 
 <div class="callcard p-4 shadow shadow-black mx-auto">
-	<div
-		class="h-full w-full border-[3px] rounded-xl flex items-center justify-center"
-		style:border-color={primary}
-	>
-		<button onclick={() => (hs.currentTheme = theme)}>
+	<button class="h-full w-full" onclick={() => (hs.currentTheme = theme)}>
+		<div
+			class="h-full w-full border-[3px] rounded-xl flex items-center justify-center"
+			style:border-color={primary}
+		>
 			<img {src} alt="card icon" class="" />
-		</button>
-	</div>
+		</div>
+	</button>
 </div>
 
 <style>
