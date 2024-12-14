@@ -12,7 +12,7 @@ export type HeaderCard = {
 
 const HeaderCardContents: HeaderCard[] = [
 	{
-		bgColor: '#FF9B7A',
+		bgColor: '#fc81ae',
 		bgIcon: pinkFlower,
 		headerColor: '#EF216D',
 		headerContent: 'who we are',
@@ -24,7 +24,7 @@ merchandise ✨ that adds a touch of whimsy to your day.
 `
 	},
 	{
-		bgColor: '#F9F871',
+		bgColor: '#abd6f7',
 		bgIcon: blueStar,
 		headerColor: '#5EB5E3',
 		headerContent: 'our mission',
@@ -36,7 +36,7 @@ merchandise 🎀.
 `
 	},
 	{
-		bgColor: '#FF9B7A',
+		bgColor: '#d7f77e',
 		bgIcon: greenButterfly,
 		headerColor: '#B0D253',
 		headerContent: 'our vision',
