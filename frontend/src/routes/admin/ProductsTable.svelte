@@ -1,13 +1,12 @@
 <script lang="ts">
 	import { type ProductSchema } from '@/api/schema';
-  import ProductRow from './ProductRow.svelte';
+	import ProductRow from './ProductRow.svelte';
 
 	type Props = {
 		products: ProductSchema[];
 	};
 
 	let { products = $bindable() }: Props = $props();
-
 </script>
 
 <div class="overflow-scroll h-full">

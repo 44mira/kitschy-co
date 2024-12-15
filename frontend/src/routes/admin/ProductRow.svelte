@@ -1,7 +1,9 @@
 <script lang="ts">
+	import EditProductForm from './EditProductForm.svelte';
 	import { type ProductSchema } from '@/api/schema';
 	import { formatDate } from '@/lib/utils';
 	import { Badge } from '$lib/components/ui/badge';
+	import * as Dialog from '$lib/components/ui/dialog';
 
 	type Props = {
 		product: ProductSchema;
@@ -15,9 +17,17 @@
 		{ color: '#F9F871', text: 'Mini-Mart' },
 		{ color: '#32BEAF', text: 'Workshop' }
 	];
+
+	let isOpen = $state(false);
 </script>
 
-<tr onclick={() => {}} class="hover:bg-slate-400">
+<!-- ROW -->
+<tr
+	onclick={() => {
+		isOpen = true;
+	}}
+	class="hover:bg-slate-400"
+>
 	<td>{product.images[0]}</td>
 	<td>{product.name}</td>
 	<td>
@@ -35,3 +45,10 @@
 	<td class="text-center">{formatDate(product.updated_at)}</td>
 	<td class="text-center">{product.quantity}</td>
 </tr>
+
+<!-- DIALOG -->
+<Dialog.Root bind:open={isOpen}>
+	<Dialog.Content class="bg-[#fff5fe] border-none w-[750px]">
+		<EditProductForm bind:isOpen {product} />
+	</Dialog.Content>
+</Dialog.Root>
