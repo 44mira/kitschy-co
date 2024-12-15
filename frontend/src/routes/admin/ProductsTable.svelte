@@ -41,10 +41,4 @@
 	td {
 		@apply px-3 py-1;
 	}
-
-	@media only screen and (min-width: 1024px) {
-		.desc {
-			@apply line-clamp-1;
-		}
-	}
 </style>

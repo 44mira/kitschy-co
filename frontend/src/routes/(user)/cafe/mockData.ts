@@ -10,7 +10,7 @@ const mockProducts: ProductSchema[] = [
 		product_id: 'bd58c563-0af3-4eee-bdd8-8716e842f7ac',
 		images: [
 			{
-				img_url: 'https://example.com/images/product1.jpg',
+				img_url: 'https://m.media-amazon.com/images/I/71HZe2JJDrL._AC_UF894,1000_QL80_.jpg',
 				alt_desc: 'A sleek ceramic mug with a modern design'
 			}
 		],
@@ -46,7 +46,8 @@ const mockProducts: ProductSchema[] = [
 		product_id: '36fdd7aa-fb09-4fe2-b8c2-b3b841526e18',
 		images: [
 			{
-				img_url: 'https://example.com/images/product3.jpg',
+				img_url:
+					'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgSrOCBZETXlZh44Rt9w4OL3WPo5Nk5fDQPA&s',
 				alt_desc: 'A handy multipurpose keychain'
 			}
 		],

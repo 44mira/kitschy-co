@@ -63,18 +63,28 @@
 						onmouseenter={() => (isHoveringMainImage = true)}
 						onmouseleave={() => (isHoveringMainImage = false)}
 					>
-						<Icon
-							icon={icons.add}
-							class={`${isHoveringMainImage ? 'hidden' : ''} opacity-100 transition-opacity ease-in hover:opacity-0 w-[250px] h-[250px] text-brand-purple-d`}
-						/>
-						<div
-							class={`${isHoveringMainImage ? '' : 'hidden'} opacity-0 transition-opacity ease-in hover:opacity-100 flex flex-col items-center justify-center w-full h-full border-[5px] hover:border-brand-purple-d border-brand-purple-l rounded-2xl`}
-						>
-							<img src={dndIcon} alt="Drag and drop icon" class="w-[123px] h-[110px]" />
-							<p class="text-brand-purple-d text-center pt-2 text-xl font-giphurs font-semibold">
-								Drag and drop or click here
-							</p>
-						</div>
+						{#if values && values.images && values.images.length > 0}
+							{#each values.images as image}
+								<img
+									src={image.img_url}
+									alt={image.alt_desc}
+									class="w-[250px] h-[250px] rounded-xl"
+								/>
+							{/each}
+						{:else}
+							<Icon
+								icon={icons.add}
+								class={`${isHoveringMainImage ? 'hidden' : ''} opacity-100 transition-opacity ease-in hover:opacity-0 w-[250px] h-[250px] text-brand-purple-d`}
+							/>
+							<div
+								class={`${isHoveringMainImage ? '' : 'hidden'} opacity-0 transition-opacity ease-in hover:opacity-100 flex flex-col items-center justify-center w-full h-full border-[5px] hover:border-brand-purple-d border-brand-purple-l rounded-2xl`}
+							>
+								<img src={dndIcon} alt="Drag and drop icon" class="w-[123px] h-[110px]" />
+								<p class="text-brand-purple-d text-center pt-2 text-xl font-giphurs font-semibold">
+									Drag and drop or click here
+								</p>
+							</div>
+						{/if}
 					</div>
 				</Form.Label>
 				<input id="images-input" type="file" multiple class="w-0 h-0 p-0" accept="image/*" />

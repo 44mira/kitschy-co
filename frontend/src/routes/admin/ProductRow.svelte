@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { categories } from './admin.ts';
 	import EditProductForm from './EditProductForm.svelte';
 	import { type ProductSchema } from '@/api/schema';
 	import { formatDate } from '@/lib/utils';
@@ -9,14 +10,6 @@
 		product: ProductSchema;
 	};
 	let { product }: Props = $props();
-
-	let categories = [
-		{ color: '#4D1078', text: 'Merchandise' },
-		{ color: '#F1ABFF', text: 'Printing' },
-		{ color: '#FB7A4F', text: 'Cafe & Pastries' },
-		{ color: '#F9F871', text: 'Mini-Mart' },
-		{ color: '#32BEAF', text: 'Workshop' }
-	];
 
 	let isOpen = $state(false);
 </script>
@@ -36,7 +29,7 @@
 				class="text-crinkles text-center"
 				style={`background: ${categories[product.category].color}77; border: 1px solid ${categories[product.category].color}`}
 			>
-				{categories[product.category].text}
+				{categories[product.category].label}
 			</Badge>
 		</div>
 	</td>
@@ -52,3 +45,11 @@
 		<EditProductForm bind:isOpen {product} />
 	</Dialog.Content>
 </Dialog.Root>
+
+<style>
+	@media only screen and (min-width: 1024px) {
+		.desc {
+			@apply line-clamp-1;
+		}
+	}
+</style>
