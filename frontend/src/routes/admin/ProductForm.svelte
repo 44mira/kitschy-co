@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { ProductSchema } from '@/api/schema';
+	import { creators, categories, icons, darkTextCategories } from './admin.ts';
 	import * as Form from '$lib/components/ui/form';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import { Textarea } from '$lib/components/ui/textarea';
@@ -12,36 +13,15 @@
 	};
 	let { form, values }: Props = $props();
 
-	let isHoveredMainImage = $state(false);
+	let isHoveringMainImage = $state(false);
 
-	const icons = {
-		add: 'mdi:add',
-		delete: 'mdi:delete-forever-outline',
-		save: 'mdi:content-save-outline',
-		close: 'mdi:close'
-	};
-
-	let creators = [
-		{ uuid: '1', name: 'admin1', color: '#ee1768' },
-		{ uuid: '2', name: 'admin2', color: '#5eb5e3' },
-		{ uuid: '3', name: 'admin3', color: '#b0d253' }
-	];
-
-	let categories = [
-		{ value: 'merch', label: 'Merchandise', color: '#4D1078' },
-		{ value: 'print', label: "Misbeek's Printing", color: '#ffabff' },
-		{ value: 'cafe', label: 'Cafe & Pastries', color: '#FB7A4F' },
-		{ value: 'minimart', label: 'Mini-mart', color: '#F9F871' },
-		{ value: 'workshop', label: 'Workshop', color: '#32beaf' }
-	];
-	let darkTextCategories = ['print', 'minimart'];
-	let categoryValue = $state(values ? categories[values.category].value : '') ;
+	let categoryValue = $state(values ? categories[values.category].value : '');
 	const triggerCategory = $derived(
 		categories.find((c) => c.value === categoryValue)?.label ?? 'Select Category'
 	);
 
 	// uuids of the creators
-	let creatorsValue = $state([]) as string[];
+	let creatorsValue = $state(values ? values.creators : []) as string[];
 
 	/**
 	 * Adds a creator to the creatorsValue list if it's not there yet, otherwise remove
@@ -65,29 +45,30 @@
 			type="text"
 			placeholder="Product Name"
 			class="p-0 bg-transparent border-none text-2xl font-semibold"
-      value="{values ? values.name : ''}"
+			value={values ? values.name : ''}
 		/>
 	</Form.Control>
 	<Form.FieldErrors />
 </Form.Field>
+
 <div class="flex gap-4">
 	<div id="left">
 		<Form.Field {form} name="productImages">
 			<Form.Control>
 				<Form.Label for="images-input">
 					<div
-						class={`${isHoveredMainImage ? 'hiddenl' : ''} w-[250px] h-[250px] transition ease-in bg-brand-purple-l hover:bg-[#F8EEFF] rounded-xl flex items-center justify-center`}
+						class={`${isHoveringMainImage ? 'hiddenl' : ''} w-[250px] h-[250px] transition ease-in bg-brand-purple-l hover:bg-[#F8EEFF] rounded-xl flex items-center justify-center`}
 						role="button"
 						tabindex="0"
-						onmouseenter={() => (isHoveredMainImage = true)}
-						onmouseleave={() => (isHoveredMainImage = false)}
+						onmouseenter={() => (isHoveringMainImage = true)}
+						onmouseleave={() => (isHoveringMainImage = false)}
 					>
 						<Icon
 							icon={icons.add}
-							class={`${isHoveredMainImage ? 'hidden' : ''} opacity-100 transition-opacity ease-in hover:opacity-0 w-[250px] h-[250px] text-brand-purple-d`}
+							class={`${isHoveringMainImage ? 'hidden' : ''} opacity-100 transition-opacity ease-in hover:opacity-0 w-[250px] h-[250px] text-brand-purple-d`}
 						/>
 						<div
-							class={`${isHoveredMainImage ? '' : 'hidden'} opacity-0 transition-opacity ease-in hover:opacity-100 flex flex-col items-center justify-center w-full h-full border-[5px] hover:border-brand-purple-d border-brand-purple-l rounded-2xl`}
+							class={`${isHoveringMainImage ? '' : 'hidden'} opacity-0 transition-opacity ease-in hover:opacity-100 flex flex-col items-center justify-center w-full h-full border-[5px] hover:border-brand-purple-d border-brand-purple-l rounded-2xl`}
 						>
 							<img src={dndIcon} alt="Drag and drop icon" class="w-[123px] h-[110px]" />
 							<p class="text-brand-purple-d text-center pt-2 text-xl font-giphurs font-semibold">
@@ -104,10 +85,16 @@
 		<Form.Field {form} name="quantity" class="flex items-center">
 			<Form.Control>
 				<Form.Label class="text-brand-purple-d text-lg font-normal mt-2">In Stock:</Form.Label>
-				<input type="number" placeholder="0" class="bg-transparent border-none text-lg w-40" value={values ? values.quantity : ''}/>
+				<input
+					type="number"
+					placeholder="0"
+					class="bg-transparent border-none text-lg w-40"
+					value={values ? values.quantity : ''}
+				/>
 			</Form.Control>
 		</Form.Field>
 	</div>
+
 	<div id="right" class="flex-grow">
 		<Form.Field {form} name="category" class="grid grid-cols-9 items-center gap-2">
 			<Form.Control>
@@ -175,6 +162,7 @@
 			</Form.Control>
 			<Form.FieldErrors />
 		</Form.Field>
+
 		<Form.Field {form} name="price" class="grid grid-cols-9 items-center gap-2">
 			<Form.Control>
 				<Form.Label class="text-brand-purple-d text-lg font-normal col-span-2 mt-2"
@@ -182,18 +170,24 @@
 				>
 				<div class="col-span-7 flex items-center">
 					<span>₱</span>
-					<input type="text" placeholder="0.00" class="bg-transparent border-none text-md p-0" value={values ? values.price : ''}/>
+					<input
+						type="text"
+						placeholder="0.00"
+						class="bg-transparent border-none text-md p-0"
+						value={values ? values.price : ''}
+					/>
 				</div>
 			</Form.Control>
 			<Form.FieldErrors />
 		</Form.Field>
+
 		<Form.Field {form} name="description" class="space-y-0">
 			<Form.Control>
 				<Form.Label class="text-brand-purple-d text-lg font-normal">Description:</Form.Label>
 				<Textarea
 					placeholder="Add a description to give users more context on the product. Be detailed and thorough. Possible important information: units, dimensions, material."
 					class="bg-transparent border-none resize-none h-[150px]"
-          value={values ? values.desc : ''}
+					value={values ? values.desc : ''}
 				/>
 			</Form.Control>
 			<Form.FieldErrors />

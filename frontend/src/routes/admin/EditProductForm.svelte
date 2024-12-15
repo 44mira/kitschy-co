@@ -1,5 +1,5 @@
 <script lang="ts">
-  import ProductForm from './ProductForm.svelte'
+	import ProductForm from './ProductForm.svelte';
 	import * as Form from '$lib/components/ui/form';
 	import * as Dialog from '$lib/components/ui/dialog';
 	import { Button } from '$lib/components/ui/button';
@@ -22,12 +22,11 @@
 	const addProductForm = superForm(data, {
 		validators: zodClient(addProductSchema)
 	});
-
 </script>
 
 <form method="POST">
-  <ProductForm form={addProductForm} values={product}/>
- 
+	<ProductForm form={addProductForm} values={product} />
+
 	<div id="actions" class="flex justify-end gap-4">
 		<!-- CLOSE BUTTON -->
 		<Dialog.Root>
@@ -68,6 +67,6 @@
 		>
 			<Icon icon={icons.save} class="w-6 h-6" />
 			<span>Add Item</span>
-      </Form.Button >
+		</Form.Button>
 	</div>
 </form>
