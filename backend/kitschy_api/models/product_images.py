@@ -7,7 +7,7 @@ from .products import Product
 
 class ProductImage(models.Model):
     def get_s3_path(instance, filename):
-        return f"product_images/{filename}" # AWS S3 bucket path
+        return f"product_images/{filename}"  # AWS S3 bucket path
 
     product_image_id = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False

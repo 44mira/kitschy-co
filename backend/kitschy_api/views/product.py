@@ -18,7 +18,7 @@ class BatchedImageProductSerializer(ProductSerializer):
     images = inline_serializer(
         name="ProductImages",
         fields={
-            "img_url": serializers.FileField(), 
+            "img_url": serializers.FileField(),
             "alt_desc": serializers.CharField(),
         },
         many=True,
