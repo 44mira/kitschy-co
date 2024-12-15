@@ -1,72 +1,50 @@
 <script lang="ts">
-	import banner from '$lib/assets/users/carousel_banner.png';
-	export let items = [
-		{
-			image: banner,
-			alt: 'Banner 1'
-		},
-		{
-			image: banner,
-			alt: 'Banner 2'
-		},
-		{
-			image: banner,
-			alt: 'Banner 3'
-		}
-	];
+	import { items } from './mockData';
+	import { fly } from 'svelte/transition';
+	import { backInOut } from 'svelte/easing';
 
-	let currentIndex = 0; // Start from the first slide
+	let currentIndex = $state(0); // Start from the first slide
+	let direction = $state(1);
 
-	// Adjust index to reflect the "virtual" position
-	const adjustIndex = () => {
-		if (currentIndex < 0) {
-			// If at the first slide, jump to the last slide
-			currentIndex = items.length - 1;
-		} else if (currentIndex >= items.length) {
-			// If at the last slide, jump to the first slide
-			currentIndex = 0;
-		}
-	};
+	function setIndex(new_idx: number) {
+		direction = new_idx > currentIndex ? 1 : -1;
+		currentIndex = new_idx;
+	}
 
-	// Move to the next slide
-	const nextSlide = () => {
-		currentIndex++;
-		adjustIndex(); // Ensure the index is adjusted for looping
-	};
-
-	// Move to the previous slide
-	const prevSlide = () => {
-		currentIndex--;
-		adjustIndex(); // Ensure the index is adjusted for looping
-	};
-
-	// Jump to a specific slide (dot navigation)
-	const goToSlide = (index: number) => {
-		currentIndex = index;
-	};
+	function move(count: 1 | -1) {
+		direction = count;
+		currentIndex = (currentIndex + count) % 3;
+		if (currentIndex < 0) currentIndex = 2; // loop back
+	}
 </script>
 
 <div class="carousel-container">
-	<div class="carousel-wrapper" style="transform: translateX(-{currentIndex * 100}%);">
-		{#each items as { image, alt }}
-			<div class="carousel-slide">
-				<!-- Background Image -->
-				<div class="carousel-image" style="background-image: url({image});" aria-label={alt}></div>
-				<!-- Overlay -->
-				<div class="carousel-overlay"></div>
-			</div>
-		{/each}
+	<div class="flex w-full h-full">
+		<div class="h-full min-w-full">
+			{#key currentIndex}
+				<div
+					class="absolute h-full w-full bg-contain bg-center bg-no-repeat"
+					style:background-image="url({items[currentIndex].image})"
+					out:fly={{ x: -1000 * direction, duration: 500, easing: backInOut }}
+					in:fly={{ x: 1000 * direction, delay: 100, duration: 500, easing: backInOut }}
+				></div>
+			{/key}
+		</div>
+		<div class="carousel-overlay"></div>
 	</div>
 
 	<!-- Navigation Controls -->
-	<button on:click={prevSlide} class="carousel-nav prev">&lt;</button>
-	<button on:click={nextSlide} class="carousel-nav next">&gt;</button>
+	<button onclick={() => move(-1)} class="carousel-nav left-3">&lt;</button>
+	<button onclick={() => move(1)} class="carousel-nav right-3">&gt;</button>
 
 	<!-- Dots Indicator -->
 	<div class="dots-container">
 		{#each items as _, index}
-			<!-- svelte-ignore a11y_consider_explicit_label -->
-			<button class="dot {currentIndex === index ? 'active' : ''}" on:click={() => goToSlide(index)}
+			<button
+				class="dot"
+				class:active={currentIndex == index}
+				onclick={() => setIndex(index)}
+				aria-label="dot"
 			></button>
 		{/each}
 	</div>
@@ -80,27 +58,6 @@
 		max-width: 100%;
 		margin: 0 auto;
 		overflow: hidden;
-	}
-
-	.carousel-wrapper {
-		display: flex;
-		width: 100%;
-		height: 100%;
-		transition: transform 0.5s ease-in-out;
-	}
-
-	.carousel-slide {
-		position: relative;
-		min-width: 100%;
-		height: 100%;
-	}
-
-	.carousel-image {
-		width: 100%;
-		height: 100%;
-		background-size: contain; /* Ensures the image fits within container */
-		background-position: center;
-		background-repeat: no-repeat;
 	}
 
 	.carousel-overlay {
@@ -125,14 +82,6 @@
 		font-size: 24px;
 		border-radius: 50%;
 		z-index: 10;
-	}
-
-	.prev {
-		left: 10px;
-	}
-
-	.next {
-		right: 10px;
 	}
 
 	.carousel-nav:hover {
