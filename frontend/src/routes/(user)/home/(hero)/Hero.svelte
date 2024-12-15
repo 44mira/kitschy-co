@@ -94,7 +94,10 @@
 		{/each}
 
 		<!-- spinning stamp -->
-		<button class="absolute bottom-32 inset-x-0 mx-auto max-w-fit z-[5]" onclick={nextTheme}>
+		<button
+			class="absolute bottom-32 inset-x-0 mx-auto max-w-fit z-[5] border-2 border-black border-dotted rounded-[99px]"
+			onclick={nextTheme}
+		>
 			<img class="stamp--rotate mx-auto" src={ct.stamp} alt="stamp" />
 		</button>
 	</div>
