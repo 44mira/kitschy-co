@@ -1,49 +1,12 @@
 <script lang="ts">
-	import banner from '$lib/assets/users/carousel_banner.png';
-	export let items = [
-		{
-			image: banner,
-			alt: 'Banner 1'
-		},
-		{
-			image: banner,
-			alt: 'Banner 2'
-		},
-		{
-			image: banner,
-			alt: 'Banner 3'
-		}
-	];
+	import { items } from './mockData';
 
-	let currentIndex = 0; // Start from the first slide
+	let currentIndex = $state(0); // Start from the first slide
 
-	// Adjust index to reflect the "virtual" position
-	const adjustIndex = () => {
-		if (currentIndex < 0) {
-			// If at the first slide, jump to the last slide
-			currentIndex = items.length - 1;
-		} else if (currentIndex >= items.length) {
-			// If at the last slide, jump to the first slide
-			currentIndex = 0;
-		}
-	};
-
-	// Move to the next slide
-	const nextSlide = () => {
-		currentIndex++;
-		adjustIndex(); // Ensure the index is adjusted for looping
-	};
-
-	// Move to the previous slide
-	const prevSlide = () => {
-		currentIndex--;
-		adjustIndex(); // Ensure the index is adjusted for looping
-	};
-
-	// Jump to a specific slide (dot navigation)
-	const goToSlide = (index: number) => {
-		currentIndex = index;
-	};
+	function move(count: number) {
+		currentIndex = (currentIndex + count) % 3;
+		if (currentIndex < 0) currentIndex = 2; // loop back
+	}
 </script>
 
 <div class="carousel-container">
@@ -59,14 +22,17 @@
 	</div>
 
 	<!-- Navigation Controls -->
-	<button on:click={prevSlide} class="carousel-nav prev">&lt;</button>
-	<button on:click={nextSlide} class="carousel-nav next">&gt;</button>
+	<button onclick={() => move(-1)} class="carousel-nav prev">&lt;</button>
+	<button onclick={() => move(1)} class="carousel-nav next">&gt;</button>
 
 	<!-- Dots Indicator -->
 	<div class="dots-container">
 		{#each items as _, index}
-			<!-- svelte-ignore a11y_consider_explicit_label -->
-			<button class="dot {currentIndex === index ? 'active' : ''}" on:click={() => goToSlide(index)}
+			<button
+				class="dot"
+				class:active={currentIndex == index}
+				onclick={() => (currentIndex = index)}
+				aria-label="dot"
 			></button>
 		{/each}
 	</div>
