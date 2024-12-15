@@ -81,7 +81,6 @@
 		</div>
 
 		<!-- cards -->
-		<!-- cards -->
 		{#each theme as { bgStart, icon }, index}
 			<div
 				class="callcard absolute bottom-0 inset-x-0 max-w-fit mx-auto"
