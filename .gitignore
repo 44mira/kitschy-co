@@ -2,6 +2,7 @@
 !.gitignore
 !backend/.pre-commit-config.yaml
 !backend/.flake8
+!backend/.vercel.json
 backend/**/__pycache__/
 backend/backend/static/
 *.pyc

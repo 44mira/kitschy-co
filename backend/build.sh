@@ -1,12 +1,13 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # Exit on error
 set -o errexit
 
 # Modify this line as needed for your package manager (pip, poetry, etc.)
-pipenv install
+python3 -m pip install -r requirements.txt
 
 # Convert static asset files
-pipenv run manage.py collectstatic --no-input
+python3 manage.py collectstatic --no-input
 
 # Apply any outstanding database migrations
-pipenv run manage.py migrate
+python3 run manage.py makemigrations
+python3 run manage.py migrate
