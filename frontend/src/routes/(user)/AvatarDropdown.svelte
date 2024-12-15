@@ -9,10 +9,10 @@
 	} from '$lib/components/ui/dropdown-menu';
 
 	const items = [
-		{ label: 'Profile', icon: 'mdi:face-man-shimmer' },
-		{ label: 'Orders', icon: 'mdi:package-variant' },
-		{ label: 'Sign-out', icon: 'mdi:logout' },
-		{ label: 'Membership', icon: 'mdi:tag-heart' }
+		{ label: 'Profile', icon: 'mdi:face-man-shimmer', link: 'profile' },
+		{ label: 'Orders', icon: 'mdi:package-variant', link: 'orders' },
+		{ label: 'Sign-out', icon: 'mdi:logout', link: 'home' },
+		{ label: 'Membership', icon: 'mdi:tag-heart', link: 'membership' }
 	];
 </script>
 
