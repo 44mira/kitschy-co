@@ -54,3 +54,36 @@ export const flyAndScale = (
 		easing: cubicOut
 	};
 };
+
+export const isToday = (date: Date) => {
+	const today = new Date();
+	return (
+		date.getDate() === today.getDate() &&
+		date.getMonth() === today.getMonth() &&
+		date.getFullYear() === today.getFullYear()
+	);
+};
+
+export const isYesterday = (date: Date) => {
+	const yesterday = new Date();
+	yesterday.setDate(yesterday.getDate() - 1);
+	return (
+		date.getDate() === yesterday.getDate() &&
+		date.getMonth() === yesterday.getMonth() &&
+		date.getFullYear() === yesterday.getFullYear()
+	);
+};
+
+export const formatDate = (date: Date) => {
+	if (isToday(date)) return 'Today';
+	if (isYesterday(date)) return 'Yesterday';
+	return date.toLocaleDateString('en-US', {
+		month: 'short',
+		day: 'numeric',
+		year: 'numeric'
+	});
+};
+
+export const capitalize = (str: string) => {
+	return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+};

@@ -1,7 +1,7 @@
 import type { PageServerLoad, Actions } from './$types.js';
 import { fail } from '@sveltejs/kit';
 import { superValidate } from 'sveltekit-superforms';
-import { signupSchema } from '$lib/api/schema';
+import { signupSchema } from '@/api/schema';
 import { zod, type ValidationAdapter } from 'sveltekit-superforms/adapters';
 
 export const load: PageServerLoad = async () => {
@@ -11,15 +11,27 @@ export const load: PageServerLoad = async () => {
 };
 
 export const actions: Actions = {
+	// runs when the signup form is submitted
 	default: async (event) => {
-		const form = await superValidate(event, zod(signupSchema));
-		if (!form.valid) {
-			return fail(400, {
-				form
+		const signupForm = await superValidate(event, zod(signupSchema));
+		if (!signupForm.valid) {
+			return fail(300, {
+				signupForm
 			});
 		}
-		return {
-			form
+
+		let data = signupForm.data;
+		let postData = {
+			...data,
+			address: {
+				region: data.region,
+				city: data.city,
+				barangay: data.barangay,
+				postal_code: data.postal_code,
+				detailed_address: data.detailed_address
+			}
 		};
+
+		return postData;
 	}
 };

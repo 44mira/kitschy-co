@@ -4,11 +4,12 @@
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import { Textarea } from '$lib/components/ui/textarea';
 	import { Button } from '$lib/components/ui/button';
-	import { addProductSchema, type AddProductSchema } from '$lib/api/adminSchema';
+	import { addProductSchema, type AddProductSchema } from '@/api/adminSchema';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import Icon from '@iconify/svelte';
 	import dndIcon from '$lib/assets/admin/icons/dndIcon.svg';
+	import { getContext } from 'svelte';
 
 	const icons = {
 		add: 'mdi:add',
@@ -17,7 +18,8 @@
 		close: 'mdi:close'
 	};
 
-	let { data }: { data: SuperValidated<Infer<AddProductSchema>> } = $props();
+	let data: SuperValidated<Infer<AddProductSchema>> = getContext('addProductForm');
+	let { isOpen = $bindable() } = $props();
 
 	const addProductForm = superForm(data, {
 		validators: zodClient(addProductSchema)
@@ -61,8 +63,6 @@
 			creatorsValue.push(uuid);
 		}
 	}
-
-	let isOpen = $state(false);
 </script>
 
 <form method="POST">

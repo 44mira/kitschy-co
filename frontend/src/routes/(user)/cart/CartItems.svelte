@@ -2,7 +2,15 @@
 	import { cart } from './state.svelte';
 	import CartItemCategory from './CartItemCategory.svelte';
 
-	const productsCategories = Object.groupBy(cart, (a) => a.product.category);
+	// requires Node.js 21.x
+	// const productsCategories = Object.groupBy(cart, (a) => a.product.category);
+
+	// requires Node.js 20.x
+	const productsCategories = cart.reduce((a, x) => {
+		a[x.product.category] = a[x.product.category] || [];
+		a[x.product.category].push(x);
+		return a;
+	}, Object.create(null));
 </script>
 
 <div class="flex flex-col gap-2 p-12">
