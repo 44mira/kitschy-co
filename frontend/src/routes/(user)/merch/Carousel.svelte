@@ -26,7 +26,7 @@
 					class="absolute h-full w-full bg-contain bg-center bg-no-repeat"
 					style:background-image="url({items[currentIndex].image})"
 					out:fly={{ x: -1000 * direction, duration: 500, easing: backInOut }}
-					in:fly={{ x: 1000 * direction, duration: 500, easing: backInOut }}
+					in:fly={{ x: 1000 * direction, delay: 100, duration: 500, easing: backInOut }}
 				></div>
 			{/key}
 		</div>
