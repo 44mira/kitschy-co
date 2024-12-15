@@ -29,7 +29,7 @@
 <Dialog.Root open={false}>
 	<Dialog.Trigger>
 		<div
-			class="font-gasoekOne text-white p-5 rounded-[3em] text-2xl"
+			class="font-gasoekOne text-white p-5 rounded-[3em] text-xl md:text-lg lg:text-xl xl:text-2xl"
 			style:background-color={primary}
 		>
 			Register here!

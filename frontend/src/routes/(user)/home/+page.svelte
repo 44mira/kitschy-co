@@ -9,7 +9,7 @@
 	setContext('data', data);
 </script>
 
-<div class="bg-brand-base flex flex-col items-center justify-center min-h-screen px-8">
+<div class="bg-brand-base flex flex-col items-center justify-center min-h-screen px-8 overflow-x-hidden">
 	<Hero />
 	<HeaderCards />
 </div>
