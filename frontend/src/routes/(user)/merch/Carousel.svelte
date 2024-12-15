@@ -1,15 +1,16 @@
 <script lang="ts">
+	import banner from '$lib/assets/users/carousel_banner.png';
 	export let items = [
 		{
-			image: "/img/carousel_banner.png",
+			image: banner,
 			alt: "Banner 1"
 		},
 		{
-			image: "/img/carousel_banner.png",
+			image: banner,
 			alt: "Banner 2"
 		},
 		{
-			image: "/img/carousel_banner.png",
+			image: banner,
 			alt: "Banner 3"
 		}
 	];
