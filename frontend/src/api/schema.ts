@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export enum STATUS {
+export enum PRODUCT_STATUS {
 	READY,
 	ARCHIVED
 }
@@ -11,6 +11,18 @@ export enum CATEGORY {
 	CAFE,
 	MINIMART,
 	WORKSHOP
+}
+
+export enum ORDER_STATUS {
+	PENDING,
+	PROCESSING,
+	DELIVERED,
+	CANCELLED
+}
+
+export enum PAYMENT_METHOD {
+	COD,
+	ONLINE
 }
 
 export type ProductImagesSchema = {
@@ -25,11 +37,30 @@ export type ProductSchema = {
 	desc: string;
 	price: number;
 	quantity: number;
-	status: STATUS;
+	status: PRODUCT_STATUS;
 	category: CATEGORY;
 	created_at: Date;
 	updated_at: Date;
 	creators: string[]; // uuid[]
+};
+
+export type CartItemSchema = {
+	quantity: number;
+	product: ProductSchema;
+};
+
+export type OrderItemSchema = CartItemSchema;
+
+export type OrderSchema = {
+	order_id: string; // uuid
+	total: number;
+	items: OrderItemSchema[];
+	method: PAYMENT_METHOD;
+	status: ORDER_STATUS;
+	delivery_date: Date;
+	created_at: Date;
+	updated_at: Date;
+	user: string; // uuid
 };
 
 export const signupSchema = z.object({
