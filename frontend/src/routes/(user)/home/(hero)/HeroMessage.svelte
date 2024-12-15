@@ -9,17 +9,11 @@
 	<!-- Responsive Header -->
 	<div class="font-allura text-5xl sm:text-3xl xl:text-6xl text-center sm:text-center md:text-left">
 		where
-		<span
-			class="outlined text-3xl sm:text-4xl lg:text-5xl font-gasoekOne"
-			style:color={secondary}
-		>
+		<span class="outlined text-3xl sm:text-4xl lg:text-5xl font-gasoekOne" style:color={secondary}>
 			charm
 		</span>
 		meets
-		<span
-			class="outlined text-3xl sm:text-4xl lg:text-5xl font-gasoekOne"
-			style:color={secondary}
-		>
+		<span class="outlined text-3xl sm:text-4xl lg:text-5xl font-gasoekOne" style:color={secondary}>
 			convenience
 		</span>
 	</div>
