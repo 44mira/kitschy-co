@@ -51,13 +51,13 @@
 <svg height="0" width="100%">
 	<defs>
 		<clipPath id="heroMask">
-			<rect x="0" y="-50" width="100%" height="650" rx="50" ry="50"></rect>
-			<circle cx="50%" cy="600" r={radius}></circle>
+			<rect x="0" y="-50" width="100%" height="750" rx="50" ry="50"></rect>
+			<circle cx="50%" cy="700" r={radius}></circle>
 		</clipPath>
 	</defs>
 </svg>
 
-<div class="relative h-[700px] min-w-full">
+<div class="relative h-[800px] min-w-full">
 	<div class="min-h-full min-w-full text-white text-2xl" style:clip-path="url(#heroMask)">
 		<!-- background needs to be destroyed per change as you cant transition between background-images -->
 		{#key hs.currentTheme}
