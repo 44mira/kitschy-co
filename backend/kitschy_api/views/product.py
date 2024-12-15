@@ -18,7 +18,7 @@ class BatchedImageProductSerializer(ProductSerializer):
     images = inline_serializer(
         name="ProductImages",
         fields={
-            "image": serializers.FileField(),  # Changed from img_url to image
+            "img_url": serializers.FileField(), 
             "alt_desc": serializers.CharField(),
         },
         many=True,
@@ -71,7 +71,7 @@ class ProductViewSet(
             alt_desc = alt_descs[i] if i < len(alt_descs) else ""
             image_data = {
                 "product": product.product_id,
-                "image": image,
+                "img_url": image,
                 "alt_desc": alt_desc,
             }
             img_serializer = ProductImageSerializer(data=image_data)
