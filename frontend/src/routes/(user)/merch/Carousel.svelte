@@ -34,8 +34,8 @@
 	</div>
 
 	<!-- Navigation Controls -->
-	<button onclick={() => move(-1)} class="carousel-nav prev">&lt;</button>
-	<button onclick={() => move(1)} class="carousel-nav next">&gt;</button>
+	<button onclick={() => move(-1)} class="carousel-nav left-3">&lt;</button>
+	<button onclick={() => move(1)} class="carousel-nav right-3">&gt;</button>
 
 	<!-- Dots Indicator -->
 	<div class="dots-container">
@@ -82,14 +82,6 @@
 		font-size: 24px;
 		border-radius: 50%;
 		z-index: 10;
-	}
-
-	.prev {
-		left: 10px;
-	}
-
-	.next {
-		right: 10px;
 	}
 
 	.carousel-nav:hover {
