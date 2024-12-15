@@ -1,5 +1,6 @@
 from drf_spectacular.utils import extend_schema, inline_serializer
 from rest_framework import mixins, viewsets
+from rest_framework.parsers import FormParser, MultiPartParser
 from rest_framework.response import Response
 from rest_framework.schemas.coreapi import serializers
 
@@ -17,7 +18,7 @@ class BatchedImageProductSerializer(ProductSerializer):
     images = inline_serializer(
         name="ProductImages",
         fields={
-            "img_url": serializers.CharField(),
+            "img_url": serializers.FileField(),
             "alt_desc": serializers.CharField(),
         },
         many=True,
@@ -34,6 +35,10 @@ class ProductViewSet(
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     filterset_fields = ["status", "category", "creators"]
+    parser_classes = (
+        MultiPartParser,
+        FormParser,
+    )  # Add parsers for file upload
 
     @extend_schema(request=BatchedImageProductSerializer)
     def create(self, request):
@@ -42,27 +47,36 @@ class ProductViewSet(
         timestamps.
         You will have to get those from the `GET` queries.
         """
+        # Get the images files and descriptions
+        images = request.FILES.getlist("images", [])
+        alt_descs = request.data.getlist("alt_descs", [])
 
-        images = request.data.pop("images")
+        # Create the product first
+        product_data = {
+            "name": request.data.get("name"),
+            "desc": request.data.get("desc"),
+            "price": request.data.get("price"),
+            "quantity": request.data.get("quantity"),
+            "status": request.data.get("status"),
+            "category": request.data.get("category"),
+            "creators": request.data.getlist("creators", []),
+        }
 
-        serializer = ProductSerializer(data=request.data)
+        serializer = ProductSerializer(data=product_data)
         serializer.is_valid(raise_exception=True)
-        serializer.save()
+        product = serializer.save()
 
-        product_id = serializer.data["product_id"]  # pyright: ignore
-
-        # create an image for each item
-        for image in images:
-            image["product"] = product_id
-            img_serializer = ProductImageSerializer(data=image)
+        # Create images
+        for i, image in enumerate(images):
+            alt_desc = alt_descs[i] if i < len(alt_descs) else ""
+            image_data = {
+                "product": product.product_id,
+                "img_url": image,
+                "alt_desc": alt_desc,
+            }
+            img_serializer = ProductImageSerializer(data=image_data)
             img_serializer.is_valid(raise_exception=True)
             img_serializer.save()
 
-        # create a dummy product as return value, does not set timestamps
-        dummy = Product(
-            product_id=product_id,
-            **serializer.validated_data,  # pyright: ignore
-        )
-        serializer = ProductSerializer(dummy)
-
-        return Response(serializer.data)
+        # Return the complete product with images
+        return Response(ProductSerializer(product).data)
