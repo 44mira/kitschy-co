@@ -149,31 +149,22 @@
   
 	/* Responsive styles */
 	@media (max-width: 768px) {
-	  .relative {
-		height: auto; /* Let the container height adjust based on content */
-	  }
-  
-	  .text-2xl {
-		font-size: 1.5rem; /* Adjust font size for mobile */
-	  }
-  
-	  .flex {
-		flex-direction: column; /* Stack hero text vertically on smaller screens */
-	  }
-  
-	  .stamp--rotate {
-		width: 50px; /* Reduce stamp size on mobile */
-	  }
+		.relative {
+			height: auto; /* Let the container height adjust based on content */
+		}
+
+		.text-2xl {
+			font-size: 1.5rem; /* Adjust font size for mobile */
+		}
+
+		.flex {
+			flex-direction: column; /* Stack hero text vertically on smaller screens */
+		}
 	}
-  
+
 	@media (max-width: 480px) {
-	  .flex {
-		padding: 4rem 1rem; /* Reduce padding on smaller screens */
-	  }
-  
-	  .stamp--rotate {
-		width: 40px; /* Further reduce stamp size */
-	  }
+		.flex {
+			padding: 4rem 1rem; /* Reduce padding on smaller screens */
+		}
 	}
-  </style>
-  
+</style>
