@@ -26,7 +26,9 @@ class Product(models.Model):
     name = models.CharField(max_length=255, blank=False)
     desc = models.TextField()
     price = models.IntegerField(validators=[MinValueValidator(0)])
-    quantity = models.IntegerField(default=0)  # Negative values mean pre-orders
+    quantity = models.IntegerField(
+        default=0
+    )  # Negative values mean pre-orders
     status = models.CharField(
         choices=STATUS_CHOICES,
         default="READY",
