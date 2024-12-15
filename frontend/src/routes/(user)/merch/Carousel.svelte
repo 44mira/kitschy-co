@@ -3,15 +3,15 @@
 	export let items = [
 		{
 			image: banner,
-			alt: "Banner 1"
+			alt: 'Banner 1'
 		},
 		{
 			image: banner,
-			alt: "Banner 2"
+			alt: 'Banner 2'
 		},
 		{
 			image: banner,
-			alt: "Banner 3"
+			alt: 'Banner 3'
 		}
 	];
 
@@ -47,18 +47,11 @@
 </script>
 
 <div class="carousel-container">
-	<div
-		class="carousel-wrapper"
-		style="transform: translateX(-{currentIndex * 100}%);"
-	>
+	<div class="carousel-wrapper" style="transform: translateX(-{currentIndex * 100}%);">
 		{#each items as { image, alt }}
 			<div class="carousel-slide">
 				<!-- Background Image -->
-				<div
-					class="carousel-image"
-					style="background-image: url({image});"
-					aria-label={alt}
-				></div>
+				<div class="carousel-image" style="background-image: url({image});" aria-label={alt}></div>
 				<!-- Overlay -->
 				<div class="carousel-overlay"></div>
 			</div>
@@ -73,9 +66,7 @@
 	<div class="dots-container">
 		{#each items as _, index}
 			<!-- svelte-ignore a11y_consider_explicit_label -->
-			<button
-				class="dot {currentIndex === index ? 'active' : ''}"
-				on:click={() => goToSlide(index)}
+			<button class="dot {currentIndex === index ? 'active' : ''}" on:click={() => goToSlide(index)}
 			></button>
 		{/each}
 	</div>
