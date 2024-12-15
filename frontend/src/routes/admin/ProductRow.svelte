@@ -52,4 +52,8 @@
 			@apply line-clamp-1;
 		}
 	}
+
+	td {
+		@apply px-3 py-1;
+	}
 </style>

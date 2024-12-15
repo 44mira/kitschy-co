@@ -2,7 +2,8 @@ export const icons = {
 	add: 'mdi:add',
 	delete: 'mdi:delete-forever-outline',
 	save: 'mdi:content-save-outline',
-	close: 'mdi:close'
+	close: 'mdi:close',
+	archive: 'mdi:archive-arrow-down-outline'
 };
 
 export const creators = [

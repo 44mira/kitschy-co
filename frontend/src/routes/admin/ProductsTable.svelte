@@ -37,8 +37,7 @@
 		@apply font-normal text-brand-purple-d font-giphurs text-lg;
 	}
 
-	th,
-	td {
+	th {
 		@apply px-3 py-1;
 	}
 </style>
