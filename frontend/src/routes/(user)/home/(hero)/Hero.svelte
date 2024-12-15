@@ -58,11 +58,7 @@
 </svg>
 
 <div class="relative h-[700px] min-w-full">
-	<div
-		class="absolute min-h-full min-w-full text-white text-2xl"
-		transition:fade={{ duration: 200 }}
-		style:clip-path="url(#heroMask)"
-	>
+	<div class="min-h-full min-w-full text-white text-2xl" style:clip-path="url(#heroMask)">
 		<!-- background needs to be destroyed per change as you cant transition between background-images -->
 		{#key hs.currentTheme}
 			<div
