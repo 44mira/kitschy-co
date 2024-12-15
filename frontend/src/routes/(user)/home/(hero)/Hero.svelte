@@ -86,11 +86,9 @@
 				<CallCard primary={bgStart} {icon} theme={index} />
 			</div>
 		{/each}
-	</div>
 
-	<!-- spinning stamp -->
-	<div class="absolute flex justify-center w-full bottom-10">
-		<button class="w-fit" onclick={nextTheme}>
+		<!-- spinning stamp -->
+		<button class="absolute w-fit bottom-10 left-[47%] z-[5]" onclick={nextTheme}>
 			<img class="stamp--rotate mx-auto" src={ct.stamp} alt="stamp" />
 		</button>
 	</div>
