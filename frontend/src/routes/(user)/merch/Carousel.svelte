@@ -1,24 +1,36 @@
 <script lang="ts">
 	import { items } from './mockData';
+	import { fly } from 'svelte/transition';
+	import { backInOut } from 'svelte/easing';
 
 	let currentIndex = $state(0); // Start from the first slide
+	let direction = $state(1);
 
-	function move(count: number) {
+	function setIndex(new_idx: number) {
+		direction = new_idx > currentIndex ? 1 : -1;
+		currentIndex = new_idx;
+	}
+
+	function move(count: 1 | -1) {
+		direction = count;
 		currentIndex = (currentIndex + count) % 3;
 		if (currentIndex < 0) currentIndex = 2; // loop back
 	}
 </script>
 
 <div class="carousel-container">
-	<div class="carousel-wrapper" style="transform: translateX(-{currentIndex * 100}%);">
-		{#each items as { image, alt }}
-			<div class="carousel-slide">
-				<!-- Background Image -->
-				<div class="carousel-image" style="background-image: url({image});" aria-label={alt}></div>
-				<!-- Overlay -->
-				<div class="carousel-overlay"></div>
-			</div>
-		{/each}
+	<div class="flex w-full h-full">
+		<div class="h-full min-w-full">
+			{#key currentIndex}
+				<div
+					class="absolute h-full w-full bg-contain bg-center bg-no-repeat"
+					style:background-image="url({items[currentIndex].image})"
+					out:fly={{ x: -1000 * direction, duration: 500, easing: backInOut }}
+					in:fly={{ x: 1000 * direction, duration: 500, easing: backInOut }}
+				></div>
+			{/key}
+		</div>
+		<div class="carousel-overlay"></div>
 	</div>
 
 	<!-- Navigation Controls -->
@@ -31,7 +43,7 @@
 			<button
 				class="dot"
 				class:active={currentIndex == index}
-				onclick={() => (currentIndex = index)}
+				onclick={() => setIndex(index)}
 				aria-label="dot"
 			></button>
 		{/each}
@@ -46,27 +58,6 @@
 		max-width: 100%;
 		margin: 0 auto;
 		overflow: hidden;
-	}
-
-	.carousel-wrapper {
-		display: flex;
-		width: 100%;
-		height: 100%;
-		transition: transform 0.5s ease-in-out;
-	}
-
-	.carousel-slide {
-		position: relative;
-		min-width: 100%;
-		height: 100%;
-	}
-
-	.carousel-image {
-		width: 100%;
-		height: 100%;
-		background-size: contain; /* Ensures the image fits within container */
-		background-position: center;
-		background-repeat: no-repeat;
 	}
 
 	.carousel-overlay {
