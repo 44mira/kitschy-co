@@ -2,7 +2,7 @@
 	import AddProductDialog from './AddProductDialog.svelte';
 	import ProductsTable from './ProductsTable.svelte';
 	import { type ProductSchema } from '@/api/schema';
-	import mockProducts from '../(user)/cafe/mockData';
+	import { mockProducts } from '../(user)/cafe/mockData';
 	import Icon from '@iconify/svelte';
 
 	// api call to get products, for now we use mock data
