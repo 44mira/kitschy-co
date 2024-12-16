@@ -83,7 +83,7 @@
 		<!-- cards -->
 		{#each theme as { bgStart, icon }, index}
 			<div
-				class="callcard absolute bottom-0 inset-x-0 max-w-fit mx-auto"
+				class="callcard absolute top-[600px] sm:top-[500px] md:top-[375px] inset-x-0 max-w-fit mx-auto"
 				class:card__left={index == (hs.currentTheme + 2) % 3}
 				class:card__middle={index == hs.currentTheme}
 				class:card__right={index == (hs.currentTheme + 1) % 3}
