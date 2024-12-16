@@ -57,7 +57,7 @@
 	</defs>
 </svg>
 
-<div class="relative min-h-screen w-full">
+<div class="relative min-h-[800px] w-full">
 	<div class="min-h-full w-full text-white text-2xl" style:clip-path="url(#heroMask)">
 		{#key hs.currentTheme}
 			<div
@@ -94,7 +94,7 @@
 
 		<!-- spinning stamp -->
 		<button
-			class="absolute bottom-32 inset-x-0 mx-auto max-w-fit z-[5] border-2 border-black border-dotted rounded-[99px]"
+			class="absolute bottom-12 inset-x-0 mx-auto max-w-fit z-[5] border-2 border-black border-dotted rounded-[99px]"
 			onclick={nextTheme}
 		>
 			<img class="stamp--rotate mx-auto" src={ct.stamp} alt="stamp" />
