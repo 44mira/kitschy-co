@@ -1,3 +1,5 @@
+import { CATEGORY } from '@/api/schema';
+
 export const icons = {
 	add: 'mdi:add',
 	delete: 'mdi:delete-forever-outline',
@@ -13,11 +15,11 @@ export const creators = [
 ];
 
 export const categories = [
-	{ value: 'merch', label: 'Merchandise', color: '#4D1078' },
-	{ value: 'print', label: "Misbeek's Printing", color: '#ffabff' },
-	{ value: 'cafe', label: 'Cafe & Pastries', color: '#FB7A4F' },
-	{ value: 'minimart', label: 'Mini-mart', color: '#F9F871' },
-	{ value: 'workshop', label: 'Workshop', color: '#32beaf' }
+	{ value: CATEGORY.MERCH, label: 'Merchandise', color: '#4D1078' },
+	{ value: CATEGORY.PRINT, label: "Misbeek's Printing", color: '#ffabff' },
+	{ value: CATEGORY.CAFE, label: 'Cafe & Pastries', color: '#FB7A4F' },
+	{ value: CATEGORY.MINIMART, label: 'Mini-mart', color: '#F9F871' },
+	{ value: CATEGORY.WORKSHOP, label: 'Workshop', color: '#32beaf' }
 ];
 
 export const darkTextCategories = ['print', 'minimart'];

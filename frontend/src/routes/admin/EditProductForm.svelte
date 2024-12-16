@@ -10,16 +10,18 @@
 	import Icon from '@iconify/svelte';
 	import { getContext } from 'svelte';
 
-	let data: SuperValidated<Infer<AddProductSchema>> = getContext('addProductForm');
+	let data: SuperValidated<Infer<AddProductSchema>> = getContext('editProductForm');
 	let { isOpen = $bindable(), product } = $props();
 
-	const addProductForm = superForm(data, {
+	const editProductForm = superForm(data, {
 		validators: zodClient(addProductSchema)
 	});
+
+	const { form, enhance } = editProductForm;
 </script>
 
-<form method="POST">
-	<ProductForm form={addProductForm} values={product} />
+<form method="POST" action="?/editProduct" use:enhance>
+	<ProductForm form={editProductForm} values={product} />
 
 	<div id="actions" class="flex justify-end gap-4">
 		<!-- CLOSE BUTTON -->
@@ -62,7 +64,6 @@
 							class="flex gap-1 text-[#126A99] hover:text-[#126A99] hover:bg-[#126A99]/20 border-[#126A99] border-2"
 							onclick={() => {
 								isOpen = false;
-								console.log(isOpen);
 							}}
 						>
 							<Icon icon={icons.archive} class="w-6 h-6 font-bold" />

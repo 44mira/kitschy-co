@@ -5,19 +5,33 @@ import { addProductSchema } from '@/api/adminSchema';
 import { zod } from 'sveltekit-superforms/adapters';
 
 export const load: PageServerLoad = async () => {
-	return {
-		addProductForm: await superValidate(zod(addProductSchema))
-	};
+	const addProductForm = await superValidate(zod(addProductSchema));
+	const editProductForm = await superValidate(zod(addProductSchema));
+
+	return { addProductForm, editProductForm };
 };
 
 export const actions: Actions = {
-	default: async (event) => {
-		const addProductForm = await superValidate(event, zod(addProductSchema));
+	addProduct: async ({ request }) => {
+		const addProductForm = await superValidate(request, zod(addProductSchema));
 		if (addProductForm.valid) {
 			return fail(400, { addProductForm });
 		}
-		return {
-			addProductForm
-		};
+
+		// Add product
+		postProduct(addProductForm.data);
+	},
+	editProduct: async ({ request }) => {
+		const editProductForm = await superValidate(request, zod(addProductSchema));
+		if (editProductForm.valid) {
+			return fail(400, { editProductForm });
+		}
+
+		// Edit product
+		putProduct(editProductForm.data);
 	}
-};
+} satisfies Actions;
+
+function postProduct(data) {}
+
+function putProduct(data) {}

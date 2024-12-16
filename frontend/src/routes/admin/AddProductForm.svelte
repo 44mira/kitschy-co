@@ -19,13 +19,15 @@
 	let data: SuperValidated<Infer<AddProductSchema>> = getContext('addProductForm');
 	let { isOpen = $bindable() } = $props();
 
-	const addProductForm = superForm(data, {
+	const addProduct = superForm(data, {
 		validators: zodClient(addProductSchema)
 	});
+
+	const { form: formData, enhance } = addProduct;
 </script>
 
-<form action="?/addProduct" method="POST">
-	<ProductForm form={addProductForm} />
+<form action="?/addProduct" method="POST" use:enhance>
+	<ProductForm form={addProduct} />
 
 	<div id="actions" class="flex justify-end gap-4">
 		<!-- CLOSE BUTTON -->
