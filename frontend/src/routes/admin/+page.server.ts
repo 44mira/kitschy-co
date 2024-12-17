@@ -1,7 +1,7 @@
 import type { PageServerLoad, Actions } from './$types.js';
 import { fail } from '@sveltejs/kit';
 import { superValidate } from 'sveltekit-superforms';
-import { addProductSchema } from '@/api/adminSchema';
+import { addProductSchema, type AddProductSchema } from '@/api/adminSchema';
 import { zod } from 'sveltekit-superforms/adapters';
 
 export const load: PageServerLoad = async () => {
@@ -28,10 +28,29 @@ export const actions: Actions = {
 		}
 
 		// Edit product
-		putProduct(editProductForm.data);
+		//putProduct(editProductForm.data);
 	}
 } satisfies Actions;
 
-function postProduct(data) {}
+async function postProduct(data:any) {
+	try {
+		const response = await fetch('http://localhost:8000/api/products', {
+				method: 'POST',
+				headers: {
+						'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(data),
+		});
 
-function putProduct(data) {}
+		if (!response.ok) {
+				const errorData = await response.json();
+				throw new Error(errorData.message || 'Failed to add product');
+		}
+
+		return await response.json();
+		} catch (error) {
+				throw new Error(error instanceof Error ? error.message : 'Failed to make API request');
+		}
+}
+
+//function putProduct(data) {}
