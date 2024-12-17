@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as Dialog from '$lib/components/ui/dialog';
 	import MerchandiseItem from './MerchandiseItem.svelte';
 	import Carousel from './Carousel.svelte'; // Import the carousel component
 	import { mockProducts } from './mockData';
@@ -27,7 +28,33 @@
 	<!-- Products  -->
 	<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 p-10">
 		{#each mockProducts as product}
-			<MerchandiseItem {product} tilt={`${generateTilt()}deg`} {isFalling} />
+			<Dialog.Root>
+				<Dialog.Trigger>
+					<MerchandiseItem {product} tilt={`${generateTilt()}deg`} {isFalling} />
+				</Dialog.Trigger>
+				<Dialog.Content class="bg-white w-[700px]">
+					<!-- Product Details -->
+					<p class="text-2xl font-giphursSC">{product.name}</p>
+					<div class="flex gap-10">
+						<!-- image -->
+						<div class="shrink-0 rounded-xl bg-brand-purple-l border-4 border-brand-purpleMerch">
+							<img
+								class="rounded-xl h-[300px] w-[300px]"
+								src={product.images[0].img_url}
+								alt={product.images[0].alt_desc}
+							/>
+						</div>
+						<div class="grow flex flex-col gap-2">
+							<div class="flex gap-3">
+								<p>Price:</p>
+								<p>₱{product.price.toFixed(2)}</p>
+							</div>
+							<p>Description:</p>
+							<p>{product.desc}</p>
+						</div>
+					</div>
+				</Dialog.Content>
+			</Dialog.Root>
 		{/each}
 	</div>
 </div>

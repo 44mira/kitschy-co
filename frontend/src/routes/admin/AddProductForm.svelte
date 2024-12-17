@@ -26,7 +26,6 @@
 	const { form: formData, enhance } = addProduct;
 </script>
 
-<SuperDebug data={formData} />
 <form action="?/addProduct" method="POST" enctype="multipart/form-data" use:enhance>
 	<ProductForm form={addProduct} />
 
