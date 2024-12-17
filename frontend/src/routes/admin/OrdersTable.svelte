@@ -3,6 +3,7 @@
 	import { formatDate } from '@/lib/utils';
 	import { Badge } from '$lib/components/ui/badge';
 	import { ORDER_STATUS, PAYMENT_METHOD } from '@/api/schema';
+	import ThumbnailImages from './ThumbnailImages.svelte';
 
 	type Props = {
 		orders: OrderSchema[];
@@ -72,21 +73,7 @@
 					<td>{order.order_id}</td>
 
 					<td>
-						<div class="flex items-center" style="position: relative;">
-							{#each order.items.slice(0, 4) as item, index}
-								{#if index < 3}
-									<img
-										src={item.product.images[0].img_url}
-										alt={item.product.name}
-										class="h-12 w-12 object-cover rounded-lg mr-[-35px] lg:mr-[-15px]"
-									/>
-								{:else}
-									<div class="h-fit w-fit flex items-center px-2 rounded-lg ml-[35px] lg:ml-[15px]">
-										<span>+ {order.items.length - index}</span>
-									</div>
-								{/if}
-							{/each}
-						</div>
+						<ThumbnailImages products={order.items.map((i) => i.product)} order={true}/>
 					</td>
 
 					<td>{getName(order.user)}</td>
