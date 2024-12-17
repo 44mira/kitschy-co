@@ -20,7 +20,6 @@
 				<th class="min-w-20 w-[10%]">Price</th>
 				<th class="min-w-28 max-w-40">Last Updated</th>
 				<th class="min-w-20 w-[10%]">In Stock</th>
-				<th class="min-w-20 w-[10%]">Orders</th>
 			</tr>
 		</thead>
 

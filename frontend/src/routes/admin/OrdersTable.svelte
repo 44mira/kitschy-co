@@ -73,7 +73,7 @@
 					<td>{order.order_id}</td>
 
 					<td>
-						<ThumbnailImages products={order.items.map((i) => i.product)} order={true}/>
+						<ThumbnailImages products={order.items.map((i) => i.product)} order={true} />
 					</td>
 
 					<td>{getName(order.user)}</td>

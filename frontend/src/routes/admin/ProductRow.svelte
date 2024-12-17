@@ -23,7 +23,7 @@
 	class="hover:bg-slate-400"
 >
 	<td>
-		<ThumbnailImages products={[product]}/>
+		<ThumbnailImages products={[product]} />
 	</td>
 	<td>{product.name}</td>
 	<td>
