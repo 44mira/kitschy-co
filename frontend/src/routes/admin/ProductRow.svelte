@@ -5,6 +5,7 @@
 	import { formatDate } from '@/lib/utils';
 	import { Badge } from '$lib/components/ui/badge';
 	import * as Dialog from '$lib/components/ui/dialog';
+	import ThumbnailImages from './ThumbnailImages.svelte';
 
 	type Props = {
 		product: ProductSchema;
@@ -21,7 +22,9 @@
 	}}
 	class="hover:bg-slate-400"
 >
-	<td>{product.images[0]}</td>
+	<td>
+		<ThumbnailImages products={[product]} />
+	</td>
 	<td>{product.name}</td>
 	<td>
 		<div class="flex justify-center">

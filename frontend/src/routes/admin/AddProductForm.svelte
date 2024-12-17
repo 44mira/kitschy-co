@@ -3,7 +3,7 @@
 	import * as Dialog from '$lib/components/ui/dialog';
 	import { Button } from '$lib/components/ui/button';
 	import { addProductSchema, type AddProductSchema } from '@/api/adminSchema';
-	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
+	import SuperDebug, { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import Icon from '@iconify/svelte';
 	import { getContext } from 'svelte';
@@ -26,7 +26,8 @@
 	const { form: formData, enhance } = addProduct;
 </script>
 
-<form action="?/addProduct" method="POST" use:enhance>
+<SuperDebug data={formData} />
+<form action="?/addProduct" method="POST" enctype="multipart/form-data" use:enhance>
 	<ProductForm form={addProduct} />
 
 	<div id="actions" class="flex justify-end gap-4">
