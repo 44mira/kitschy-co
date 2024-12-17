@@ -27,7 +27,7 @@
 </script>
 
 <div
-	class="relative flex flex-col polaroid min-h-[380px] min-w-full p-3 drop-shadow-lg bg-gradient-to-t from-[#eeeeff] to-[#ffffff]"
+	class="relative flex flex-col polaroid min-h-[250px] min-w-full p-3 drop-shadow-lg bg-gradient-to-t from-[#eeeeff] to-[#ffffff]"
 	style="--tilt:{tilt}"
 	style:transition-timing-function={createEase(elasticOut)}
 	class:polaroid--down={isFalling}
@@ -42,7 +42,7 @@
 
 	<!-- description -->
 	<div class="pt-2 basis-12 bg-transparent font-bold text-2xl flex flex-col">
-		<span class="font-giphursSC h-10">
+		<span class="font-giphursSC h-20">
 			{product.name}
 		</span>
 		<span class="self-end font-giphurs text-brand-purple-d">
