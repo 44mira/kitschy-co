@@ -24,42 +24,46 @@
 </script>
 
 <div class="flex max-w-screen min-h-screen align-center justify-center bg-brand-purple-l">
-	<div id="flip-card" class="pt-28">
+	<div id="flip-card" class="pt-28 p-8">
 		<div id="flip-card-inner" class="bg-membershipWhite">
 			<!-- Front of card -->
 			<div>
 				<div id="flip-card-front" class="flex flex-col">
 					<!-- Header section -->
-					<div class="flex justify-between p-10 ml-8 mr-10">
-						<img src={logo_purple} alt="Kitschy Logo" style="width:200px; height:50px;" />
+					<div class="flex justify-between p-6 sm:p-10 ml-4 sm:ml-8 mr-4 sm:mr-10">
+						<img src={logo_purple} alt="Kitschy Logo" class="w-36 h-11 sm:w-52 sm:h-14" />
 						<div class="text-right">
-							<p class="uppercase font-extrabold text-purple-900">Identification Card</p>
-							<p class="uppercase font-extrabold text-purple-900">No. {membership_number}</p>
+							<p class="uppercase font-extrabold text-purple-900 text-sm sm:text-base">
+								Identification Card
+							</p>
+							<p class="uppercase font-extrabold text-purple-900 text-sm sm:text-base">
+								No. {membership_number}
+							</p>
 						</div>
 					</div>
 
 					<!-- Main content section -->
-					<div class="flex flex-1 pl-20">
-						<div class="absolute bg-admin-pink rounded-3xl border-black w-60 h-60 -ml-4 mt-1"></div>
+					<div class="flex flex-1 pl-8 sm:pl-16 md:pl-20">
+						<div class="absolute bg-admin-pink rounded-3xl border-black w-40 h-40 sm:w-60 sm:h-60 -ml-4 sm:-ml-4 mt-1"></div>
 						<div
-							class="absolute border-[2px] border-dashed rounded-3xl border-black w-56 h-56 -m-2 mt-3"
+							class="absolute border-[2px] border-dashed rounded-3xl border-black w-36 h-36 sm:w-56 sm:h-56 -m-2 mt-3"
 						></div>
-						<img src={blue_girl} alt="Logo" class="absolute w-36 h-36 mt-12 ml-8" />
+						<img src={blue_girl} alt="Logo" class="absolute w-20 h-20 sm:w-36 sm:h-36 mt-10 ml-6 sm:mt-12 sm:ml-8" />
 						<!-- User details section -->
-						<div class="flex-1 pl-80 pr-20 flex flex-col">
+						<div class="flex-1 pl-40 sm:pl-60 md:pl-80 pr-4 sm:pr-10 md:pr-10 flex flex-col">
 							<!-- User information -->
 							{#each userDetails as detail}
 								<div class="flex justify-between items-center mb-2">
-									<p class="uppercase text-purple-900 font-extrabold">{detail.label}:</p>
-									<p class="font-giphursSC text-right font-semibold">{detail.value}</p>
+									<p class="uppercase text-purple-900 font-extrabold text-xs sm:text-xs md:text-sm">{detail.label}:</p>
+									<p class="font-giphursSC text-right font-semibold text-xs sm:text-xs md:text-sm">{detail.value}</p>
 								</div>
-								<Separator orientation="horizontal" class="border-t-2 border-dotted border-black" />
+								<Separator orientation="horizontal" class="border-t-[1px] sm:border-t-2 border-dotted border-black" />
 							{/each}
 
 							<!-- Footer section -->
 							<div class="bg-admin-pink w-full mt-4">
-								<p class="uppercase font-bold text-white text-center text-[0.60rem] p-2">
-									This identification card certified the bearer as a kitshchy club member.
+								<p class="uppercase font-bold text-white text-center text-[0.50rem] sm:text-[0.60rem] p-2">
+									This identification card certified the bearer as a kitschy club member.
 								</p>
 							</div>
 						</div>
@@ -70,23 +74,23 @@
 			<!-- Back of card -->
 			<div id="flip-card-back" class="bg-membershipWhite flex h-full">
 				<!-- Left side content -->
-				<div class="flex flex-col p-12 flex-1">
+				<div class="flex flex-col p-8 sm:p-12 flex-1">
 					<div class="flex items-start gap-2">
-						<h1 class="font-giphurs text-3xl text-black">Some membership perks...</h1>
+						<h1 class="font-giphurs text-base sm:text-base md:text-2xl lg:text-3xl text-black">Some membership perks...</h1>
 					</div>
 
-					<div class="flex items-start gap-2 mt-8" id="back-content">
-						<img src={blue_star} alt="Star" class="w-10 h-10 mt-1" />
-						<div class="flex flex-col text-left pl-10 font-giphurs text-xl leading-relaxed">
+					<div class="flex items-start gap-2 mt-8 sm:mt-4 md:mt-8" id="back-content">
+						<img src={blue_star} alt="Star" class="w-8 sm:w-10 h-8 sm:h-10 mt-1" />
+						<div class="flex flex-col text-left pl-6 sm:pl-1 md:pl-10 font-giphurs text-sm sm:text-sm md:text-base lg:text-lg leading-relaxed">
 							<p>Your very own physical</p>
 							<p>Kitschy Club</p>
 							<p>Membership Card</p>
 						</div>
 					</div>
 
-					<div class="flex items-start gap-2 mt-20" id="back-content">
-						<img src={blue_star} alt="Star" class="w-10 h-10 mt-1" />
-						<div class="flex flex-col text-left pl-10 font-giphurs text-xl leading-relaxed">
+					<div class="flex items-start gap-2 mt-6 sm:mt-8 md:mt-16" id="back-content">
+						<img src={blue_star} alt="Star" class="w-8 sm:w-10 h-8 sm:h-10 mt-1" />
+						<div class="flex flex-col text-left pl-6 sm:pl-1 md:pl-10 font-giphurs text-sm sm:text-sm md:text-base lg:text-lg leading-relaxed">
 							<p>Lifetime kitschyclub membership</p>
 							<p>Birthday and registration freebies</p>
 							<p>Early access & discounted product prices!</p>
@@ -95,32 +99,31 @@
 				</div>
 
 				<!-- Right side with membership card -->
-				<div class="flex flex-col items-center pr-12 mt-20">
-					<img src={membership_card} alt="Membership Card" class="drop-shadow-lg" />
+				<div class="flex flex-col items-center pr-4 sm:pr-12 mt-36 sm:mt-24 md:mt-20">
+					<img src={membership_card} alt="Membership Card" class="drop-shadow-lg w-40 sm:w-auto" />
 				</div>
 			</div>
 		</div>
-		<div class="flex flex-col items-center justify-center mt-20">
+		<div class="flex flex-col items-center justify-center mt-10 sm:mt-20">
 			<Button variant="membership">Join the club</Button>
 		</div>
 	</div>
 </div>
 
 <style>
+	/* General Styles */
 	img {
 		image-rendering: -webkit-optimize-contrast; /* For webkit browsers */
 		image-rendering: crisp-edges;
 	}
-	#back-content {
-		color: black;
-		font: giphurs;
-		font-weight: 500;
-	}
+
 	#flip-card {
 		background-color: transparent;
-		width: 900px;
-		height: 600px;
-		perspective: 1000px; /*Important for 3D effect */
+		width: 100%;
+		max-width: 900px;
+		height: auto;
+		max-height: 600px;
+		perspective: 1000px; /* Important for 3D effect */
 	}
 
 	#flip-card-inner {
@@ -133,11 +136,12 @@
 		border-radius: 22px;
 	}
 
-	/* Do an horizontal flip when you move the mouse over the flip box container */
+	/* Default Horizontal Flip (Large screens) */
 	#flip-card:hover #flip-card-inner {
 		transform: rotateY(180deg);
 	}
-	/* Position the front and back side */
+
+	/* Front and Back Side Positioning */
 	#flip-card-front,
 	#flip-card-back {
 		position: absolute;
@@ -147,15 +151,27 @@
 		backface-visibility: hidden;
 	}
 
-	/* Style the front side (fallback if image is missing) */
+	/* Styling the Front Side */
 	#flip-card-front {
 		color: black;
 	}
 
-	/* Style the back side */
+	/* Styling the Back Side */
 	#flip-card-back {
-		color: white;
-		transform: rotateY(180deg);
+		color: black;
+		transform: rotateY(180deg); /* Flip horizontally */
 		border-radius: inherit;
 	}
+
+	/* Responsive Adjustments for Small Screens */
+	@media (max-width: 640px) {
+		#flip-card:hover #flip-card-inner {
+			transform: rotateX(180deg); /* Flip vertically */
+		}
+
+		#flip-card-back {
+			transform: rotateX(180deg); /* Adjust back side for vertical flip */
+		}
+	}
 </style>
+

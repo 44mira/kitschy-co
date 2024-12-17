@@ -1,6 +1,5 @@
 <script lang="ts">
 	import * as Dialog from '$lib/components/ui/dialog';
-	import { toImageUrl } from '$lib/utils/index';
 	import ticketBg from '$lib/assets/users/ticketBg.png';
 	import * as Form from '$lib/components/ui/form';
 	import { signupSchema } from '@/api/schema';
@@ -8,7 +7,7 @@
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import Combobox from '@/lib/components/Combobox.svelte';
 
-	let { data } = $props();
+	let { data, primary } = $props();
 	const form = superForm(data, { validators: zodClient(signupSchema) });
 
 	const getData = async (endpoint: string) => {
@@ -26,12 +25,19 @@
 	let barangayCode = $state('');
 </script>
 
-<Dialog.Root open="true">
-	<Dialog.Trigger>Sign Up!</Dialog.Trigger>
+<Dialog.Root open={false}>
+	<Dialog.Trigger>
+		<div
+			class="font-gasoekOne text-white p-5 rounded-[3em] text-xl md:text-lg lg:text-xl xl:text-2xl"
+			style:background-color={primary}
+		>
+			Register here!
+		</div>
+	</Dialog.Trigger>
 
 	<Dialog.Content
 		class="w-[1000px] h-[472px] bg-transparent border-none shadow-none"
-		style={`background-image: ${toImageUrl(ticketBg)}; background-size: cover;`}
+		style={`background-image: url(${ticketBg}); background-size: cover`}
 	>
 		<form method="POST" class="py-4 pr-16 pl-60 flex flex-col justify-center">
 			<div class="grid grid-cols-2 gap-4 gap-y-0">
