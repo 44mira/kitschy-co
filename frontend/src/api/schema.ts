@@ -78,5 +78,8 @@ export const signupSchema = z.object({
 });
 export type SignupSchema = typeof signupSchema;
 
-export const loginSchema = z.object({}).merge(signupSchema.pick({ email: true, password1: true }));
+export const loginSchema = z.object({
+	email: z.string().email(),
+	password: z.string().min(6).max(255)
+});
 export type LoginSchema = typeof loginSchema;

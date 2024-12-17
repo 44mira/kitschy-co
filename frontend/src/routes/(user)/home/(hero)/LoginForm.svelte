@@ -21,7 +21,7 @@
     </Form.Control>
   </Form.Field>
   
-  <Form.Field {form} name="password1">
+  <Form.Field {form} name="password">
     <Form.Control let:attrs>
       <div class="field">
         <Form.Label>Password:</Form.Label>
@@ -30,7 +30,7 @@
           class="col-span-2"
           type="password"
           placeholder="**********"
-          bind:value={$formData.password1}
+          bind:value={$formData.password}
         />
       </div>
     </Form.Control>

@@ -38,8 +38,26 @@ export const actions: Actions = {
 	loginForm: async ({ request }) => {
 		const loginForm = await superValidate(request, zod(loginSchema));
 
-		if (!loginForm.valid) return fail(400, { loginForm });
+        if (!loginForm.valid) return fail(400, { loginForm });
 
-		return message(loginForm, 'Login form submitted');
-	}
+        try {
+            const response = await fetch('http://127.0.0.1:8000/auth/login/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(loginForm.data)
+            });
+
+            if (!response.ok) {
+				return message(loginForm, 'Invalid credentials', { status: 401 });
+            }
+
+            const data = await response.json();
+            return message(loginForm, 'Login successful');
+
+        } catch (error) {
+			return message(loginForm, 'Server error', { status: 500 });
+        }
+    }
 };
