@@ -3,6 +3,7 @@
 	import Combobox from '@/lib/components/Combobox.svelte';
 
 	let { form } = $props();
+	let { form: formData } = form;
 
 	const getData = async (endpoint: string) => {
 		const res = await fetch(`https://psgc.gitlab.io/api/${endpoint}/`);
@@ -15,59 +16,93 @@
 	};
 
 	let addressCodes = $state({ region: '', city: '', barangay: '' });
+
+	$effect(() => {
+		$formData.region = addressCodes.region;
+		$formData.city = addressCodes.city;
+		$formData.barangay = addressCodes.barangay;
+	});
 </script>
 
 <div class="grid grid-cols-2 gap-4 gap-y-0">
 	<Form.Field {form} name="first_name">
-		<Form.Control>
+		<Form.Control let:attrs>
 			<div class="field">
 				<Form.Label>First Name:</Form.Label>
-				<input class="col-span-2" placeholder="Samantha" />
+				<input
+					{...attrs}
+					class="col-span-2"
+					placeholder="Samantha"
+					bind:value={$formData.first_name}
+				/>
 			</div>
 		</Form.Control>
 	</Form.Field>
 
 	<Form.Field {form} name="last_name">
-		<Form.Control>
+		<Form.Control let:attrs>
 			<div class="field">
 				<Form.Label>Last Name:</Form.Label>
-				<input class="col-span-2" placeholder="Cruz" />
+				<input {...attrs} class="col-span-2" placeholder="Cruz" bind:value={$formData.last_name} />
 			</div>
 		</Form.Control>
 	</Form.Field>
 
 	<Form.Field {form} name="email">
-		<Form.Control>
+		<Form.Control let:attrs>
 			<div class="field">
 				<Form.Label>E-mail:</Form.Label>
-				<input class="col-span-2" placeholder="stay@kitschy.com" />
+				<input
+					{...attrs}
+					type="email"
+					class="col-span-2"
+					placeholder="stay@kitschy.com"
+					bind:value={$formData.email}
+				/>
 			</div>
 		</Form.Control>
 	</Form.Field>
 
 	<Form.Field {form} name="phone_number">
-		<Form.Control>
+		<Form.Control let:attrs>
 			<div class="field">
 				<Form.Label>Phone No.:</Form.Label>
-				<input class="col-span-2" placeholder="09XXXXXXXXX" />
+				<input
+					{...attrs}
+					class="col-span-2"
+					placeholder="09XXXXXXXXX"
+					bind:value={$formData.phone_number}
+				/>
 			</div>
 		</Form.Control>
 	</Form.Field>
 
 	<Form.Field {form} name="password1">
-		<Form.Control>
+		<Form.Control let:attrs>
 			<div class="field">
 				<Form.Label>Password:</Form.Label>
-				<input class="col-span-2" type="password" placeholder="**********" />
+				<input
+					{...attrs}
+					class="col-span-2"
+					type="password"
+					placeholder="**********"
+					bind:value={$formData.password1}
+				/>
 			</div>
 		</Form.Control>
 	</Form.Field>
 
 	<Form.Field {form} name="password2">
-		<Form.Control>
+		<Form.Control let:attrs>
 			<div class="field">
 				<Form.Label>Confirm Password:</Form.Label>
-				<input class="col-span-2" type="password" placeholder="**********" />
+				<input
+					{...attrs}
+					class="col-span-2"
+					type="password"
+					placeholder="**********"
+					bind:value={$formData.password2}
+				/>
 			</div>
 		</Form.Control>
 	</Form.Field>
@@ -120,19 +155,24 @@
 	</Form.Field>
 
 	<Form.Field {form} name="postalCode">
-		<Form.Control>
+		<Form.Control let:attrs>
 			<div class="field">
 				<Form.Label>Postal Code:</Form.Label>
-				<input class="col-span-2" />
+				<input {...attrs} class="col-span-2" bind:value={$formData.postalCode} />
 			</div>
 		</Form.Control>
 	</Form.Field>
 
 	<Form.Field {form} name="detailedAddress" class="col-span-2">
-		<Form.Control>
+		<Form.Control let:attrs>
 			<div class="field">
 				<Form.Label>Detailed Address:</Form.Label>
-				<input class="col-span-2" placeholder="Street Name, Building, Unit/House No." />
+				<input
+					{...attrs}
+					class="col-span-2"
+					placeholder="Street Name, Building, Unit/House No."
+					bind:value={$formData.detailedAddress}
+				/>
 			</div>
 		</Form.Control>
 	</Form.Field>

@@ -4,7 +4,6 @@
 
 	import type { PageData } from '../$types';
 
-	const data: PageData = getContext('data');
 
 	const { src, secondary } = $props();
 </script>
@@ -26,6 +25,6 @@
 			{src}
 			alt="girl tilting her head"
 		/>
-		<SignupDialog data={data.signupForm} primary={secondary} />
+		<SignupDialog primary={secondary} />
 	</div>
 </div>

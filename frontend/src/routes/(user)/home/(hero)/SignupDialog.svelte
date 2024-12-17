@@ -3,11 +3,16 @@
 	import * as Dialog from '$lib/components/ui/dialog';
 	import ticketBg from '$lib/assets/users/ticketBg.png';
 	import { signupSchema } from '@/api/schema';
-	import { superForm } from 'sveltekit-superforms';
+	import SuperDebug, { superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
+	import { getContext } from 'svelte';
+	import type { PageData } from '../$types';
 
-	let { data, primary } = $props();
-	const form = superForm(data, { validators: zodClient(signupSchema) });
+	const data: PageData = getContext('data');
+	let { primary } = $props();
+	const form = superForm(data.signupForm, { validators: zodClient(signupSchema) });
+
+	const { form: formData, enhance } = form;
 </script>
 
 <Dialog.Root open={false}>
@@ -24,7 +29,7 @@
 		class="w-[1000px] h-[472px] bg-transparent border-none shadow-none"
 		style={`background-image: url(${ticketBg}); background-size: cover`}
 	>
-		<form method="POST" class="py-4 pr-16 pl-60 flex flex-col justify-center">
+		<form method="POST" class="py-4 pr-16 pl-60 flex flex-col justify-center" use:enhance>
 			<SignupForm {form} />
 		</form>
 	</Dialog.Content>
