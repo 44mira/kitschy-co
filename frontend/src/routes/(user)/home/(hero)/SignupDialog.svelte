@@ -1,9 +1,10 @@
 <script lang="ts">
 	import SignupForm from './SignupForm.svelte';
+	import LoginForm from './LoginForm.svelte';
 	import * as Form from '$lib/components/ui/form';
 	import * as Dialog from '$lib/components/ui/dialog';
 	import ticketBg from '$lib/assets/users/ticketBg.png';
-	import { signupSchema } from '@/api/schema';
+	import { loginSchema, signupSchema } from '@/api/schema';
 	import SuperDebug, { superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import { getContext } from 'svelte';
@@ -11,9 +12,11 @@
 
 	const data: PageData = getContext('data');
 	let { primary } = $props();
-	const form = superForm(data.signupForm, { validators: zodClient(signupSchema) });
+	const signupForm = superForm(data.signupForm, { validators: zodClient(signupSchema) });
+	const loginForm = superForm(data.loginForm, { validators: zodClient(loginSchema) });
 
-	const { form: formData, enhance } = form;
+	const { enhance: enhanceSignup } = signupForm;
+	const { enhance: enhanceLogin } = loginForm;
 
 	let isSignup = $state(true);
 </script>
@@ -37,9 +40,9 @@
 				action="?/signupForm"
 				method="POST"
 				class="py-4 pr-16 pl-60 flex flex-col justify-center"
-				use:enhance
+				use:enhanceSignup
 			>
-				<SignupForm {form} />
+				<SignupForm form={signupForm} />
 
 				<!-- ACTIONS -->
 				<div class="flex flex-col items-center pt-6">
@@ -48,9 +51,12 @@
 						style="-webkit-text-stroke: 6px #804B7A;  paint-order: stroke fill;"
 						variant="ghost">Claim my ticket!</Form.Button
 					>
-					<button onclick={() => isSignup = false} class="text-center text-brand-purple-d underline hover:text-brand-purple" >
-            Already have a ticket? Sign in!
-          </button >
+					<button
+						onclick={() => (isSignup = false)}
+						class="text-center text-brand-purple-d underline hover:text-brand-purple"
+					>
+						Already have a ticket? Sign in!
+					</button>
 				</div>
 			</form>
 		{:else}
@@ -58,20 +64,23 @@
 				action="?/loginForm"
 				method="POST"
 				class="py-4 pr-16 pl-60 flex flex-col justify-center"
-				use:enhance
+				use:enhanceLogin
 			>
-
-        <!-- ACTIONS -->
-        <div class="flex flex-col items-center pt-6">
-          <Form.Button
-            class="w-fit rounded-full bg-transparent border-4 p-4 border-brand-yellow font-lockergnome text-brand-yellow text-2xl hover:bg-gradient-to-t from-brand-yellow to-brand-base"
-            style="-webkit-text-stroke: 6px #804B7A;  paint-order: stroke fill;"
-            variant="ghost">Claim my ticket!</Form.Button
-          >
-          <button onclick={() => isSignup = true} class="text-center text-brand-purple-d underline hover:text-brand-purple" >
-            Don't have a ticket yet? Register here!
-          </button >
-        </div>
+				<LoginForm form={loginForm} />
+				<!-- ACTIONS -->
+				<div class="flex flex-col items-center pt-6">
+					<Form.Button
+						class="w-fit rounded-full bg-transparent border-4 p-4 border-brand-yellow font-lockergnome text-brand-yellow text-2xl hover:bg-gradient-to-t from-brand-yellow to-brand-base"
+						style="-webkit-text-stroke: 6px #804B7A;  paint-order: stroke fill;"
+						variant="ghost">Get Kitschy!</Form.Button
+					>
+					<button
+						onclick={() => (isSignup = true)}
+						class="text-center text-brand-purple-d underline hover:text-brand-purple"
+					>
+						New here? Get a ticket!
+					</button>
+				</div>
 			</form>
 		{/if}
 	</Dialog.Content>
