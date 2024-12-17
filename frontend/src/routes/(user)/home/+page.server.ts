@@ -13,7 +13,7 @@ export const load: PageServerLoad = async () => {
 export const actions: Actions = {
 	// runs when the signup form is submitted
 	signupForm: async (request) => {
-		console.log("hello1")
+		console.log('hello1');
 		const signupForm = await superValidate(request, zod(signupSchema));
 		if (!signupForm.valid) {
 			return fail(300, {
@@ -33,27 +33,27 @@ export const actions: Actions = {
 			}
 		};
 
-		try { 
+		try {
 			console.log('Sending request to Django backend...');
 			const response = await fetch('http://127.0.0.1:8000/auth/registration/', {
-					method: 'POST',
-					headers: {
-							'Content-Type': 'application/json'
-					},
-					body: JSON.stringify(postData)
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(postData)
 			});
-	
+
 			if (!response.ok) {
-					console.error('Response not OK:', response.status, response.statusText);
-					return message(signupForm, 'Invalid credentials', { status: 400 });
+				console.error('Response not OK:', response.status, response.statusText);
+				return message(signupForm, 'Invalid credentials', { status: 400 });
 			} else {
-					console.log('Signup successful:', await response.json());
-					return message(signupForm, 'Signup successful');
+				console.log('Signup successful:', await response.json());
+				return message(signupForm, 'Signup successful');
 			}
-	} catch (error) {
+		} catch (error) {
 			console.error('Server error:', error);
 			return message(signupForm, 'Server error', { status: 500 });
-	}
+		}
 	},
 
 	loginForm: async ({ request }) => {
