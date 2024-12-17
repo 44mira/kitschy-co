@@ -21,7 +21,7 @@
 		$formData.region = addressCodes.region;
 		$formData.city = addressCodes.city;
 		$formData.barangay = addressCodes.barangay;
-	});
+  });
 </script>
 
 <div class="grid grid-cols-2 gap-4 gap-y-0">
@@ -29,12 +29,7 @@
 		<Form.Control let:attrs>
 			<div class="field">
 				<Form.Label>First Name:</Form.Label>
-				<input
-					{...attrs}
-					class="col-span-2"
-					placeholder="Samantha"
-					bind:value={$formData.first_name}
-				/>
+				<input {...attrs} class="col-span-2" placeholder="Samantha" bind:value={$formData.first_name} />
 			</div>
 		</Form.Control>
 	</Form.Field>
@@ -43,7 +38,7 @@
 		<Form.Control let:attrs>
 			<div class="field">
 				<Form.Label>Last Name:</Form.Label>
-				<input {...attrs} class="col-span-2" placeholder="Cruz" bind:value={$formData.last_name} />
+				<input {...attrs} class="col-span-2" placeholder="Cruz" bind:value={$formData.last_name}/>
 			</div>
 		</Form.Control>
 	</Form.Field>
@@ -52,13 +47,7 @@
 		<Form.Control let:attrs>
 			<div class="field">
 				<Form.Label>E-mail:</Form.Label>
-				<input
-					{...attrs}
-					type="email"
-					class="col-span-2"
-					placeholder="stay@kitschy.com"
-					bind:value={$formData.email}
-				/>
+				<input {...attrs} type="email" class="col-span-2" placeholder="stay@kitschy.com" bind:value={$formData.email}/>
 			</div>
 		</Form.Control>
 	</Form.Field>
@@ -67,12 +56,7 @@
 		<Form.Control let:attrs>
 			<div class="field">
 				<Form.Label>Phone No.:</Form.Label>
-				<input
-					{...attrs}
-					class="col-span-2"
-					placeholder="09XXXXXXXXX"
-					bind:value={$formData.phone_number}
-				/>
+				<input {...attrs} class="col-span-2" placeholder="09XXXXXXXXX" bind:value={$formData.phone_number}/>
 			</div>
 		</Form.Control>
 	</Form.Field>
@@ -81,13 +65,7 @@
 		<Form.Control let:attrs>
 			<div class="field">
 				<Form.Label>Password:</Form.Label>
-				<input
-					{...attrs}
-					class="col-span-2"
-					type="password"
-					placeholder="**********"
-					bind:value={$formData.password1}
-				/>
+				<input {...attrs} class="col-span-2" type="password" placeholder="**********" bind:value={$formData.password1} />
 			</div>
 		</Form.Control>
 	</Form.Field>
@@ -96,13 +74,7 @@
 		<Form.Control let:attrs>
 			<div class="field">
 				<Form.Label>Confirm Password:</Form.Label>
-				<input
-					{...attrs}
-					class="col-span-2"
-					type="password"
-					placeholder="**********"
-					bind:value={$formData.password2}
-				/>
+				<input {...attrs} class="col-span-2" type="password" placeholder="**********" bind:value={$formData.password2}/>
 			</div>
 		</Form.Control>
 	</Form.Field>
@@ -164,27 +136,11 @@
 	</Form.Field>
 
 	<Form.Field {form} name="detailedAddress" class="col-span-2">
-		<Form.Control let:attrs>
+		<Form.Control>
 			<div class="field">
 				<Form.Label>Detailed Address:</Form.Label>
-				<input
-					{...attrs}
-					class="col-span-2"
-					placeholder="Street Name, Building, Unit/House No."
-					bind:value={$formData.detailedAddress}
-				/>
+				<input class="col-span-2" placeholder="Street Name, Building, Unit/House No." />
 			</div>
 		</Form.Control>
 	</Form.Field>
-</div>
-
-<div class="flex flex-col items-center pt-6">
-	<Form.Button
-		class="w-fit rounded-full bg-transparent border-4 p-4 border-brand-yellow font-lockergnome text-brand-yellow text-2xl hover:bg-gradient-to-t from-brand-yellow to-brand-base"
-		style="-webkit-text-stroke: 6px #804B7A;  paint-order: stroke fill;"
-		variant="ghost">Claim my ticket!</Form.Button
-	>
-	<a href="/" class="text-center text-brand-purple-d underline hover:text-brand-purple"
-		>Already have a ticket? Sign in!</a
-	>
 </div>

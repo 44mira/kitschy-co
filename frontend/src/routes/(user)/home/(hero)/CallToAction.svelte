@@ -4,7 +4,6 @@
 
 	import type { PageData } from '../$types';
 
-
 	const { src, secondary } = $props();
 </script>
 
