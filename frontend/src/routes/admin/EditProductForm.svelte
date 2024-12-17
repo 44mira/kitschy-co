@@ -20,7 +20,7 @@
 	const { form, enhance } = editProductForm;
 </script>
 
-<form method="POST" action="?/editProduct" use:enhance>
+<form method="POST" action="?/editProduct" enctype="multipart/form-data" use:enhance>
 	<ProductForm form={editProductForm} values={product} />
 
 	<div id="actions" class="flex justify-end gap-4">
