@@ -1,6 +1,5 @@
 <script lang="ts">
 	import * as Dialog from '$lib/components/ui/dialog';
-	import { toImageUrl } from '$lib/utils/index';
 	import ticketBg from '$lib/assets/users/ticketBg.png';
 	import * as Form from '$lib/components/ui/form';
 	import { signupSchema } from '@/api/schema';
@@ -38,7 +37,7 @@
 
 	<Dialog.Content
 		class="w-[1000px] h-[472px] bg-transparent border-none shadow-none"
-		style={`background-image: ${toImageUrl(ticketBg)}; background-size: cover;`}
+		style={`background-image: url(${ticketBg}); background-size: cover`}
 	>
 		<form method="POST" class="py-4 pr-16 pl-60 flex flex-col justify-center">
 			<div class="grid grid-cols-2 gap-4 gap-y-0">
