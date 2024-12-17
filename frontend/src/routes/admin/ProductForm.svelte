@@ -89,13 +89,14 @@
 		</Form.Field>
 
 		<Form.Field {form} name="quantity" class="flex items-center">
-			<Form.Control>
+			<Form.Control let:attrs>
 				<Form.Label class="text-brand-purple-d text-lg font-normal mt-2">In Stock:</Form.Label>
 				<input
+          {...attrs}
 					type="number"
 					placeholder="0"
 					class="remove-arrow bg-transparent border-none text-lg w-40"
-					value={$formData.quantity}
+					bind:value={$formData.quantity}
 					{...$constraints.quantity}
 				/>
 			</Form.Control>
