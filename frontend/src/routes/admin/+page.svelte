@@ -12,6 +12,7 @@
 
 	let { data }: { data: PageData } = $props();
 	setContext('addProductForm', data.addProductForm);
+	setContext('editProductForm', data.editProductForm);
 
 	let tab = $state('insights_tab');
 	let durationFilter = $state('Day');
