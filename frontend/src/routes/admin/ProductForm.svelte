@@ -14,7 +14,7 @@
 	};
 	let { form, values }: Props = $props();
 
-	let { form: formData, constraints, errors } = form;
+	let { form: formData, constraints } = form;
 
 	if (values) {
 		formData.set(values);
@@ -22,9 +22,8 @@
 
 	let isHoveringMainImage = $state(false);
 
-	let categoryValue = $derived($formData.category);
 	const triggerCategory = $derived(
-		categories.find((c) => c.value == categoryValue)?.label ?? 'Select Category'
+		categories.find((c) => c.value == $formData.category)?.label ?? 'Select Category'
 	);
 
 	let checkedCreators = $state(creators.map((c) => false));
@@ -44,6 +43,7 @@
 			placeholder="Product Name"
 			class="p-0 bg-transparent border-none text-2xl font-semibold"
 			bind:value={$formData.name}
+			{...$constraints.name}
 		/>
 	</Form.Control>
 </Form.Field>
@@ -110,13 +110,17 @@
 				<DropdownMenu.Root>
 					<DropdownMenu.Trigger
 						class="bg-slate-600 col-span-7 w-fit px-3 py-[2px] rounded-full text-brand-base"
-						style={`background-color: ${categories.find((c) => c.value == categoryValue)?.color}; 
-                      color: ${darkTextCategories.includes(categoryValue) ? '#000' : '#fff'}`}
+						style={`background-color: ${categories.find((c) => c.value == $formData.category)?.color}; 
+                      color: ${darkTextCategories.includes($formData.category) ? '#000' : '#fff'}`}
 					>
 						{triggerCategory}
 					</DropdownMenu.Trigger>
 					<DropdownMenu.Content>
-						<DropdownMenu.RadioGroup bind:value={$formData.category} {...$constraints.category}>
+						<DropdownMenu.RadioGroup
+							onValueChange={(v) => ($formData.category = v ? Number(v) : 0)}
+							value={$formData.category}
+							{...$constraints.category}
+						>
 							{#each categories as c}
 								<DropdownMenu.RadioItem value={c.value}>{c.label}</DropdownMenu.RadioItem>
 							{/each}
