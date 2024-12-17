@@ -32,25 +32,25 @@ export const actions: Actions = {
 	}
 } satisfies Actions;
 
-async function postProduct(data:any) {
+async function postProduct(data: any) {
 	try {
 		const response = await fetch('http://localhost:8000/api/products', {
-				method: 'POST',
-				headers: {
-						'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(data),
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(data)
 		});
 
 		if (!response.ok) {
-				const errorData = await response.json();
-				throw new Error(errorData.message || 'Failed to add product');
+			const errorData = await response.json();
+			throw new Error(errorData.message || 'Failed to add product');
 		}
 
 		return await response.json();
-		} catch (error) {
-				throw new Error(error instanceof Error ? error.message : 'Failed to make API request');
-		}
+	} catch (error) {
+		throw new Error(error instanceof Error ? error.message : 'Failed to make API request');
+	}
 }
 
 //function putProduct(data) {}
