@@ -5,8 +5,7 @@
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import { Textarea } from '$lib/components/ui/textarea';
 	import Icon from '@iconify/svelte';
-	import dndIcon from '$lib/assets/admin/icons/dndIcon.svg';
-	import type { SuperForm } from 'sveltekit-superforms';
+	import ImagesField from './ImagesField.svelte';
 
 	type Props = {
 		form: any;
@@ -19,8 +18,6 @@
 	if (values) {
 		formData.set(values);
 	}
-
-	let isHoveringMainImage = $state(false);
 
 	const triggerCategory = $derived(
 		categories.find((c) => c.value == $formData.category)?.label ?? 'Select Category'
@@ -50,43 +47,7 @@
 
 <div class="flex gap-4">
 	<div id="left">
-		<Form.Field {form} name="images">
-			<Form.Control let:attrs>
-				<Form.Label for="images-input">
-					<div
-						class={`${isHoveringMainImage ? 'hiddenl' : ''} w-[250px] h-[250px] transition ease-in bg-brand-purple-l hover:bg-[#F8EEFF] rounded-xl flex items-center justify-center`}
-						role="button"
-						tabindex="0"
-						onmouseenter={() => (isHoveringMainImage = true)}
-						onmouseleave={() => (isHoveringMainImage = false)}
-					>
-						{#if values && values.images && values.images.length > 0}
-							{#each values.images as image}
-								<img
-									src={image.img_url}
-									alt={image.alt_desc}
-									class="w-[250px] h-[250px] rounded-xl"
-								/>
-							{/each}
-						{:else}
-							<Icon
-								icon={icons.add}
-								class={`${isHoveringMainImage ? 'hidden' : ''} opacity-100 transition-opacity ease-in hover:opacity-0 w-[250px] h-[250px] text-brand-purple-d`}
-							/>
-							<div
-								class={`${isHoveringMainImage ? '' : 'hidden'} opacity-0 transition-opacity ease-in hover:opacity-100 flex flex-col items-center justify-center w-full h-full border-[5px] hover:border-brand-purple-d border-brand-purple-l rounded-2xl`}
-							>
-								<img src={dndIcon} alt="Drag and drop icon" class="w-[123px] h-[110px]" />
-								<p class="text-brand-purple-d text-center pt-2 text-xl font-giphurs font-semibold">
-									Drag and drop or click here
-								</p>
-							</div>
-						{/if}
-					</div>
-				</Form.Label>
-				<input id="images-input" type="file" multiple class="w-0 h-0 p-0" accept="image/*" />
-			</Form.Control>
-		</Form.Field>
+		<ImagesField {form} preloadedImages={values ? values.images : undefined} />
 
 		<Form.Field {form} name="quantity" class="flex items-center">
 			<Form.Control>
