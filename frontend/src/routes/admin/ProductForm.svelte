@@ -6,6 +6,7 @@
 	import { Textarea } from '$lib/components/ui/textarea';
 	import Icon from '@iconify/svelte';
 	import dndIcon from '$lib/assets/admin/icons/dndIcon.svg';
+	import type { SuperForm } from 'sveltekit-superforms';
 
 	type Props = {
 		form: any;
@@ -13,7 +14,7 @@
 	};
 	let { form, values }: Props = $props();
 
-	let { form: formData } = form;
+	let { form: formData, constraints, errors } = form;
 
 	if (values) {
 		formData.set(values);
@@ -93,8 +94,9 @@
 				<input
 					type="number"
 					placeholder="0"
-					class="bg-transparent border-none text-lg w-40"
-					value={values ? values.quantity : ''}
+					class="remove-arrow bg-transparent border-none text-lg w-40"
+					value={$formData.quantity}
+					{...$constraints.quantity}
 				/>
 			</Form.Control>
 		</Form.Field>
@@ -114,7 +116,7 @@
 						{triggerCategory}
 					</DropdownMenu.Trigger>
 					<DropdownMenu.Content>
-						<DropdownMenu.RadioGroup bind:value={$formData.category}>
+						<DropdownMenu.RadioGroup bind:value={$formData.category} {...$constraints.category}>
 							{#each categories as c}
 								<DropdownMenu.RadioItem value={c.value}>{c.label}</DropdownMenu.RadioItem>
 							{/each}
@@ -177,23 +179,39 @@
 					<span>₱</span>
 					<input
 						{...attrs}
+						type="number"
+						step=".01"
 						placeholder="0.00"
-						class="bg-transparent border-none text-md p-0"
+						class="remove-arrow bg-transparent border-none text-md p-0"
 						bind:value={$formData.price}
+						{...$constraints.price}
 					/>
 				</div>
 			</Form.Control>
 		</Form.Field>
 
-		<Form.Field {form} name="description" class="space-y-0">
-			<Form.Control>
+		<Form.Field {form} name="desc" class="space-y-0">
+			<Form.Control let:attrs>
 				<Form.Label class="text-brand-purple-d text-lg font-normal">Description:</Form.Label>
 				<Textarea
+					{...attrs}
 					placeholder="Add a description to give users more context on the product. Be detailed and thorough. Possible important information: units, dimensions, material."
 					class="bg-transparent border-none resize-none h-[150px]"
 					bind:value={$formData.desc}
 				/>
 			</Form.Control>
+			<Form.FieldErrors />
 		</Form.Field>
 	</div>
 </div>
+
+<style>
+	.remove-arrow::-webkit-inner-spin-button,
+	.remove-arrow::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+	.remove-arrow {
+		-moz-appearance: textfield;
+	}
+</style>

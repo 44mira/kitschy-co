@@ -22,4 +22,4 @@ export const categories = [
 	{ value: CATEGORY.WORKSHOP, label: 'Workshop', color: '#32beaf' }
 ];
 
-export const darkTextCategories = ['print', 'minimart'];
+export const darkTextCategories = [CATEGORY.PRINT, CATEGORY.MINIMART];
