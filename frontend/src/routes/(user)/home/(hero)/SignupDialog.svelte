@@ -29,7 +29,7 @@
 		class="w-[1000px] h-[472px] bg-transparent border-none shadow-none"
 		style={`background-image: url(${ticketBg}); background-size: cover`}
 	>
-		<form method="POST" class="py-4 pr-16 pl-60 flex flex-col justify-center" use:enhance>
+		<form action="?/signupForm" method="POST" class="py-4 pr-16 pl-60 flex flex-col justify-center" use:enhance>
 			<SignupForm {form} />
 		</form>
 	</Dialog.Content>
