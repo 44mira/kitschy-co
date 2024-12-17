@@ -5,48 +5,33 @@ import { addProductSchema } from '@/api/adminSchema';
 import { zod } from 'sveltekit-superforms/adapters';
 
 export const load: PageServerLoad = async () => {
-	return {
-		addProductForm: await superValidate(zod(addProductSchema))
-	};
+	const addProductForm = await superValidate(zod(addProductSchema));
+	const editProductForm = await superValidate(zod(addProductSchema));
+
+	return { addProductForm, editProductForm };
 };
 
 export const actions: Actions = {
-	default: async (event) => {
-		const addProductForm = await superValidate(event, zod(addProductSchema));
-		console.log(addProductForm);
-		if (!addProductForm.valid) {
+	addProduct: async ({ request }) => {
+		const addProductForm = await superValidate(request, zod(addProductSchema));
+		if (addProductForm.valid) {
 			return fail(400, { addProductForm });
 		}
 
-		try {
-			const response = await fetch('http:localhost:8000/kitschy_api/products', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify(addProductForm.data)
-			});
-
-			if (!response.ok) {
-				// Handle API errors
-				const errorData = await response.json();
-				return fail(response.status, {
-					addProductForm,
-					error: errorData.message || 'Failed to create product'
-				});
-			}
-
-			// Return success state with the form
-			return {
-				addProductForm,
-				success: true
-			};
-		} catch (error) {
-			// Handle network or other errors
-			return fail(500, {
-				addProductForm,
-				error: 'Server error occurred while creating product'
-			});
+		// Add product
+		postProduct(addProductForm.data);
+	},
+	editProduct: async ({ request }) => {
+		const editProductForm = await superValidate(request, zod(addProductSchema));
+		if (editProductForm.valid) {
+			return fail(400, { editProductForm });
 		}
+
+		// Edit product
+		putProduct(editProductForm.data);
 	}
-};
+} satisfies Actions;
+
+function postProduct(data) {}
+
+function putProduct(data) {}

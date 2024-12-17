@@ -57,7 +57,7 @@
 	</defs>
 </svg>
 
-<div class="relative min-h-screen w-full">
+<div class="relative min-h-[800px] w-full">
 	<div class="min-h-full w-full text-white text-2xl" style:clip-path="url(#heroMask)">
 		{#key hs.currentTheme}
 			<div
@@ -83,7 +83,7 @@
 		<!-- cards -->
 		{#each theme as { bgStart, icon }, index}
 			<div
-				class="callcard absolute bottom-0 inset-x-0 max-w-fit mx-auto"
+				class="callcard absolute top-[600px] sm:top-[500px] md:top-[375px] inset-x-0 max-w-fit mx-auto"
 				class:card__left={index == (hs.currentTheme + 2) % 3}
 				class:card__middle={index == hs.currentTheme}
 				class:card__right={index == (hs.currentTheme + 1) % 3}
@@ -94,7 +94,7 @@
 
 		<!-- spinning stamp -->
 		<button
-			class="absolute bottom-32 inset-x-0 mx-auto max-w-fit z-[5] border-2 border-black border-dotted rounded-[99px]"
+			class="absolute bottom-12 inset-x-0 mx-auto max-w-fit z-[5] border-2 border-black border-dotted rounded-[99px]"
 			onclick={nextTheme}
 		>
 			<img class="stamp--rotate mx-auto" src={ct.stamp} alt="stamp" />
